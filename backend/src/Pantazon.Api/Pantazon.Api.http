@@ -1,0 +1,6 @@
+@Pantazon.Api_HostAddress = http://localhost:5138
+
+GET {{Pantazon.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
