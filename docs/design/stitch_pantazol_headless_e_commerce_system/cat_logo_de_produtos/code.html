@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catálogo de Produtos | pantazon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#c7d6ee",
+                    "tertiary-container": "#4f5d71",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-surface-variant": "#434655",
+                    "on-primary-container": "#cad3ff",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "primary": "#0037b0",
+                    "primary-fixed": "#dce1ff",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-container": "#dae2fd",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#5c647a",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c4c5d7",
+                    "background": "#f7f9fb",
+                    "secondary": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "surface-container-low": "#f2f4f6",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-tint": "#2151da",
+                    "outline": "#747686",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1d4ed8",
+                    "secondary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface-container-high": "#e6e8ea",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "on-primary-fixed": "#001551",
+                    "tertiary": "#374559",
+                    "surface-container-highest": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "2xl": "48px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "label-md": ["Geist"],
+                    "display-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        .product-card:hover .add-button {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xl">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="/">pantazon</a>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md transition-colors" href="#">Categories</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors" href="#">Deals</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors" href="#">New Arrivals</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-md flex-1 max-w-md mx-xl hidden lg:flex">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-sm" placeholder="Buscar produtos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-lg md:px-xl py-xl">
+<!-- Breadcrumb & Title -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-xs text-label-sm text-on-surface-variant mb-sm">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Eletrônicos</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-medium">Smartphones e Tablets</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-background">Smartphones e Tablets</h1>
+<p class="text-body-md text-on-surface-variant mt-xs">Explore nossa seleção premium de dispositivos móveis de última geração.</p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-label-md text-on-surface-variant">Ordenar por:</span>
+<select class="bg-surface border border-outline-variant rounded-lg px-md py-xs text-body-sm focus:ring-primary focus:border-primary outline-none">
+<option>Mais Relevantes</option>
+<option>Menor Preço</option>
+<option>Maior Preço</option>
+<option>Lançamentos</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-xl">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-xl">
+<!-- Category Filter -->
+<section>
+<h3 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-md">Categorias</h3>
+<ul class="space-y-sm">
+<li>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Android (142)</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">iOS / iPhone (84)</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Tablets de Elite (56)</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Acessórios Premium (210)</span>
+</label>
+</li>
+</ul>
+</section>
+<!-- Price Filter -->
+<section>
+<h3 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-md">Faixa de Preço</h3>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-sm py-xs text-body-sm" placeholder="Min" type="number"/>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-sm py-xs text-body-sm" placeholder="Max" type="number"/>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full relative">
+<div class="absolute left-1/4 right-1/4 h-full bg-primary rounded-full"></div>
+<div class="absolute left-1/4 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+<div class="absolute right-1/4 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-primary rounded-full shadow-sm cursor-pointer"></div>
+</div>
+</div>
+</section>
+<!-- Brand Filter -->
+<section>
+<h3 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-md">Marca</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Samsung</span>
+</label>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Apple</span>
+</label>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Xiaomi</span>
+</label>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Motorola</span>
+</label>
+</div>
+</section>
+<!-- Availability -->
+<section>
+<h3 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-md">Disponibilidade</h3>
+<label class="flex items-center gap-sm group cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Pronta Entrega</span>
+</label>
+</section>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional studio product photograph of a high-end smartphone with a sleek titanium finish and a massive camera array. The lighting is dramatic, high-contrast, emphasizing the metallic textures and premium build quality. Soft gradients of deep blue and charcoal gray form the background. The aesthetic is corporate and modern, reflecting reliability and extreme technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqhQaYn2B4KkpdOKXfppQRWT2UWQgQIp4TdXe_r5ICeBkBeIey13nLuFc__BVYuWDNqB-wV4IACX2CZdasfAvF70GH_oDBjPUQB_PbtRg6pFMaqkW6CCEaNqcB_PoJlz-3HQ8YwAPO11KIz0E1LF8Z0dCLe5hXqOZH-1iFFKNKKcPlvleHqDdEAGn2f-C0v0a-FunSPckBi5KEaGSwP32qkmpQb7znUuCfeZyvha6sx_EogeD3Bb5Fy-wJQPXUWroh5bl6lLDrwjI"/>
+<span class="absolute top-md left-md bg-error text-white text-[10px] font-bold px-sm py-1 rounded-sm uppercase tracking-wide">Promoção</span>
+<button class="absolute top-md right-md bg-white/80 backdrop-blur-sm p-base rounded-full text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Samsung</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Smartphone Galaxy S24 Ultra 512GB Titanium Gray</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 7.499,00</span>
+<span class="text-label-sm text-outline line-through">R$ 9.999,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">10x de R$ 749,90 sem juros</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist tech lifestyle photo showing the latest flagship iPhone in natural white titanium resting on a polished stone surface. The composition is clean with bright, airy daylighting typical of high-end consumer electronics catalogs. The color palette is composed of pristine whites, subtle grays, and soft blue accents. The mood is sophisticated and evokes an emotional response of luxury and professional competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBskJj_l0N-oNeCvpI8RKRRo0Y8FzVznb4X4bmFRGYoLA2e7kdXZuGXOHJ6pF3xWz3IN6u_uY11Mdyi7RYKddeKsy6JU6DRDcOdlAM-JApjKQhAFkZMCJHp3MPFbm1npr0LSMfGTe2xievkr4mgMDZxPHE0RxARxdd73vbKVqWxydUnwdNq1RxtNNPXr7V7JN0ZHCqD90pRgSh9bMHbUyTGj1I3ncseRdgPAzUM5CajnoyVTR_mmFbJDiWV8llFJCVrYwtfMQr89OE"/>
+<span class="absolute top-md left-md bg-primary text-white text-[10px] font-bold px-sm py-1 rounded-sm uppercase tracking-wide">Novo</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Apple</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">iPhone 15 Pro Max 256GB Natural Titanium</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 8.299,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">À vista no PIX com 10% OFF</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-density product shot of a premium tablet with its dedicated keyboard case and stylus. The device is angled to showcase its thin profile and vibrant OLED display. Lighting is sharp and clinical, highlighting the industrial design elements and premium materials. Set against a dark, tech-focused background with subtle blue rim lighting. The style is authoritative and efficient, perfect for enterprise users." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5h44cnqEGsfsWo9x0Mma1uiuXW4jQvbnUyED22jDFSX7IpvGZDc9eV7GbtoCcJvqRhdh5m31UWPSQf7Q9VNQaW77GAG9V9gU5DXu9e158BdB2FI1Q5U8F6TwHP_mXNp2JwOm-pAY3h_omsahQ250ItfazWmaWg1LJRRnpprA3iVvTMc7wM4sHLULH1j1NmY_AS2MQhgVX3w3xihqDgVs_6dWnMnhxN5SAdkJFyItFSnPM690WorLPnDU9EDowxXhc3Ju5vADMcQ"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Samsung</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Tablet Galaxy Tab S9 Ultra 5G 14.6" + Caneta S Pen</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 6.199,00</span>
+<span class="text-label-sm text-outline line-through">R$ 6.899,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">12x de R$ 516,58</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up creative product photography of a modern smartphone showing the vibrant display and thin bezels. The image uses a shallow depth of field, focusing on the screen's clarity. Warm ambient lighting creates a welcoming yet professional atmosphere. The color palette features rich oranges and deep blues for contrast. The overall aesthetic is clean, solid, and professional, targeting high-volume consumers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlLne-bTo6aEEYkZFZAmV-fdVlYQVmqDY2x2Bf7aeSUgc24wZ1wRXwluaCFy8n_ss6GbINdHU4pdprsjB7BRSjF1AODvECsNg9MMEKLtEA3hVDAj5CSkMugIG62tV-ipgtSWSmXwNkc9w_E__1NLkewBIDbrCV4O9Gggl2kVoi7eaTAPajNBVKdMlTEsxDXWPukhoj14ZlYyZ1RCfVfoDCoyAEPCpEPvQ5VZdNLzWjv_xntP5u_aMwinocJ6fX2UIYY2LmgjOt0XU"/>
+<span class="absolute top-md left-md bg-error text-white text-[10px] font-bold px-sm py-1 rounded-sm uppercase tracking-wide">Esgotando</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Xiaomi</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Xiaomi 14 Ultra 5G 512GB Leica Optics Black</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 5.890,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">Melhor preço do mercado</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Repeat for grid demo density (mocking more items) -->
+<!-- Product Card 5 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sleek, modern tablet displayed on a clean wooden desk next to a cup of espresso, representing a professional productivity setting. High-key lighting with soft shadows. The tablet screen shows a sophisticated dashboard with charts and data. The design aesthetic is invisible and utility-driven, using a strictly logic-driven layout and professional blue and white color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBih3lLKvGJDkLXcC2XPmlpQTGjmbylTqnJ5PeEhDkl-ch5tTNx4jPmWEFBp5ZvSxbr8ciOeY24izZtqfbB1eHr-Ksu6fbBo6gqBfWv9F9vB5FGwtgqCzUTtJn5PHFRdOJNARVKryOO4AesrjVfGsqzw9RdNpJktDNILENmCN4uV5eodXt0Bt43bOngxMFPFjGVh2rNydIRdk3pb8_BqCrOzjlZ2ol858xZeaCG4Yant9DixlVbJjmwBG9hnYm_cReJhX-PcosaQyQ"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Apple</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">iPad Pro 11" M2 Chip Wi-Fi 128GB Space Gray</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 7.199,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">10x sem juros</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 6 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="High-resolution image of a rugged smartphone designed for extreme environments, shown partially submerged in water to emphasize its IP68 rating. The lighting is cool and industrial, with sharp reflections on the water surface and the phone's reinforced body. The aesthetic is authoritative and reliable, emphasizing the technical durability of the device." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB2O0Mw_ZbUnEFK7qfXCzYWpSU26fBzAqeRnXgrLpE283IJeZ_Lg4ptKANyVizphqCMSJsFbIosZw3VXZ-pSYfCMArGWgaV2wb-Hjy0PMkHco4LLFe7vXOssm_AtWBeOAmrZOEIE7rUzl-hhElK_sXe_udZgAkVouCsTOPV3vOge8cdV-Bh1NqKjFglWTyFBxNX1UUC-4DKI7wuyFX88Fr-5f64uz5Zof01Gp1-YIYlRpKEm-kKRnrlYPeZAV6jUbX0jiq0AIKVZU"/>
+<span class="absolute top-md left-md bg-primary text-white text-[10px] font-bold px-sm py-1 rounded-sm uppercase tracking-wide">Novo</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Motorola</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Motorola Edge 50 Pro 5G 256GB Black</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 3.299,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">Últimas unidades</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 7 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An elegant smartphone with a curved glass display, lying flat on a marble surface. The lighting is soft and ambient, creating a high-end lifestyle feel. The focus is on the seamless integration of glass and metal. The color palette consists of neutral tones, punctuated by the vivid colors of the phone's wallpaper. Professional and competent visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOhFKGUD60HFCYHg6Vdi8qFTOHuzuz9EhxoJcfoW1oPhhvSAZF_qt7brpe0nZsUTIoHBKf5q2h0g-IxjhkR2vxPpEX06JwUKdsxtk5Vv_dlCeraPdRal1dMq8temCz05uawrQ9n98f1f3aVWdHaEo961HWWOgeU7o6P9zDdVLO5aLvX_c3SjvqXsxxhE0gE9odqN1F8au3Wh9ZnZwRzV8P_IyLQfCAiIm2eOLRz66MC9PlXf9yGOKmzBU9LR2x9HsDuv00BHIG5gM"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Google</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Google Pixel 8 Pro 128GB Bay Blue (Importado)</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 6.450,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">Garantia estendida pantazon</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+<!-- Product Card 8 -->
+<article class="product-card group relative bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow transition-all hover:-translate-y-1 flex flex-col">
+<div class="relative aspect-square overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A powerful tablet for creative professionals, shown with a detailed illustration being drawn on the screen. The setup includes a professional workspace with minimal clutter. Lighting is high-key and uniform. The aesthetic is clean and modern, highlighting the device as a tool for high-performance creative work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnXRjkbFrTIzkf-Ej7WFdgcsjs9Qy9bsLmvBV1-qlW3a2wXtkGerdlnLlzx8YF2NpaSTQx5m7bLcAHmw2Lvxf-91X5Wyf08GgBkYXL_nneNHtFWdJWcFaa7301EdD8JUlucWDuOLgUweET2SpUNnREe3mSX6eTouF11Vpd7aiCDq3J89jtSzjQEzMvc5SjhGCZfMPrS-zxXAErtbyklN9ICfeiIK59mIt1QuMq0_yP3Kk-mX8_AUtcS7FUwmTC2MZFmlnnB940dSg"/>
+<span class="absolute top-md left-md bg-error text-white text-[10px] font-bold px-sm py-1 rounded-sm uppercase tracking-wide">Oferta Relâmpago</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="text-label-sm text-on-surface-variant mb-xs">Xiaomi</p>
+<h4 class="text-body-md font-semibold text-on-surface line-clamp-2 mb-sm">Xiaomi Pad 6 256GB 8GB RAM Gravity Gray</h4>
+<div class="mt-auto">
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-sm font-bold text-on-background">R$ 2.899,00</span>
+<span class="text-label-sm text-outline line-through">R$ 3.599,00</span>
+</div>
+<p class="text-label-sm text-primary font-medium">Frete Grátis Sul e Sudeste</p>
+</div>
+<button class="add-button mt-md w-full bg-primary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-sm transition-all md:opacity-0 md:translate-y-4">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                                Adicionar
+                            </button>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<nav aria-label="Navegação de página" class="flex items-center justify-center gap-sm mt-3xl">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-lg font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface hover:bg-primary-container/10 transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface hover:bg-primary-container/10 transition-all">3</button>
+<span class="px-xs text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface hover:bg-primary-container/10 transition-all">12</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface-variant hover:bg-primary-container/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-md">
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</h2>
+<p class="text-body-sm text-on-surface-variant">Elevando a experiência de compra corporativa com tecnologia de ponta e logística impecável.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<div>
+<h3 class="text-label-md font-bold text-on-surface mb-md uppercase tracking-wider">Produtos</h3>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Categorias</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Ofertas do Dia</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Lançamentos</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Mais Vendidos</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-label-md font-bold text-on-surface mb-md uppercase tracking-wider">Institucional</h3>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Shipping Info</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h3 class="text-label-md font-bold text-on-surface mb-md uppercase tracking-wider">Newsletter</h3>
+<p class="text-body-sm text-on-surface-variant">Inscreva-se para receber novidades e descontos exclusivos.</p>
+<div class="flex gap-sm">
+<input class="flex-1 bg-surface border border-outline-variant rounded-lg px-md py-xs text-body-sm focus:ring-primary focus:border-primary outline-none" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary text-white px-md py-xs rounded-lg text-label-md font-bold hover:opacity-90 transition-opacity">OK</button>
+</div>
+</div>
+</div>
+<div class="w-full py-lg border-t border-outline-variant text-center">
+<p class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved. Desenvolvido para máxima eficiência.</p>
+</div>
+</footer>
+<!-- Mobile Nav Anchor -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant px-lg py-sm flex justify-around items-center z-50">
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Início</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Buscar</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Carrinho</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</div>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const btn = card.querySelector('.add-button');
+                if(btn && window.innerWidth >= 768) {
+                    btn.classList.remove('opacity-0', 'translate-y-4');
+                    btn.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const btn = card.querySelector('.add-button');
+                if(btn && window.innerWidth >= 768) {
+                    btn.classList.add('opacity-0', 'translate-y-4');
+                    btn.classList.remove('opacity-100', 'translate-y-0');
+                }
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput?.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/10');
+        });
+        searchInput?.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/10');
+        });
+    </script>
+</body></html>

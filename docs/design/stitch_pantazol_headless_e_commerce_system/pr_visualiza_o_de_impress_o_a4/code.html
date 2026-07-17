@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon - Visualização de Impressão</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; margin: 0; padding: 0; }
+            .print-container { padding: 0 !important; background: transparent !important; }
+            .a4-page { 
+                box-shadow: none !important; 
+                margin: 0 !important; 
+                border: none !important;
+                width: 210mm !important;
+                height: 297mm !important;
+            }
+        }
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+            margin: auto;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            padding: 10mm;
+            transition: transform 0.3s ease;
+        }
+        .cut-mark {
+            position: absolute;
+            width: 15px;
+            height: 1px;
+            background: #cbd5e1;
+        }
+        .cut-mark-v {
+            position: absolute;
+            width: 1px;
+            height: 15px;
+            background: #cbd5e1;
+        }
+        .barcode-strip {
+            background: repeating-linear-gradient(90deg, #000, #000 1px, transparent 1px, transparent 3px);
+            height: 30px;
+            width: 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#dae2fd",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "tertiary-container": "#4f5d71",
+                        "on-primary-fixed": "#001551",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary": "#374559",
+                        "secondary": "#565e74",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0037b0",
+                        "primary-container": "#1d4ed8",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-surface": "#2d3133",
+                        "surface": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#d5e3fc",
+                        "surface-dim": "#d8dadc",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#2151da",
+                        "outline": "#747686",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "outline-variant": "#c4c5d7",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#b7c4ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-surface-variant": "#434655",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "on-primary-container": "#cad3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Geist"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low min-h-screen font-body-md text-on-surface transition-all duration-300">
+<!-- Top Navigation Bar -->
+<header class="no-print sticky top-0 z-50 bg-surface border-b border-outline-variant h-16 flex items-center px-lg md:px-xl justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<span class="text-headline-md font-headline-md font-bold text-primary">pantazon</span>
+<div class="h-6 w-[1px] bg-outline-variant mx-sm"></div>
+<span class="text-label-md font-label-md text-on-surface-variant">Gerador de Etiquetas</span>
+</div>
+<div class="hidden md:flex items-center gap-lg bg-surface-container h-10 px-md rounded-lg">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" onclick="zoomOut()">
+<span class="material-symbols-outlined text-[20px]">zoom_out</span>
+</button>
+<span class="text-label-md font-label-md min-w-[40px] text-center" id="zoom-level">100%</span>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" onclick="zoomIn()">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+</button>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-sm px-lg py-sm bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-all shadow-md" onclick="window.print()">
+<span class="material-symbols-outlined text-[20px]">print</span>
+                Imprimir
+            </button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="flex">
+<!-- Sidebar Shell (Admin Context) -->
+<aside class="no-print hidden lg:flex flex-col h-[calc(100vh-64px)] w-60 bg-on-secondary-fixed text-on-secondary sticky top-16 py-md">
+<div class="px-md mb-lg">
+<h3 class="text-label-sm font-label-sm text-outline-variant uppercase tracking-wider mb-sm">Ações Rápidas</h3>
+</div>
+<nav class="flex-1">
+<div class="bg-primary text-white rounded-lg mx-2 my-1 p-3 flex items-center gap-md cursor-pointer translate-x-1 transition-transform">
+<span class="material-symbols-outlined">print_connect</span>
+<span class="text-label-md font-label-md">Visualizar</span>
+</div>
+<div class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-md cursor-pointer transition-all">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="text-label-md font-label-md">Editar Layout</span>
+</div>
+<div class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-md cursor-pointer transition-all">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md">Produtos</span>
+</div>
+<div class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-md cursor-pointer transition-all">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Histórico</span>
+</div>
+</nav>
+<div class="px-2 mt-auto">
+<div class="text-outline-variant hover:text-white hover:bg-primary-container/20 p-3 rounded-lg flex items-center gap-md cursor-pointer transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Sair</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-lg md:p-3xl overflow-auto bg-surface-container-low print:p-0">
+<!-- Controls and Info Bar -->
+<div class="no-print max-w-[210mm] mx-auto mb-lg flex items-center justify-between">
+<div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface mb-xs">Visualização de A4</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Papel Couché 180g • 3x8 Etiquetas por Folha</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm bg-white border border-outline-variant rounded-lg hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="text-label-md font-label-md px-md">Folha 1 de 1</span>
+<button class="p-sm bg-white border border-outline-variant rounded-lg hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Print Canvas Container -->
+<div class="print-container flex justify-center py-xl" id="print-container">
+<div class="a4-page" id="a4-sheet">
+<!-- Cut Marks - Top Row -->
+<div class="cut-mark top-0 left-0"></div>
+<div class="cut-mark-v top-0 left-0"></div>
+<div class="cut-mark top-0 right-0"></div>
+<div class="cut-mark-v top-0 right-0"></div>
+<!-- Labels Grid Rendering -->
+<!-- We will fill some labels for realism -->
+<script>
+                        const sheet = document.getElementById('a4-sheet');
+                        const product = {
+                            brand: 'pantazon',
+                            name: 'Teclado Mecânico G1',
+                            sku: 'PTZ-KBD-001',
+                            price: 'R$ 549,90'
+                        };
+
+                        // Create 24 labels (8 rows x 3 columns)
+                        for (let i = 0; i < 24; i++) {
+                            const label = document.createElement('div');
+                            label.className = "border-[0.5px] border-slate-100 p-3 flex flex-col relative overflow-hidden";
+                            
+                            // Partially fill the sheet (first 14 items)
+                            if (i < 14) {
+                                label.innerHTML = `
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] font-bold text-primary tracking-tight">${product.brand}</span>
+                                        <span class="text-[8px] text-on-surface-variant font-mono">${product.sku}</span>
+                                    </div>
+                                    <h4 class="text-[12px] font-bold leading-tight mb-3 text-on-surface">${product.name}</h4>
+                                    
+                                    <div class="flex-1 flex flex-col justify-end">
+                                        <div class="flex gap-2 items-end">
+                                            <div class="flex-1">
+                                                <div class="barcode-strip mb-1"></div>
+                                                <div class="text-[7px] text-center font-mono">789123456789${i}</div>
+                                            </div>
+                                            <div class="w-8 h-8 bg-slate-100 flex items-center justify-center rounded">
+                                                <span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 text-right">
+                                            <span class="text-[14px] font-extrabold text-on-surface">${product.price}</span>
+                                        </div>
+                                    </div>
+                                `;
+                            } else {
+                                // Empty state for the rest
+                                label.innerHTML = `
+                                    <div class="w-full h-full border border-dashed border-slate-200 rounded flex items-center justify-center opacity-20">
+                                        <span class="material-symbols-outlined text-[24px]">add</span>
+                                    </div>
+                                `;
+                            }
+                            sheet.appendChild(label);
+                        }
+                    </script>
+<!-- Cut Marks - Bottom Row -->
+<div class="cut-mark bottom-0 left-0"></div>
+<div class="cut-mark-v bottom-0 left-0"></div>
+<div class="cut-mark bottom-0 right-0"></div>
+<div class="cut-mark-v bottom-0 right-0"></div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="no-print max-w-[210mm] mx-auto mt-xl border-t border-outline-variant pt-lg flex flex-col md:flex-row justify-between items-center text-on-surface-variant">
+<p class="text-body-sm font-body-sm mb-md md:mb-0">© 2024 pantazon E-Commerce. Impressão otimizada para Desktop.</p>
+<div class="flex gap-lg">
+<a class="text-label-sm font-label-sm hover:underline" href="#">Configurações de Margem</a>
+<a class="text-label-sm font-label-sm hover:underline" href="#">Exportar PDF</a>
+<a class="text-label-sm font-label-sm hover:underline" href="#">Ajuda</a>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        let currentZoom = 100;
+        const sheetElement = document.getElementById('a4-sheet');
+        const zoomText = document.getElementById('zoom-level');
+
+        function zoomIn() {
+            if (currentZoom < 150) {
+                currentZoom += 10;
+                updateZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > 50) {
+                currentZoom -= 10;
+                updateZoom();
+            }
+        }
+
+        function updateZoom() {
+            sheetElement.style.transform = `scale(${currentZoom / 100})`;
+            zoomText.innerText = `${currentZoom}%`;
+        }
+
+        // Draggable-like horizontal centering on zoom
+        window.addEventListener('resize', () => {
+            if(window.innerWidth < 1024) {
+               currentZoom = Math.min(currentZoom, 70);
+               updateZoom();
+            }
+        });
+
+        // Initialize view based on viewport
+        if(window.innerWidth < 800) {
+            currentZoom = 40;
+            updateZoom();
+        }
+    </script>
+</body></html>

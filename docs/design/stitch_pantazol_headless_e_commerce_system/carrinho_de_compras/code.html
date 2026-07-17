@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Carrinho de Compras | pantazon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .text-headline-md { font-family: 'Inter'; font-weight: 600; font-size: 24px; line-height: 32px; }
+        .text-headline-sm { font-family: 'Inter'; font-weight: 600; font-size: 20px; line-height: 28px; }
+        .text-body-md { font-family: 'Inter'; font-weight: 400; font-size: 16px; line-height: 24px; }
+        .text-body-sm { font-family: 'Inter'; font-weight: 400; font-size: 14px; line-height: 20px; }
+        .text-label-md { font-family: 'Geist'; font-weight: 500; font-size: 14px; line-height: 20px; letter-spacing: 0.01em; }
+        .text-label-sm { font-family: 'Geist'; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.02em; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-tertiary-container": "#c7d6ee",
+                "tertiary-container": "#4f5d71",
+                "primary-fixed-dim": "#b7c4ff",
+                "on-surface-variant": "#434655",
+                "on-primary-container": "#cad3ff",
+                "on-tertiary-fixed-variant": "#3a485b",
+                "on-primary-fixed-variant": "#0039b5",
+                "primary": "#0037b0",
+                "primary-fixed": "#dce1ff",
+                "surface-variant": "#e0e3e5",
+                "surface": "#f7f9fb",
+                "on-error-container": "#93000a",
+                "on-secondary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "on-background": "#191c1e",
+                "surface-bright": "#f7f9fb",
+                "inverse-surface": "#2d3133",
+                "secondary-container": "#dae2fd",
+                "on-secondary-fixed-variant": "#3f465c",
+                "on-secondary-container": "#5c647a",
+                "tertiary-fixed": "#d5e3fc",
+                "secondary-fixed-dim": "#bec6e0",
+                "on-primary": "#ffffff",
+                "outline-variant": "#c4c5d7",
+                "background": "#f7f9fb",
+                "secondary": "#565e74",
+                "surface-dim": "#d8dadc",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed": "#0d1c2e",
+                "surface-container-low": "#f2f4f6",
+                "inverse-primary": "#b7c4ff",
+                "surface-tint": "#2151da",
+                "outline": "#747686",
+                "error-container": "#ffdad6",
+                "inverse-on-surface": "#eff1f3",
+                "on-error": "#ffffff",
+                "surface-container": "#eceef0",
+                "on-surface": "#191c1e",
+                "primary-container": "#1d4ed8",
+                "secondary-fixed": "#dae2fd",
+                "on-secondary-fixed": "#131b2e",
+                "surface-container-high": "#e6e8ea",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#b9c7df",
+                "on-primary-fixed": "#001551",
+                "tertiary": "#374559",
+                "surface-container-highest": "#e0e3e5"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "sm": "8px",
+                "2xl": "48px",
+                "xl": "32px",
+                "container-max": "1280px",
+                "lg": "24px",
+                "base": "4px",
+                "3xl": "64px",
+                "md": "16px",
+                "gutter": "24px",
+                "xs": "4px"
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface border-b border-outline-variant h-16 sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-bold text-primary">pantazon</span>
+<div class="hidden md:flex gap-lg">
+<a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">New Arrivals</a>
+<a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-lg md:px-xl py-xl">
+<h1 class="text-headline-lg font-bold mb-xl">Seu Carrinho</h1>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Items List -->
+<div class="lg:col-span-8 space-y-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead class="bg-surface-container border-b border-outline-variant hidden md:table-header-group">
+<tr>
+<th class="p-md text-label-md text-on-surface-variant">Produto</th>
+<th class="p-md text-label-md text-on-surface-variant text-center">Quantidade</th>
+<th class="p-md text-label-md text-on-surface-variant text-right">Subtotal</th>
+<th class="p-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<tr class="flex flex-col md:table-row">
+<td class="p-md align-top">
+<div class="flex gap-md">
+<div class="w-24 h-24 bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional studio shot of a high-end enterprise-grade laptop in a sleek dark grey metallic finish, positioned on a white minimalist desk with soft ambient lighting. The product looks powerful and sophisticated, matching the Corporate Modern aesthetic of the pantazon brand. The image conveys quality, reliability, and modern technology." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATzMpFtW8mwU-uEGWkNn0zbVr7-HtVA2qIjvwqT5nv3RvEPvGF309aM-TTiO5HFnS9noi2XFIWDpXXQGxOqMBjV24DJODeiytgN5PVEupV1ONrgBQZkdhBiehKAAtND3bVcICrxEnBMK_hQ50IG6ozkHnYwhnMshg-vgdrQEyt80sgW07IXexQtJkYkotYFyj8PXou0YjUhHR6PZOuVD1c0QGtJ0VSng-VjMApfGqIOJ8Anq7gcyUealYYEpZWmqkLdmUSnFxZv_k')"></div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-body-md font-semibold">Notebook Pro Enterprise X1</span>
+<span class="text-label-sm text-on-surface-variant">Variação: Space Gray, 16GB RAM</span>
+<span class="text-body-sm font-medium mt-base">R$ 8.499,00</span>
+</div>
+</div>
+</td>
+<td class="px-md pb-md md:py-md align-middle text-center">
+<div class="flex items-center justify-center border border-outline rounded-lg w-fit mx-auto md:mx-auto">
+<button class="px-3 py-1 hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="px-4 text-body-md font-medium">1</span>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</td>
+<td class="px-md md:py-md align-middle text-right hidden md:table-cell">
+<span class="text-body-md font-bold">R$ 8.499,00</span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="text-error hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="flex flex-col md:table-row">
+<td class="p-md align-top">
+<div class="flex gap-md">
+<div class="w-24 h-24 bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A premium wireless noise-canceling headphone in matte black, displayed against a clean light grey background. The lighting is crisp and highlights the elegant textures of the leather and high-grade plastic. The overall mood is sophisticated, echoing professional competence and high-fidelity sound quality." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKIG0TxjYpZ9quxx3gaMZMxJCcST2FDK4pT6V_rJwF5qhWJKHprvcOgdX8YjaEB0_DwhNDM47esyKy4KlSirP0h4JhQHGEpSSlMyH4RmPgCB1UZtq9kWGB8FBBilgsaQviTofW9lBnr5VeLtAvxmOIKVZ0FJ8S3KuWIe1ni8iPuGIuPitSA2RHR8Cuwgb5sPGM6XpoRnkiQJEIsfvfhCJeu7QaAv7IV18ovHuOFGlVEeLq-KSpqEVvMCkIjjD_ee8bWok1ppETMxA')"></div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-body-md font-semibold">Headset Wireless Noise-Cancelling</span>
+<span class="text-label-sm text-on-surface-variant">Variação: Matte Black</span>
+<span class="text-body-sm font-medium mt-base">R$ 1.250,00</span>
+</div>
+</div>
+</td>
+<td class="px-md pb-md md:py-md align-middle text-center">
+<div class="flex items-center justify-center border border-outline rounded-lg w-fit mx-auto md:mx-auto">
+<button class="px-3 py-1 hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="px-4 text-body-md font-medium">2</span>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</td>
+<td class="px-md md:py-md align-middle text-right hidden md:table-cell">
+<span class="text-body-md font-bold">R$ 2.500,00</span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="text-error hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Coupon Field -->
+<div class="flex flex-col md:flex-row gap-md items-center mt-lg p-lg bg-surface-container-low rounded-xl border border-outline-variant">
+<div class="relative flex-grow w-full md:w-auto">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant material-symbols-outlined">sell</span>
+<input class="w-full pl-10 pr-md py-2.5 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-md" placeholder="Cupom de Desconto" type="text"/>
+</div>
+<button class="w-full md:w-auto px-xl py-2.5 border border-outline text-on-surface font-semibold rounded-lg hover:bg-surface-container transition-colors text-body-md">
+                        Aplicar
+                    </button>
+</div>
+</div>
+<!-- Summary Column -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-md p-xl sticky top-24">
+<h2 class="text-headline-sm mb-lg">Resumo do Pedido</h2>
+<div class="space-y-md border-b border-outline-variant pb-lg">
+<div class="flex justify-between">
+<span class="text-body-md text-on-surface-variant">Subtotal</span>
+<span class="text-body-md font-medium">R$ 10.999,00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-md text-on-surface-variant">Frete</span>
+<span class="text-body-md font-medium text-primary">Grátis</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-md text-on-surface-variant">Descontos</span>
+<span class="text-body-md font-medium text-error">- R$ 0,00</span>
+</div>
+</div>
+<div class="py-lg">
+<div class="flex justify-between items-center">
+<span class="text-headline-sm font-bold">Total</span>
+<div class="text-right">
+<span class="block text-headline-sm font-bold text-primary">R$ 10.999,00</span>
+<span class="text-label-sm text-on-surface-variant">em até 12x de R$ 916,58</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-xl rounded-lg font-bold text-headline-sm hover:opacity-90 transition-all shadow-lg shadow-primary/10 active:scale-[0.98]">
+                        Finalizar Compra
+                    </button>
+<div class="mt-xl space-y-md">
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-label-md">Compra 100% segura e processada com criptografia de ponta a ponta.</span>
+</div>
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="text-label-md">Entrega estimada: 3 a 5 dias úteis para sua região.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Suggestions or Recent -->
+<section class="mt-3xl">
+<h3 class="text-headline-md mb-xl">Pode te interessar</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<!-- Suggested Item 1 -->
+<div class="bg-white border border-outline-variant rounded-xl p-md group cursor-pointer hover:shadow-md transition-all">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-md overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform" data-alt="A minimalist ergonomic wireless mouse in white with light grey details, shown from a top-down angle on a high-quality felt desk mat. The image is bright, professional, and captures the smooth curves and clean design of the hardware. It perfectly aligns with the Enterprise Manager and Corporate Modern visual themes of the brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_SpvIlLWJNrxz3TalG_Aw4_x6K6dNZDw2uL5iWaBFtkXGZzokUg5Yk2r_V7M4jbOMnoSWagPIllEd-JiJUBwoedcJuKP2C4uBqAcpI1HqqYVN0fbz8rifpfioKLECpimLrGxJLtVUH_CGBwgz5xJVWcHBLw6WoVAROatIQGVDEGHOOma6JjocmnQgt1Ci-YNDNMT9rQ1ejmeXZQajFkpduJbZ4QEJNNTR4_fnM6VSKyRXP6sgRImcR7H6_lRuSMOy8TofAHf8zKg')"></div>
+</div>
+<span class="text-body-sm font-semibold block group-hover:text-primary transition-colors">Mouse Ergonômico Precision</span>
+<span class="text-body-md font-bold block mt-base">R$ 349,00</span>
+</div>
+<!-- Suggested Item 2 -->
+<div class="bg-white border border-outline-variant rounded-xl p-md group cursor-pointer hover:shadow-md transition-all">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-md overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform" data-alt="A high-resolution 27-inch monitor with ultra-thin bezels, displaying a clean dashboard interface. The monitor is set on a solid aluminum stand in a bright, modern office setting with large windows. The lighting is natural and expansive, symbolizing efficiency and professional clarity in the pantazon ecosystem." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAiTX4a_SLrYc69ZnhGFAsoEJaZaJ_L5kj1FJJeucjZwfNG2fy5gQrsOysA3cCTdQ97JKf27hbzW42YlIdILS0cF1z1lobPmKDOLzV7999XuVsnC_SBchm-h6I10rOwIArXTMpSg4ni-NfQSWgFujVPPttFADSxSgl3xioWwFZvPzPW7Rh_4Hbe6uiX8BCwg1DHemEAHSnJdq3dg9vZom8bNpx_dPIGPLZefW-cQVLqL4BprizPGdj2bK7UiltwuXv7Bg_ppUT6XVo')"></div>
+</div>
+<span class="text-body-sm font-semibold block group-hover:text-primary transition-colors">Monitor 4K Business Pro 27"</span>
+<span class="text-body-md font-bold block mt-base">R$ 2.890,00</span>
+</div>
+<!-- Suggested Item 3 -->
+<div class="bg-white border border-outline-variant rounded-xl p-md group cursor-pointer hover:shadow-md transition-all">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-md overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform" data-alt="A compact and sleek external SSD drive in a ruggedized blue silicone casing, sitting on a dark wood surface. The image highlights the texture of the case and its modern design. The composition is clean and focused, reflecting a system of record and structural integrity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7TYtG7hLsKlMn1LPSMXDOTOBTFYzo2CbHaK-SI8V8F-gYdJj0nczSoFgDbR0UsS6fc2akphpXcVH3OXSqnDocRWjqQmMOfDph9gbxAdTcN5GmDqIdgHDxaJxuaQYFQW8JJt5KFazVCWCb5-AkGx2XnH7BQstY4Um_uv47wrlE3VdBc5xZz8mwoHOzBc7sKKHqESSt6qlgvY8RZSLFyy8lSx2QU3yGxogO9ECD8Mi0ojG_VG15rs55wUgVpA3Ao1soLFYzGCM8pfU')"></div>
+</div>
+<span class="text-body-sm font-semibold block group-hover:text-primary transition-colors">SSD Externo 1TB Ultra Speed</span>
+<span class="text-body-md font-bold block mt-base">R$ 680,00</span>
+</div>
+<!-- Suggested Item 4 -->
+<div class="bg-white border border-outline-variant rounded-xl p-md group cursor-pointer hover:shadow-md transition-all">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-md overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform" data-alt="A high-quality USB-C multi-port docking station with a sleek metallic finish and several cables connected. It's placed on a clean workstation. The lighting is cool-toned and professional, showcasing the utility and reliability of the device in a corporate environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYxcu5SrUyEOa-sRrZnRNviA-EErKKTrCl4AT2yoAvx080gVga8NySmbgJR1aOBQzi-Zjog8KHq4CIfiXIQbdK9hymyYPUtrmpQiEd8qZg7gCGJe4vZ3UtiG1kUb1raEsM-f5P4MYlOl_42qwLgFrvglSgw1GyN_IpZvhWUBX1U5MaWQy-Hxth-IjVqOrpg7kgnxPndF-x2vrw8AgsizBFmLURDQmN7NMxwJ4MKMBFJPU8EQIVAYVUt6xo0G_rJwioUgEAoK-pNb8')"></div>
+</div>
+<span class="text-body-sm font-semibold block group-hover:text-primary transition-colors">Docking Station USB-C Pro</span>
+<span class="text-body-md font-bold block mt-base">R$ 420,00</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant w-full py-xl px-lg md:px-xl">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1">
+<span class="text-headline-sm font-bold text-on-surface">pantazon</span>
+<p class="text-body-sm text-on-surface-variant mt-md">A solução definitiva para o seu ecossistema de e-commerce e infraestrutura tecnológica empresarial.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-bold mb-base">Institucional</span>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">About Us</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Privacy Policy</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-bold mb-base">Suporte</span>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Shipping Info</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Contact</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">FAQ</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-bold mb-base">Newsletter</span>
+<p class="text-body-sm text-on-surface-variant mb-md">Receba ofertas exclusivas para empresas.</p>
+<div class="flex gap-base">
+<input class="bg-white border border-outline-variant px-md py-base rounded flex-grow text-body-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary text-white px-md py-base rounded text-label-sm font-bold hover:opacity-90 transition-opacity">OK</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-2xl pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<span class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</span>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for quantity selectors
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const span = this.parentElement.querySelector('span:not(.material-symbols-outlined)');
+                if (!span) return;
+                
+                let val = parseInt(span.innerText);
+                if (this.querySelector('.material-symbols-outlined')?.innerText === 'add') {
+                    span.innerText = val + 1;
+                } else if (this.querySelector('.material-symbols-outlined')?.innerText === 'remove' && val > 1) {
+                    span.innerText = val - 1;
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon Admin - Warehouse Management</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dae2fd",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#5c647a",
+                    "on-secondary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-dim": "#d8dadc",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed": "#d5e3fc",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary-fixed": "#dce1ff",
+                    "on-primary-container": "#cad3ff",
+                    "inverse-surface": "#2d3133",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#2151da",
+                    "secondary": "#565e74",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "surface": "#f7f9fb",
+                    "tertiary-container": "#4f5d71",
+                    "outline-variant": "#c4c5d7",
+                    "outline": "#747686",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "on-secondary-fixed": "#131b2e",
+                    "primary": "#0037b0",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#001551",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "tertiary": "#374559",
+                    "on-secondary-fixed-variant": "#3f465c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "4px",
+                    "lg": "8px",
+                    "xl": "12px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "3xl": "64px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        .sidebar-active-indicator {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation (SideNavBar) -->
+<aside class="hidden lg:flex flex-col h-full py-md bg-on-secondary-fixed text-on-secondary w-60 fixed-left shadow-md z-50">
+<div class="px-lg pb-xl">
+<span class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</span>
+<p class="text-label-sm font-label-sm text-outline-variant mt-1 opacity-70">Enterprise Manager</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Products -->
+<a class="flex items-center bg-primary text-white mx-2 my-1 p-3 rounded-lg sidebar-active-indicator shadow-sm translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<!-- Orders -->
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="leaderboard">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-md px-2 space-y-1">
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 lg:ml-60 flex flex-col h-screen overflow-y-auto">
+<!-- Top Header (Contextual Navigation) -->
+<header class="h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-lg md:px-xl sticky top-0 z-40">
+<div class="flex items-center gap-sm">
+<h1 class="text-headline-md font-headline-md text-primary">Warehouse Management</h1>
+<span class="text-outline mx-1">/</span>
+<span class="text-body-md text-on-surface-variant">Almoxarifados</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-sm bg-primary text-white px-lg py-sm rounded-lg font-label-md hover:opacity-90 transition-all standard-shadow">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        New Warehouse
+                    </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male manager in business attire, looking confident and approachable. The background is a clean, modern corporate office environment with soft focus. High-quality lighting emphasizes professional competence and reliability in a blue-tinted modern corporate palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6QYbTLfanv4VCwq5SiAMJLfESQpDW4INf_X3_C0GMNHk8AiIUWbWzOQ6vXzsobhE_pIdsghWGXPwnJIqkRqBWyrLE_Xq47U2G4UeLejz8L2StQQXB8BSI_K9AuI4Jm5r7WV6Uwi_eUjVzRwcRx7ayD-GYBOT6Qu0UdSbIKYYtmai_R9lyUyFXOpyr-wnWBwxdfb-HWUKzG-5czW0xsv4--f06qxOhltZq51BWvbbo3uHVnINay3B8ueVS9BjUn35Ra_f8s1EbQnE"/>
+</div>
+</div>
+</header>
+<!-- KPI Section -->
+<section class="p-lg md:p-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1: Active Warehouses -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant standard-shadow flex items-start justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Active Warehouses</p>
+<h3 class="text-display-md font-display-md text-on-surface">4</h3>
+<p class="text-label-sm font-label-sm text-primary mt-2 flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span> 
+                            All systems operational
+                        </p>
+</div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="warehouse">warehouse</span>
+</div>
+</div>
+<!-- Card 2: Total SKUs -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant standard-shadow flex items-start justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Total SKUs</p>
+<h3 class="text-display-md font-display-md text-on-surface">12,450</h3>
+<p class="text-label-sm font-label-sm text-primary mt-2 flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="trending_up">trending_up</span> 
+                            +12% this month
+                        </p>
+</div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="inventory_2">inventory_2</span>
+</div>
+</div>
+<!-- Card 3: Critical Stock -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant standard-shadow flex items-start justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Critical Stock</p>
+<h3 class="text-display-md font-display-md text-on-surface">12</h3>
+<p class="text-label-sm font-label-sm text-error mt-2 flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span> 
+                            Requires immediate action
+                        </p>
+</div>
+<div class="w-12 h-12 bg-error-container/10 rounded-lg flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-3xl" data-icon="report_problem">report_problem</span>
+</div>
+</div>
+<!-- Card 4: Pending Transfers -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant standard-shadow flex items-start justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Pending Transfers</p>
+<h3 class="text-display-md font-display-md text-on-surface">5</h3>
+<p class="text-label-sm font-label-sm text-secondary mt-2 flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="schedule">schedule</span> 
+                            Awaiting approval
+                        </p>
+</div>
+<div class="w-12 h-12 bg-secondary-container/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="local_shipping">local_shipping</span>
+</div>
+</div>
+</section>
+<!-- Table Section -->
+<section class="px-lg md:px-xl pb-xl">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant standard-shadow overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="relative max-w-sm w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-sm font-body-sm" placeholder="Filter warehouses..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-2 text-label-md font-label-md border border-outline-variant rounded-lg hover:bg-surface-container transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                                Filter
+                            </button>
+<button class="px-md py-2 text-label-md font-label-md border border-outline-variant rounded-lg hover:bg-surface-container transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider">Name</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider">Code</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider">Manager</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider text-right">SKU Count</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider text-right">Total Units</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider">Status</th>
+<th class="px-lg py-md text-label-sm font-label-sm uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-all group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold text-on-surface">CD São Paulo - Principal</span>
+<span class="text-label-sm text-outline">Av. das Nações Unidas, 12901 - Brooklin</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-label-md bg-surface-container px-2 py-1 rounded border border-outline-variant">CD-SP-01</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold text-label-sm">RL</div>
+<span class="text-body-sm">Ricardo Lemos</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-medium">8,420</td>
+<td class="px-lg py-md text-right font-medium">152,000</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-green-100 text-green-800 border border-green-200">
+                                            Ativo
+                                        </span>
+</td>
+<td class="px-lg py-md text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-all group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold text-on-surface">CD Rio de Janeiro</span>
+<span class="text-label-sm text-outline">Rua Primeiro de Março, 42 - Centro</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-label-md bg-surface-container px-2 py-1 rounded border border-outline-variant">CD-RJ-02</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center font-bold text-label-sm">AS</div>
+<span class="text-body-sm">Ana Souza</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-medium">2,100</td>
+<td class="px-lg py-md text-right font-medium">45,300</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-green-100 text-green-800 border border-green-200">
+                                            Ativo
+                                        </span>
+</td>
+<td class="px-lg py-md text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-all group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold text-on-surface">CD Curitiba - Sul</span>
+<span class="text-label-sm text-outline">BR-116, Km 104 - Pinheirinho</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-label-md bg-surface-container px-2 py-1 rounded border border-outline-variant">CD-PR-03</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center font-bold text-label-sm">MK</div>
+<span class="text-body-sm">Marcos K.</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-medium">1,250</td>
+<td class="px-lg py-md text-right font-medium">28,000</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-green-100 text-green-800 border border-green-200">
+                                            Ativo
+                                        </span>
+</td>
+<td class="px-lg py-md text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-all group bg-surface-container-low/20">
+<td class="px-lg py-md">
+<div class="flex flex-col opacity-60">
+<span class="text-body-md font-semibold text-on-surface">HUB Logístico Nordeste</span>
+<span class="text-label-sm text-outline">Rod. PE-009 - Porto de Suape</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-label-md bg-surface-container px-2 py-1 rounded border border-outline-variant opacity-60">CD-PE-04</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm opacity-60">
+<div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-label-sm">FB</div>
+<span class="text-body-sm">Fabiana Brito</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-medium opacity-60">680</td>
+<td class="px-lg py-md text-right font-medium opacity-60">12,150</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-variant text-on-surface-variant border border-outline-variant">
+                                            Inativo
+                                        </span>
+</td>
+<td class="px-lg py-md text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-lg bg-surface-container-low border-t border-outline-variant flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant">Showing 1 to 4 of 12 warehouses</span>
+<div class="flex items-center gap-base">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-on-surface-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-label-md font-label-md flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-highest text-on-surface-variant text-label-md font-label-md flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-highest text-on-surface-variant text-label-md font-label-md flex items-center justify-center">3</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer (Shared Component Guidance) -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container-highest dark:bg-surface-container-lowest w-full py-xl px-lg md:px-xl">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-sm">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-on-background">pantazon</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Global supply chain management solutions for modern enterprise logistics.</p>
+</div>
+<div class="space-y-sm">
+<p class="text-label-md font-bold text-primary">Management</p>
+<nav class="flex flex-col gap-xs">
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Stock Levels</a>
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Inbound Logistics</a>
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Direct Shipping</a>
+</nav>
+</div>
+<div class="space-y-sm">
+<p class="text-label-md font-bold text-primary">Support</p>
+<nav class="flex flex-col gap-xs">
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Documentation</a>
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">API Status</a>
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Contact Ops</a>
+</nav>
+</div>
+<div class="space-y-sm">
+<p class="text-label-md font-bold text-primary">Legal</p>
+<nav class="flex flex-col gap-xs">
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-xl pt-lg border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">© 2024 pantazon E-Commerce. All rights reserved.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="language">language</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="security">security</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('translate-x-1');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('translate-x-1');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon Admin - Controle de Estoque Consolidado</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Custom Table Shadow & Border */
+        .admin-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#5c647a",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#d5e3fc",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dae2fd",
+                        "primary-container": "#1d4ed8",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary-container": "#cad3ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "surface-tint": "#2151da",
+                        "secondary": "#565e74",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#4f5d71",
+                        "outline-variant": "#c4c5d7",
+                        "outline": "#747686",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed": "#131b2e",
+                        "primary": "#0037b0",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#001551",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1e",
+                        "tertiary": "#374559",
+                        "on-secondary-fixed-variant": "#3f465c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "3xl": "64px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-md": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar (Predicted Component Logic) -->
+<aside class="hidden lg:flex flex-col h-full py-md bg-on-secondary-fixed text-on-secondary w-60 shadow-md">
+<div class="px-md mb-xl">
+<span class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</span>
+<p class="text-label-sm font-label-sm text-outline-variant">Enterprise Manager</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Products (Active state logic: Estoque sits under Products or inventory) -->
+<a class="flex items-center bg-primary text-white mx-2 my-1 p-3 rounded-lg translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-md">
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header / Top Bar -->
+<header class="h-16 flex items-center justify-between px-lg bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<h1 class="text-headline-sm font-headline-sm text-on-surface">Estoque Consolidado</h1>
+<div class="h-6 w-px bg-outline-variant hidden md:block"></div>
+<nav class="hidden md:flex gap-md items-center">
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center">
+                            Admin <span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span> 
+                            Produtos <span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
+<span class="text-primary font-medium">Estoque</span>
+</span>
+</nav>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden sm:block">
+<input class="w-64 pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-body-sm transition-all" placeholder="SKU, Nome ou Código..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs border border-primary/20">
+                        AV
+                    </div>
+</div>
+</header>
+<!-- Page Content -->
+<section class="flex-1 overflow-y-auto p-lg">
+<!-- Quick Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-lg">
+<div class="admin-card p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Total de Itens</p>
+<p class="text-headline-sm font-headline-sm">12,408</p>
+</div>
+</div>
+<div class="admin-card p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Stock Crítico</p>
+<p class="text-headline-sm font-headline-sm">42</p>
+</div>
+</div>
+<div class="admin-card p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">warehouse</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Armazéns Ativos</p>
+<p class="text-headline-sm font-headline-sm">5</p>
+</div>
+</div>
+<div class="admin-card p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Valor Total Est.</p>
+<p class="text-headline-sm font-headline-sm">R$ 4.2M</p>
+</div>
+</div>
+</div>
+<!-- Filters & Actions -->
+<div class="admin-card p-md mb-lg">
+<div class="flex flex-wrap gap-md items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1">Categoria</label>
+<select class="w-full bg-white border border-outline-variant rounded p-2 text-body-sm focus:ring-1 focus:ring-primary outline-none">
+<option>Todas as Categorias</option>
+<option>Eletrodomésticos</option>
+<option>Informática</option>
+<option>Smartphones</option>
+<option>Móveis</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1">Armazém</label>
+<select class="w-full bg-white border border-outline-variant rounded p-2 text-body-sm focus:ring-1 focus:ring-primary outline-none">
+<option>Todos os Centros de Distribuição</option>
+<option>CD São Paulo (Matriz)</option>
+<option>CD Curitiba (Sul)</option>
+<option>CD Recife (Nordeste)</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1">Status de Estoque</label>
+<select class="w-full bg-white border border-outline-variant rounded p-2 text-body-sm focus:ring-1 focus:ring-primary outline-none">
+<option>Todos os Status</option>
+<option>Normal</option>
+<option>Baixo</option>
+<option>Crítico</option>
+<option>Sem Estoque</option>
+</select>
+</div>
+<div class="flex gap-sm">
+<button class="bg-primary text-white px-lg py-2 rounded-lg font-label-md hover:bg-primary/90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                                Filtrar
+                            </button>
+<button class="border border-outline-variant text-on-surface px-lg py-2 rounded-lg font-label-md hover:bg-surface-container-low transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                                Exportar
+                            </button>
+</div>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="admin-card overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap">Produto</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap">SKU / Categoria</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap">Armazém</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap text-right">Físico</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap text-right">Reservado</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap text-right font-bold text-on-surface">Disponível</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap text-center">Min / Max</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap text-center">Status</th>
+<th class="p-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md align-middle">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A studio product shot of a sleek, dark titanium Samsung Galaxy S24 Ultra smartphone, placed on a clean white surface with sharp shadows. Professional photography, high contrast, tech-focused aesthetic, minimalist lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7wiQ8Q1UCtSdCke6C-EWMpvcXHjIRVn_HMt8AbMG3Cvp3rMYMKkfGXrxlzWufczE1_-gIRZsnLvGQ6tr-s_huZ9PzBhBPGBciPggDNkBefe4dg4iPofg1ZOPT8_vCE_1HKJGyJ4vBTJIm7Kkvo62xKOpFUiiyWWrUVFdiRYZGX1g09_wYt8nwla-G7tnaRStXoQkHigbsNGAV1nFnVKFZHmS7_OV0motZSgia7rPAbcv3C6_JjtGOGJn2Rbv_yrPaUwEXGy2QtQ"/>
+</div>
+<div>
+<div class="text-body-sm font-semibold text-on-surface">Smartphone Galaxy S24 Ultra</div>
+<div class="text-label-sm text-on-surface-variant">Samsung Electronics</div>
+</div>
+</div>
+</td>
+<td class="p-md align-middle">
+<div class="text-body-sm">SAM-S24U-512G</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase">Smartphones</div>
+</td>
+<td class="p-md align-middle text-body-sm text-on-surface">CD São Paulo</td>
+<td class="p-md align-middle text-right text-body-sm">450</td>
+<td class="p-md align-middle text-right text-body-sm text-error">120</td>
+<td class="p-md align-middle text-right text-body-sm font-bold">330</td>
+<td class="p-md align-middle text-center text-body-sm text-on-surface-variant">100 / 800</td>
+<td class="p-md align-middle text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                            Normal
+                                        </span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface ml-2 transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md align-middle">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean top-down view of a modern silver MacBook Pro on a minimalist desk. The scene is illuminated by bright natural light, creating a professional and productive atmosphere. High resolution commercial photography, clean lines, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUgHw7xEjDHRhAqhS8x4Q9VWUFAQHkhYFABbQJNdyGJjjmBXenX8BqR-ecoIBvAgNFPhfhR-TU_3CNW1eVr3wFuhiKPztsC4ZDGuows-dBOj6ftV42DBYhE-rUfvdpQC6pdgPXzaLIf8zJHabuUCCpkIM7ZQK9fCWSe8t6H_CQjK2YSomxxIBrwart_hIOAVItkdKOe3OG8VWmGALRUnC_kICyXInPx99H_qF84afkrH3VAirVoFdwWxERUHYnSwdxrvDntNt6fw"/>
+</div>
+<div>
+<div class="text-body-sm font-semibold text-on-surface">MacBook Pro M3 Max 14"</div>
+<div class="text-label-sm text-on-surface-variant">Apple Inc.</div>
+</div>
+</div>
+</td>
+<td class="p-md align-middle">
+<div class="text-body-sm">APL-MBP-14-M3</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase">Informática</div>
+</td>
+<td class="p-md align-middle text-body-sm text-on-surface">CD São Paulo</td>
+<td class="p-md align-middle text-right text-body-sm">12</td>
+<td class="p-md align-middle text-right text-body-sm text-error">8</td>
+<td class="p-md align-middle text-right text-body-sm font-bold">4</td>
+<td class="p-md align-middle text-center text-body-sm text-on-surface-variant">10 / 50</td>
+<td class="p-md align-middle text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                                            Crítico
+                                        </span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface ml-2 transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md align-middle">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio photo of a Dyson cordless vacuum cleaner standing against a neutral light grey background. Sleek industrial design, purple and silver metallic finishes, soft diffused studio lighting, elegant home appliance aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRr5WSgrLnZ4C_j6NdOMTLw3P53OBr9hd7KmMynh-fYf6qtWyRJkM8PAXyJUodwbERJ8cG0nTTFeX7UH-vW9ed0KSemccOgEss7-QV9iu-9EDr4l5tCz5X7UfHF56B7hq9YP0jwL328skbXy1S5rDvV-842UHake7kFdBiBytZ7ZPNMOyi9_Q_-JSsGZt387BiMTIOGoxXkgmU6JW3dytqm1o0rLUfTu6YR23zI3RjkuU2bOdwsVzUyk5QAqibbP9pGPhBAiO3vXE"/>
+</div>
+<div>
+<div class="text-body-sm font-semibold text-on-surface">Aspirador Dyson V15</div>
+<div class="text-label-sm text-on-surface-variant">Dyson</div>
+</div>
+</div>
+</td>
+<td class="p-md align-middle">
+<div class="text-body-sm">DYS-V15-DET</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase">Eletro</div>
+</td>
+<td class="p-md align-middle text-body-sm text-on-surface">CD Curitiba</td>
+<td class="p-md align-middle text-right text-body-sm">85</td>
+<td class="p-md align-middle text-right text-body-sm text-error">15</td>
+<td class="p-md align-middle text-right text-body-sm font-bold">70</td>
+<td class="p-md align-middle text-center text-body-sm text-on-surface-variant">80 / 200</td>
+<td class="p-md align-middle text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-600"></span>
+                                            Baixo
+                                        </span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface ml-2 transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md align-middle">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional packshot of a Sony PlayStation 5 console and DualSense controller. Futuristic white and black design, cool blue LED accents, pristine studio lighting on a dark reflective surface. Sleek gaming hardware aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDag_TrouOdXMXyrbPpuYbJiU0dmxyfV5mf-3Z1jwGp0mMCTjFxQNszU8jKtTL1bi59ypNssUkRgP2GVjnUF-WwehHLbOEzDNOfUfyOvTZ_pTOi1eGLT4PBUt9xu3slMT1lEqt_BV4GB9DWeYTEL6SvG9J_NxS4teBgqAZKFwx8LivnzawDUvxk_UQy_utw4yimy4CldDH4zB_J6Pjyr_kVxgKxXgfF6Duhaf3bqP_F8jxS0H2ujDaHIVoirf3pE737P1cq3nLvMlo"/>
+</div>
+<div>
+<div class="text-body-sm font-semibold text-on-surface">Console PlayStation 5 Slim</div>
+<div class="text-label-sm text-on-surface-variant">Sony Interactive</div>
+</div>
+</div>
+</td>
+<td class="p-md align-middle">
+<div class="text-body-sm">SNY-PS5-SLM</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase">Games</div>
+</td>
+<td class="p-md align-middle text-body-sm text-on-surface">CD Recife</td>
+<td class="p-md align-middle text-right text-body-sm">0</td>
+<td class="p-md align-middle text-right text-body-sm text-error">0</td>
+<td class="p-md align-middle text-right text-body-sm font-bold text-error">0</td>
+<td class="p-md align-middle text-center text-body-sm text-on-surface-variant">25 / 150</td>
+<td class="p-md align-middle text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                                            Sem Estoque
+                                        </span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface ml-2 transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Repeat rows for density -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md align-middle">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A studio photograph of a pair of high-end noise-canceling headphones in black. Premium matte finish, leather padding, minimalist aesthetic, side view with clean professional lighting against a soft grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJDIgxkRuLxq1-wAIUn41STTJIo-aEXYzXrsyRkbDYwRSNz6oSA2YBMK5BcrSZ7Z2yQ04vi5bF1ewLAR1LBwOJm2d-FTttbDIYYomorZLCwyfgyuGJ48FWHXY4RLtzWue7vLKAXJoyImVvT9SU11RvZvIR7vmQoDkTtk8lgUI9DYZU4_cvJe94zfnMK1Kfxe-1Oz_uQaE66AxE0QwsEHl3fpW3Wq4-HCVZ-s6pjBNiZZecXtBvVFx0zHi8ixVOiDZ91DwB-_ERF68"/>
+</div>
+<div>
+<div class="text-body-sm font-semibold text-on-surface">Fone Sony WH-1000XM5</div>
+<div class="text-label-sm text-on-surface-variant">Sony</div>
+</div>
+</div>
+</td>
+<td class="p-md align-middle">
+<div class="text-body-sm">SNY-WH1-BK</div>
+<div class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase">Áudio</div>
+</td>
+<td class="p-md align-middle text-body-sm text-on-surface">CD São Paulo</td>
+<td class="p-md align-middle text-right text-body-sm">1,200</td>
+<td class="p-md align-middle text-right text-body-sm text-error">45</td>
+<td class="p-md align-middle text-right text-body-sm font-bold">1,155</td>
+<td class="p-md align-middle text-center text-body-sm text-on-surface-variant">50 / 2000</td>
+<td class="p-md align-middle text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                                            Normal
+                                        </span>
+</td>
+<td class="p-md align-middle text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface ml-2 transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-md bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
+<p class="text-label-sm text-on-surface-variant">Exibindo 1 a 5 de 1,240 itens</p>
+<div class="flex gap-sm">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-primary bg-primary text-white rounded text-label-sm font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low text-label-sm transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low text-label-sm transition-colors">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low text-label-sm transition-colors">248</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Predicted Component Footer Logic -->
+<footer class="w-full py-md px-lg bg-surface-container-highest border-t border-outline-variant">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+<div class="flex gap-lg">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Support</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Internal Documentation</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction for table rows -->
+<script>
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

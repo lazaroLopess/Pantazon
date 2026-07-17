@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon | E-Commerce de Alta Performance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#c7d6ee",
+                    "tertiary-container": "#4f5d71",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-surface-variant": "#434655",
+                    "on-primary-container": "#cad3ff",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "primary": "#0037b0",
+                    "primary-fixed": "#dce1ff",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-container": "#dae2fd",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#5c647a",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c4c5d7",
+                    "background": "#f7f9fb",
+                    "secondary": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "surface-container-low": "#f2f4f6",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-tint": "#2151da",
+                    "outline": "#747686",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1d4ed8",
+                    "secondary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface-container-high": "#e6e8ea",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "on-primary-fixed": "#001551",
+                    "tertiary": "#374559",
+                    "surface-container-highest": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "2xl": "48px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "label-md": ["Geist"],
+                    "display-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopNavBar (JSON Mapping) -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<!-- Brand Logo -->
+<div class="flex items-center gap-md">
+<img alt="pantazon Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcQzCOY4Rlrcr8sAOm3LHGpH8BkNWyDcnFy2zQdML6ogsrMTr5h_jigoSzQjDJc53hFqeJB2IKstu7gIN7XE4G0F6iioy8AT1MJY5wYiophd9u8Gr4g5lxwfmiosSpLN-KQ7c5ziqt0Ih7lF2-35lLFvsWxWdaoVLqpG-6i1RGKgxqw9DYbkGFhxpbM329Z68OuuCjM1UJ_M5Hj16FSWQBJxp7CucmHGCwMDn-YOlk4SNL4NsPBGsuiWJb9ik6N5xhjx2vlSCtb7A"/>
+<span class="text-headline-md font-headline-md font-bold text-primary">pantazon</span>
+</div>
+<!-- Search Bar (on_left context) -->
+<div class="hidden md:flex flex-1 max-w-md mx-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-body-sm" placeholder="Buscar produtos, marcas e muito mais..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-lg">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">New Arrivals</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-md ml-lg">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+</div>
+</div>
+</header>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative bg-surface-container-highest overflow-hidden">
+<div class="max-w-container-max mx-auto px-lg md:px-xl py-2xl grid md:grid-cols-2 items-center gap-xl">
+<div class="z-10 space-y-md">
+<span class="inline-block px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-label-sm font-label-sm">COLEÇÃO 2024</span>
+<h1 class="text-display-lg font-display-lg text-on-background leading-tight">Elevando a Experiência do E-Commerce Corporativo</h1>
+<p class="text-body-lg text-on-surface-variant max-w-md">Descubra uma curadoria exclusiva de tecnologia e inovação projetada para o seu crescimento profissional e pessoal.</p>
+<div class="flex gap-md pt-md">
+<button class="bg-primary text-on-primary px-xl py-md rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all standard-shadow">Ver Novidades</button>
+<button class="bg-surface-container-low text-on-surface border border-outline-variant px-xl py-md rounded-lg font-label-md text-label-md hover:bg-surface-variant transition-all">Explorar Ofertas</button>
+</div>
+</div>
+<div class="relative h-[400px] md:h-[500px]">
+<div class="absolute inset-0 rounded-2xl overflow-hidden standard-shadow">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional, high-end commercial banner for a corporate e-commerce site. It features a minimalist aesthetic with clean lines and soft ambient lighting. The scene shows high-quality tech gadgets like a sleek laptop and wireless headphones arranged on a polished grey surface. The color palette is dominated by deep blues and crisp whites, conveying trust and stability in a modern light-mode environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkJMp036dAarJ5uZgd0-R0ht1lhPJE4YJvgNZaePK7yafk89EzUfc1Hw3oiY4tqgnw0HvzDc4cTGcylF4oEElZMgxrxK4XSAZZIjj9LsevH926KV6nCD4DfYSEPDZP1FxAYtBjTa6wmOlUyLQNq7S1C9TAGtsw2p2BniO-eYZR-pP1MrFrBiRWJwyo7XgSvRHOt0Z_TNK67w1kfZCQoIQjzTQEholxKQa97Othar0BPAn316H1O9UTYfHkiyhVtoIk1JhhycSMqYs')"></div>
+</div>
+<!-- Abstract Decorative Element -->
+<div class="absolute -bottom-8 -left-8 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Trust Badges -->
+<section class="border-y border-outline-variant bg-surface">
+<div class="max-w-container-max mx-auto px-lg md:px-xl py-lg grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+<div>
+<p class="font-headline-sm text-label-md text-on-surface">Frete Grátis</p>
+<p class="text-label-sm text-on-surface-variant">Para pedidos acima de R$ 250</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<div>
+<p class="font-headline-sm text-label-md text-on-surface">Compra Segura</p>
+<p class="text-label-sm text-on-surface-variant">Proteção total aos seus dados</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-3xl">currency_exchange</span>
+<div>
+<p class="font-headline-sm text-label-md text-on-surface">Devolução Fácil</p>
+<p class="text-label-sm text-on-surface-variant">Até 30 dias para troca</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
+<div>
+<p class="font-headline-sm text-label-md text-on-surface">Suporte 24/7</p>
+<p class="text-label-sm text-on-surface-variant">Atendimento especializado</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Categories -->
+<section class="py-2xl max-w-container-max mx-auto px-lg md:px-xl">
+<h2 class="text-headline-lg font-headline-lg text-on-background mb-xl text-center md:text-left">Categorias em Destaque</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl border border-outline-variant cursor-pointer">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close-up of high-end enterprise computing hardware, focusing on the sleek brushed metal finish and professional blue power indicators. The shot is captured with a shallow depth of field in a clean, modern workspace environment. The overall mood is sophisticated and authoritative, reflecting top-tier performance." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUTYb-jBjkOReqLvbPExdniuUk6NbBh0whCGZDuTk5VX32_nx6r00fj1KJcOrAjTz5PC0BYw6VzBr71NdqVEhjhPBhg3RsWUTlBeNwLujlPlxsetMaZgfIG3kvz0My6APTbYxTymAUrEbQWM1ILmewmRPeEq8n8Wqu69Z61Lrz-QzLaPR0ssLCLvkApaz49b0GZugp8f797iOGtIOyNPjlY8YsGdsl_AR6S8_yNKmehLFPlc6jQsOxqD4DlM1xevnBzn1W_LlE2vM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-xl">
+<h3 class="text-headline-md text-white">Tecnologia Corporativa</h3>
+<p class="text-body-sm text-surface-variant">Hardware e infraestrutura para empresas.</p>
+</div>
+</div>
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl border border-outline-variant cursor-pointer">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A modern home office setup featuring a high-quality mechanical keyboard, ergonomic mouse, and a noise-canceling headset. The desk is organized and clean, bathed in soft morning light. The color scheme focuses on grey tones and soft blues, creating a peaceful and productive atmosphere for professional consumers." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMLuj0QLz8ztjfANI4UHCMW8AJk2_8F43QdTwEgiCT4cAr0N7-vghTz3QRUtcwiTFtBIXUHfM_ElgYYaB6ec7EnhaA35UCICsUDFQY_LWmKJEX_4KBhUyR8FWaFN4PQvwufI0Ow2bIe5cC37-JV7SfCgGuB5SC8NOQkL8f0hWIAoYOw4dCSZA1gNr1Mzybc5RvEcOMgapk29Bs1shmRYLDSp98I0FQhBD6Nqj2F2AwSzEZIYWaISnbBAW55WdTlp5pTD_qMit8E7c')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-lg">
+<h3 class="text-headline-sm text-white">Produtividade</h3>
+<p class="text-body-sm text-surface-variant">Periféricos de alta performance.</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl border border-outline-variant cursor-pointer">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Smart home technology integration, showing a sleek tablet displaying a home automation dashboard next to a smart speaker on a contemporary side table. The lighting is warm and inviting, highlighting the seamless fusion of technology and home life. Minimalist design with a focus on ease of use and modern living." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCr7QvBgnxk0KhMQug4zDXYZbkTTEnbJ82tay45mLMtyj5P2JNk_zCkOgpupxmSAJRVUkU1ki_nuW2UBA8B2MO6PMGNT9mbrEXkzCMq746doV4n8scfZ7dYMsrmh2nbtv0pJnXJa1F4AoYJWSLJRqz1l8D6ki-iav6lgzBj3KWWhNiqAOQqGzJZ8rQaIVU5zH02fcOnEcIfmNzh7UCASAGEo3s_mOAncFa6vd-Xi-xMjaIaMGcURKMEFa2D0hP9I_5VLSMOXbG5S4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-md">
+<h3 class="font-headline-sm text-white">Smart Home</h3>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl border border-outline-variant cursor-pointer">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Premium travel accessories for the modern professional, including a high-quality leather laptop bag and noise-canceling headphones placed on a marble surface. The style is executive and refined, with a neutral color palette that emphasizes durability and timeless design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf-OADQMRQ9YuMXgFoyJCsldoMaTlzO4lJOsSkwLEdc3zGs1GjW8xGNL2AfrKHkkmTaorSoy7GMi3EOSV79Gcuof057p7I9oYKK5EtxcezJpPN99CvmolCz7SfnjVffi8G_Rljz72arvghcSfH8JRfULaYywCHq_WrI4kHmwB_sWlUqGGai3EobBL_Yozt5pm0cGBkjCr4zDJQkrKeFege7l0UuxZj_T219UlEyfqvFLhknoyN-qt9hGmrqPEjlEfGDPxz-lZ-GQ0')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-md">
+<h3 class="font-headline-sm text-white">Acessórios</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="py-2xl bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-lg md:px-xl">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-background">Produtos em Destaque</h2>
+<p class="text-body-md text-on-surface-variant">As melhores escolhas para o seu setup.</p>
+</div>
+<a class="text-primary font-label-md flex items-center gap-xs hover:underline" href="#">Ver Todos <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-surface group rounded-xl border border-outline-variant overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden bg-white">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105" data-alt="A premium wireless headset in charcoal black, isolated on a clean white studio background. The image showcases the sleek matte finish, plush ear pads, and modern industrial design. Soft shadows ground the object, creating a high-end commercial product shot perfect for a professional catalog." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlNOEj34y84iAP-_wSgJBI3RHJPmmAhkJZAd2B8PCAXMsYSu16JbPndYfe8_k3pO0tnxws_YQGwZJksS_CCDLf-DZOvxamBnEu0XgOn14ysiEpYsmp78JuSuIFPbtlCxAs2Mx22XUPXWJOs1-pGdHARdnPCiAuh_wokxjSjTvQkiHg73YkNxfuq6jvBqV3mc04eVyotDOp4rkzX1l4ZB7Kwix63X76ZvZcSFt_F6Xyl2I7nhEwLGiwAhBbSkg_fHdVHmPjC02_uhs')"></div>
+<span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">DESTAQUE</span>
+</div>
+<div class="p-md space-y-xs">
+<p class="text-label-sm text-on-surface-variant">Áudio & Som</p>
+<h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors truncate">Headset pantazon Pro-X1</h3>
+<div class="flex items-center gap-xs">
+<span class="text-primary text-xl font-bold">R$ 899,00</span>
+<span class="text-outline text-sm line-through">R$ 1.200,00</span>
+</div>
+<button class="w-full mt-md bg-secondary-container text-on-secondary-container py-2 rounded-lg font-label-md hover:bg-primary hover:text-on-primary transition-all">Adicionar ao Carrinho</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface group rounded-xl border border-outline-variant overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden bg-white">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105" data-alt="An ultra-slim, silver metallic laptop with an edge-to-edge display showing a vibrant digital landscape. The laptop is positioned at an angle on a minimalist desk, reflecting high-quality manufacturing and professional elegance. The lighting is crisp, emphasizing the thin profile and modern aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFyWQqXB50zztvUYuk7fIGsPc4CzYjL3Motjj6otG_h5hVbmf60kvXiHwiHGyj3BeVp99BcIvK84-Hxg0imxtI4XFxdlGSSO3vl0H-uCx8jKt35de3G14OEIvRrdyZe_jnkqZxXRBr4HlwUogibMKGNc0M32R6BPrfjnUriwayxZRg9Ur7dNE7uC5DxZwc2vyLuZhgdQH8qr-SoRLHEOzfh28WxdCsAhPXIUn4YCxfM-MORf2YFwlsDmrNVQo2I9QeFkdSmZhVoBQ')"></div>
+</div>
+<div class="p-md space-y-xs">
+<p class="text-label-sm text-on-surface-variant">Laptops</p>
+<h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors truncate">pantazon Blade 15" Elite</h3>
+<div class="flex items-center gap-xs">
+<span class="text-primary text-xl font-bold">R$ 7.450,00</span>
+</div>
+<button class="w-full mt-md bg-secondary-container text-on-secondary-container py-2 rounded-lg font-label-md hover:bg-primary hover:text-on-primary transition-all">Adicionar ao Carrinho</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface group rounded-xl border border-outline-variant overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden bg-white">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105" data-alt="A professional vertical ergonomic mouse with a dark grey textured finish and subtle LED accents. The design is modern and functional, sitting on a high-quality felt desk mat. The lighting is focused and dramatic, highlighting the contours and premium materials used in its construction." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TfkxMJVlxrVMyyu3jMBaJ-p3s5W0jUskc5-T3NwV-QtV7WB4sutoTlJ1-McfOsWmAFV-30ZOvyqYGE_Gs1H0ugV7GzVPfo8BE5tn8Z7WXh9_EhHd0w3NXdTB2BpRJXqp9mNnsgt8TmCagNTdnrYuuhRgGONwx_cFSNkER3STphorgrzBnLd2GPmhOnc01cFC48CmoHXTtvvqn0lqAFsjTbCalyRsHRtJTC_O3cjogdMk6yAeQ82py2-dAOW0ujBiyujfmCe8AUo')"></div>
+<span class="absolute top-3 left-3 bg-error text-white text-[10px] font-bold px-2 py-1 rounded">PROMOÇÃO</span>
+</div>
+<div class="p-md space-y-xs">
+<p class="text-label-sm text-on-surface-variant">Acessórios</p>
+<h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors truncate">Mouse Ergonômico pantazon</h3>
+<div class="flex items-center gap-xs">
+<span class="text-primary text-xl font-bold">R$ 349,00</span>
+<span class="text-outline text-sm line-through">R$ 499,00</span>
+</div>
+<button class="w-full mt-md bg-secondary-container text-on-secondary-container py-2 rounded-lg font-label-md hover:bg-primary hover:text-on-primary transition-all">Adicionar ao Carrinho</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface group rounded-xl border border-outline-variant overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden bg-white">
+<div class="w-full h-full bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105" data-alt="A dual-monitor workstation setup featuring two 4K screens mounted on adjustable arms. The screens show a professional data analysis dashboard with clean charts and graphs. The environment is a sleek corporate office with glass walls and neutral tones, evoking a sense of high-volume data management and professional competence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNZpsRG2HA7fp-jjae7kZ5-RMPGwajNQEmW1pbPpp1-eiC7RhbT5lg6HOM_TRFmYm9p9tGs9sq8YMmsQferOKUZKxdkiSWi6HHUUsp7LIN6nPfBBGmWyRLVmQTDlE3RSuFHHlNBpxAxnCCfPzEYLg3WEQxMDniWLL_8aujfkU6HZcRO9eQOSMO2dgyT8ten70OcWAdoXpA1WtIaSaJfxpFq-ne7ZNvfn4HZR68uUTl4lq-4ZnSBq6UfpFaawpLSScAVkVxEWLF4uc')"></div>
+</div>
+<div class="p-md space-y-xs">
+<p class="text-label-sm text-on-surface-variant">Monitores</p>
+<h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors truncate">Monitor Ultrawide 34" pantazon</h3>
+<div class="flex items-center gap-xs">
+<span class="text-primary text-xl font-bold">R$ 2.890,00</span>
+</div>
+<button class="w-full mt-md bg-secondary-container text-on-secondary-container py-2 rounded-lg font-label-md hover:bg-primary hover:text-on-primary transition-all">Adicionar ao Carrinho</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="bg-primary py-3xl">
+<div class="max-w-container-max mx-auto px-lg md:px-xl text-center">
+<h2 class="text-display-md font-display-md text-white mb-md">Mantenha-se Atualizado</h2>
+<p class="text-primary-fixed text-body-lg mb-xl max-w-2xl mx-auto">Receba novidades exclusivas, lançamentos de tecnologia e ofertas especiais diretamente no seu e-mail corporativo.</p>
+<form class="flex flex-col sm:flex-row gap-md max-w-lg mx-auto" onsubmit="event.preventDefault(); alert('Inscrição realizada com sucesso!');">
+<input class="flex-1 rounded-lg border-none focus:ring-2 focus:ring-primary-fixed-dim py-3 px-xl text-on-background" placeholder="Seu e-mail profissional" required="" type="email"/>
+<button class="bg-white text-primary px-xl py-3 rounded-lg font-label-md hover:bg-surface-variant transition-all" type="submit">Inscrever-se</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer (JSON Mapping) -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Brand Section -->
+<div class="space-y-md">
+<div class="flex items-center gap-sm">
+<img alt="Logo" class="h-8 w-8 grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcQzCOY4Rlrcr8sAOm3LHGpH8BkNWyDcnFy2zQdML6ogsrMTr5h_jigoSzQjDJc53hFqeJB2IKstu7gIN7XE4G0F6iioy8AT1MJY5wYiophd9u8Gr4g5lxwfmiosSpLN-KQ7c5ziqt0Ih7lF2-35lLFvsWxWdaoVLqpG-6i1RGKgxqw9DYbkGFhxpbM329Z68OuuCjM1UJ_M5Hj16FSWQBJxp7CucmHGCwMDn-YOlk4SNL4NsPBGsuiWJb9ik6N5xhjx2vlSCtb7A"/>
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Líder em soluções de e-commerce para empresas e profissionais de alta performance.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<!-- Links Column 1 -->
+<div>
+<h4 class="font-bold text-on-surface mb-md">Empresa</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<!-- Links Column 2 -->
+<div>
+<h4 class="font-bold text-on-surface mb-md">Atendimento</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Shipping Info</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Contact</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Meus Pedidos</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">FAQ</a></li>
+</ul>
+</div>
+<!-- Payment & Security -->
+<div>
+<h4 class="font-bold text-on-surface mb-md">Pagamento & Segurança</h4>
+<div class="flex flex-wrap gap-md mb-md opacity-60">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="material-symbols-outlined">qr_code_2</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Floating Action Button (Contextual Suppression Logic: Only for main dashboard/home) -->
+<button class="fixed bottom-lg right-lg bg-primary text-white w-14 h-14 rounded-full standard-shadow flex items-center justify-center hover:bg-primary-container transition-all z-40 group">
+<span class="material-symbols-outlined">chat</span>
+<span class="absolute right-16 bg-on-surface text-white px-3 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Suporte Online</span>
+</button>
+<script>
+        // Micro-interactions and effects
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+
+            // Smooth reveal for product cards
+            const cards = document.querySelectorAll('.bg-surface.group');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('translate-y-0', 'opacity-100');
+                        entry.target.classList.remove('translate-y-8', 'opacity-0');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.classList.add('transition-all', 'duration-500', 'translate-y-8', 'opacity-0');
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,4 @@
+import {Link} from 'react-router-dom';
+import type {ProductSummary} from '../../types/catalog';
+const money=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+export function ProductCard({product}:{product:ProductSummary}){const v=product.variant;const discount=v.compareAtPrice?Math.round((1-v.price/v.compareAtPrice)*100):0;return <article className="product-card">{discount>0&&<span className="discount-badge">-{discount}%</span>}<Link to={`/produtos/${v.sku}`} aria-label={`Ver ${product.name}`}><div className="product-image"><img src={product.image.url} alt={product.image.alt}/></div><div className="product-card-body"><span className="eyebrow">{product.category.name}</span><h3>{product.name}</h3>{v.compareAtPrice&&<del>{money.format(v.compareAtPrice)}</del>}<strong className="price">{money.format(v.price)}</strong><small>ou 10x de {money.format(v.price/10)} sem juros</small></div></Link></article>}

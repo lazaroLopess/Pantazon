@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon | Label Print Configuration</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Geist -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#dae2fd",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "tertiary-container": "#4f5d71",
+                        "on-primary-fixed": "#001551",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary": "#374559",
+                        "secondary": "#565e74",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0037b0",
+                        "primary-container": "#1d4ed8",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-surface": "#2d3133",
+                        "surface": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#d5e3fc",
+                        "surface-dim": "#d8dadc",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#2151da",
+                        "outline": "#747686",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "outline-variant": "#c4c5d7",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#b7c4ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-surface-variant": "#434655",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "on-primary-container": "#cad3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Geist"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #191c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for preview */
+        .preview-scroll::-webkit-scrollbar { width: 6px; }
+        .preview-scroll::-webkit-scrollbar-track { background: transparent; }
+        .preview-scroll::-webkit-scrollbar-thumb { background: #c4c5d7; border-radius: 10px; }
+
+        /* Label grid preview animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-preview { animation: fadeIn 0.3s ease-out; }
+    </style>
+</head>
+<body class="flex overflow-hidden h-screen">
+<!-- Sidebar (Shared Component Style Mapping) -->
+<aside class="hidden lg:flex flex-col h-full w-60 bg-on-secondary-fixed text-on-secondary py-md shadow-md z-50">
+<div class="px-md mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-label-sm font-label-sm text-outline-variant opacity-70">Enterprise Manager</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Products - Active Navigation Logic -->
+<a class="flex items-center bg-primary text-white mx-2 my-1 p-3 rounded-lg translate-x-1 shadow-sm" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-3">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-md">
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-background relative h-full">
+<!-- Header (Shared TopNavBar Logic) -->
+<header class="h-16 flex justify-between items-center w-full px-lg md:px-xl border-b border-outline-variant bg-surface z-40">
+<div class="flex items-center space-x-4">
+<button class="lg:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">Label Configuration</h2>
+<nav class="hidden md:flex space-x-2 items-center text-label-sm font-label-sm text-on-surface-variant">
+<span>Inventory</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Print Settings</span>
+</nav>
+</div>
+</div>
+<div class="flex items-center space-x-md">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-sm w-64 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Search orders..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]">search</span>
+</div>
+<div class="flex items-center space-x-3">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Configuration Workspace -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left: Settings Panel -->
+<div class="w-full md:w-[420px] bg-white border-r border-outline-variant flex flex-col h-full overflow-y-auto preview-scroll">
+<div class="p-lg space-y-xl">
+<!-- Section: Page Setup -->
+<section>
+<h3 class="text-label-md font-label-md text-on-secondary-fixed-variant mb-md flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">description</span>
+                            PAGE SETUP
+                        </h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Label Size</label>
+<select class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm px-3 py-2 focus:ring-2 focus:ring-primary/20" id="label-size">
+<option>4" x 6" (Standard)</option>
+<option>2" x 1" (Mini)</option>
+<option>3" x 5" (Medium)</option>
+<option>Custom Size...</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Orientation</label>
+<div class="flex p-1 bg-surface-container-low rounded-lg border border-outline-variant">
+<button class="flex-1 py-1.5 rounded-md text-label-sm flex items-center justify-center bg-white shadow-sm text-primary font-bold" onclick="updateOrientation('portrait')">
+<span class="material-symbols-outlined text-[18px] mr-1">portrait</span>
+                                        Port
+                                    </button>
+<button class="flex-1 py-1.5 rounded-md text-label-sm flex items-center justify-center text-on-surface-variant hover:text-on-surface" onclick="updateOrientation('landscape')">
+<span class="material-symbols-outlined text-[18px] mr-1">landscape</span>
+                                        Land
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Margins -->
+<section>
+<h3 class="text-label-md font-label-md text-on-secondary-fixed-variant mb-md flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">format_line_spacing</span>
+                            MARGINS (MM)
+                        </h3>
+<div class="grid grid-cols-4 gap-sm">
+<div class="space-y-xs">
+<label class="text-[10px] uppercase font-bold text-outline-variant text-center block">Top</label>
+<input class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm p-2 text-center" type="number" value="2"/>
+</div>
+<div class="space-y-xs">
+<label class="text-[10px] uppercase font-bold text-outline-variant text-center block">Bottom</label>
+<input class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm p-2 text-center" type="number" value="2"/>
+</div>
+<div class="space-y-xs">
+<label class="text-[10px] uppercase font-bold text-outline-variant text-center block">Left</label>
+<input class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm p-2 text-center" type="number" value="2"/>
+</div>
+<div class="space-y-xs">
+<label class="text-[10px] uppercase font-bold text-outline-variant text-center block">Right</label>
+<input class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm p-2 text-center" type="number" value="2"/>
+</div>
+</div>
+</section>
+<!-- Section: Content Toggles -->
+<section class="space-y-md">
+<h3 class="text-label-md font-label-md text-on-secondary-fixed-variant mb-md flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">visibility</span>
+                            DISPLAY ELEMENTS
+                        </h3>
+<!-- Toggle Group -->
+<div class="space-y-sm">
+<label class="flex items-center justify-between p-3 bg-surface-container-low hover:bg-surface-container rounded-xl cursor-pointer transition-colors group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3">label_important</span>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold">pantazon Logo</span>
+<span class="text-[11px] text-on-surface-variant">Include brand identifier</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-logo" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 bg-surface-container-low hover:bg-surface-container rounded-xl cursor-pointer transition-colors group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3">payments</span>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold">Price Badge</span>
+<span class="text-[11px] text-on-surface-variant">Show current selling price</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-price" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 bg-surface-container-low hover:bg-surface-container rounded-xl cursor-pointer transition-colors group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3">qr_code_2</span>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold">QR / Barcode</span>
+<span class="text-[11px] text-on-surface-variant">Dynamic scannable code</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-barcode" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 bg-surface-container-low hover:bg-surface-container rounded-xl cursor-pointer transition-colors group">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3">info</span>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold">SKU Reference</span>
+<span class="text-[11px] text-on-surface-variant">Internal product code</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-sku" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Action Footer -->
+<div class="mt-auto p-lg border-t border-outline-variant bg-surface-container-low space-y-sm">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold text-body-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center">
+<span class="material-symbols-outlined mr-2">print</span>
+                        Print Labels
+                    </button>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center py-2 px-4 rounded-lg bg-white border border-outline-variant text-label-md font-bold text-on-surface-variant hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-1">history</span>
+                            Reset
+                        </button>
+<button class="flex items-center justify-center py-2 px-4 rounded-lg bg-white border border-outline-variant text-label-md font-bold text-on-surface-variant hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-1">file_open</span>
+                            A4 View
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right: Preview Panel -->
+<div class="flex-1 bg-surface-container relative flex flex-col p-lg md:p-3xl overflow-hidden">
+<div class="flex justify-between items-center mb-gutter">
+<h4 class="text-label-md font-label-md text-on-secondary-fixed-variant tracking-widest uppercase">Real-time Preview</h4>
+<div class="flex items-center bg-white rounded-full px-3 py-1 border border-outline-variant shadow-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-1">zoom_out</button>
+<span class="text-label-sm font-bold mx-2">85%</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-1">zoom_in</button>
+</div>
+</div>
+<!-- Preview Area -->
+<div class="flex-1 flex items-center justify-center overflow-auto preview-scroll">
+<!-- The Actual Label Rendering -->
+<div class="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-outline-variant w-[320px] h-[480px] p-md flex flex-col relative animate-preview" id="label-preview-container">
+<!-- Dynamic Logo Header -->
+<div class="flex justify-between items-start mb-md" id="preview-logo">
+<div class="flex flex-col">
+<span class="text-[18px] font-black tracking-tighter text-primary">pantazon</span>
+<span class="text-[8px] font-bold text-on-surface-variant -mt-1 uppercase">Enterprise Fulfillment</span>
+</div>
+<div class="text-right">
+<span class="text-[9px] font-bold text-outline-variant">SHIP TO:</span>
+<div class="w-16 h-1 bg-surface-container rounded-full mt-1"></div>
+<div class="w-12 h-1 bg-surface-container rounded-full mt-1 ml-4"></div>
+</div>
+</div>
+<!-- Product Info -->
+<div class="border-y border-dashed border-outline-variant py-md mb-md">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-headline-sm font-bold leading-tight">NeoPulse 500w<br/>Smart Blender</p>
+<div class="inline-block bg-surface-container px-2 py-0.5 rounded text-[10px] font-mono font-bold text-on-surface-variant" id="preview-sku">
+                                        SKU: PNT-88293-NP
+                                    </div>
+</div>
+<div class="text-right" id="preview-price">
+<p class="text-[10px] font-bold text-outline-variant uppercase">List Price</p>
+<p class="text-headline-md font-black text-primary">$129.99</p>
+</div>
+</div>
+</div>
+<!-- Center Barcode Area -->
+<div class="flex-1 flex flex-col items-center justify-center space-y-md">
+<div class="w-full h-32 bg-surface-container relative overflow-hidden flex flex-col items-center justify-center" id="preview-barcode">
+<!-- Faux Barcode Pattern -->
+<div class="flex space-x-[1px] h-20 items-end">
+<div class="w-1 h-full bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div><div class="w-1.5 h-full bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div>
+<div class="w-0.5 h-[90%] bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div><div class="w-1.5 h-[85%] bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div>
+<div class="w-1 h-full bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div><div class="w-2 h-[95%] bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div>
+<div class="w-1 h-full bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div><div class="w-1.5 h-full bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div>
+<div class="w-0.5 h-[90%] bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div><div class="w-1.5 h-[85%] bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div>
+<div class="w-1 h-full bg-on-surface"></div><div class="w-0.5 h-full bg-on-surface"></div><div class="w-2 h-[95%] bg-on-surface"></div><div class="w-1 h-full bg-on-surface"></div>
+</div>
+<span class="text-[12px] font-mono tracking-[4px] mt-2 font-bold text-on-surface">123456789012</span>
+</div>
+<div class="flex items-center space-x-md" id="preview-qr">
+<div class="w-16 h-16 border-2 border-on-surface p-1">
+<div class="w-full h-full bg-on-surface-variant opacity-20 relative">
+<!-- Mock QR squares -->
+<div class="absolute top-0 left-0 w-3 h-3 border-2 border-on-surface"></div>
+<div class="absolute top-0 right-0 w-3 h-3 border-2 border-on-surface"></div>
+<div class="absolute bottom-0 left-0 w-3 h-3 border-2 border-on-surface"></div>
+</div>
+</div>
+<div class="text-[10px] font-bold text-on-surface-variant max-w-[100px] leading-tight">
+                                    Scan to verify authenticity of product.
+                                </div>
+</div>
+</div>
+<!-- Footer Info -->
+<div class="mt-auto pt-sm flex justify-between items-end text-[8px] font-bold text-outline-variant">
+<div>PRINTED: 10/24/2024 14:22 EST</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[10px] mr-1">eco</span>
+                                RECYCLABLE PACKAGING
+                            </div>
+</div>
+</div>
+</div>
+<!-- Floating Instruction FAB -->
+<button class="absolute bottom-10 right-10 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">help</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Real-time Preview Logic
+        const toggles = {
+            'toggle-logo': 'preview-logo',
+            'toggle-price': 'preview-price',
+            'toggle-sku': 'preview-sku',
+            'toggle-barcode': 'preview-barcode',
+            'toggle-qr': 'preview-qr' // Combined with barcode in this layout
+        };
+
+        // Initialize listeners
+        Object.keys(toggles).forEach(id => {
+            const el = document.getElementById(id);
+            if(el) {
+                el.addEventListener('change', (e) => {
+                    const previewEl = document.getElementById(toggles[id]);
+                    if (previewEl) {
+                        previewEl.style.opacity = e.target.checked ? '1' : '0';
+                        previewEl.style.visibility = e.target.checked ? 'visible' : 'hidden';
+                        previewEl.style.transition = 'all 0.3s ease';
+                    }
+                });
+            }
+        });
+
+        // Add specific handling for QR/Barcode toggle if needed
+        document.getElementById('toggle-barcode').addEventListener('change', (e) => {
+            const bar = document.getElementById('preview-barcode');
+            const qr = document.getElementById('preview-qr');
+            const state = e.target.checked ? '1' : '0';
+            bar.style.opacity = state;
+            qr.style.opacity = state;
+        });
+
+        function updateOrientation(mode) {
+            const container = document.getElementById('label-preview-container');
+            const btns = event.currentTarget.parentNode.querySelectorAll('button');
+            
+            btns.forEach(b => {
+                b.classList.remove('bg-white', 'shadow-sm', 'text-primary', 'font-bold');
+                b.classList.add('text-on-surface-variant');
+            });
+            event.currentTarget.classList.add('bg-white', 'shadow-sm', 'text-primary', 'font-bold');
+            event.currentTarget.classList.remove('text-on-surface-variant');
+
+            if(mode === 'landscape') {
+                container.style.width = '480px';
+                container.style.height = '320px';
+            } else {
+                container.style.width = '320px';
+                container.style.height = '480px';
+            }
+        }
+
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('opacity-80');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('opacity-80');
+            });
+        });
+    </script>
+</body></html>

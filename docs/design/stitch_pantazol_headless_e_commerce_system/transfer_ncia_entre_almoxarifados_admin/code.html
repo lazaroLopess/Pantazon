@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon Admin - Nova Transferência</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .sidebar-active {
+            transform: translateX(4px);
+            transition: all 0.2s ease;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#5c647a",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#d5e3fc",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dae2fd",
+                        "primary-container": "#1d4ed8",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary-container": "#cad3ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "surface-tint": "#2151da",
+                        "secondary": "#565e74",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#4f5d71",
+                        "outline-variant": "#c4c5d7",
+                        "outline": "#747686",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed": "#131b2e",
+                        "primary": "#0037b0",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#001551",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1e",
+                        "tertiary": "#374559",
+                        "on-secondary-fixed-variant": "#3f465c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "3xl": "64px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="hidden lg:flex flex-col h-full py-md bg-on-secondary-fixed text-on-secondary w-64 shadow-md shrink-0">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-body-sm text-outline-variant">Enterprise Manager</p>
+</div>
+<nav class="flex-1 flex flex-col space-y-1 overflow-y-auto">
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Products Active Intent -->
+<a class="flex items-center space-x-3 bg-primary text-white mx-2 my-1 p-3 rounded-lg sidebar-active" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Products</span>
+</a>
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-on-secondary-fixed-variant pt-md">
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center space-x-3 text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Top Header (Breadcrumb style) -->
+<header class="bg-surface border-b border-outline-variant h-16 flex items-center justify-between px-lg md:px-xl sticky top-0 z-10">
+<div class="flex items-center space-x-sm">
+<span class="text-on-surface-variant font-body-md text-body-md">Estoque</span>
+<span class="material-symbols-outlined text-outline text-sm">chevron_right</span>
+<span class="text-on-surface-variant font-body-md text-body-md">Transferências</span>
+<span class="material-symbols-outlined text-outline text-sm">chevron_right</span>
+<span class="text-primary font-headline-sm text-headline-sm font-semibold">Nova Transferência</span>
+</div>
+<div class="flex items-center space-x-md">
+<div class="flex items-center bg-surface-container rounded-full px-4 py-1 space-x-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Rascunho</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of an administrative manager for a corporate e-commerce dashboard. The lighting is crisp and studio-quality, emphasizing a modern corporate atmosphere. The background is a soft, out-of-focus office environment with clean lines. The manager is wearing smart casual attire and has a confident, reliable expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv8bSo_gkwhLeL_rVfVqgn4o-hDdBftjj2BkHLn7C-FsfQ5lox29v7tk7AwNMcElh0RuZUGHC1yIjJMqgw90nNm8QQE95qyAfwwCVIkOE9e6g7tHQoa5eaS2T0-iAF9tZsXe0i8QSFV3qRY1zb-otKBIuDQPxMJ5MCszoprMTkLC6I5Chi2du5h1u71tPLBUvZbOSIvITsQyuBu4__mSuV3hfGUc0xe0KItG9sQW8mhfy8P7JI_B0u5pS-eOPx4D7oFKr9vNXThes"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-lg md:p-xl max-w-container-max mx-auto space-y-lg">
+<!-- Status Flow Stepper -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex items-center justify-center space-x-xl shadow-sm">
+<div class="flex items-center space-x-sm text-primary">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">1</span>
+<span class="font-headline-sm text-headline-sm">Rascunho</span>
+</div>
+<div class="h-px w-16 bg-outline-variant"></div>
+<div class="flex items-center space-x-sm text-outline">
+<span class="w-8 h-8 rounded-full border-2 border-outline flex items-center justify-center font-bold">2</span>
+<span class="font-headline-sm text-headline-sm">Em Trânsito</span>
+</div>
+<div class="h-px w-16 bg-outline-variant"></div>
+<div class="flex items-center space-x-sm text-outline">
+<span class="w-8 h-8 rounded-full border-2 border-outline flex items-center justify-center font-bold">3</span>
+<span class="font-headline-sm text-headline-sm">Recebida</span>
+</div>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-12 gap-gutter" id="transfer-form">
+<!-- Selection Card -->
+<div class="md:col-span-12 bg-white border border-outline-variant rounded-xl p-lg shadow-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-lg">Configurações da Origem e Destino</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg items-center relative">
+<!-- Origin -->
+<div class="space-y-sm">
+<label class="text-label-md font-label-md text-on-surface-variant block">Armazém de Origem</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg p-3 pr-10 appearance-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-body-md font-body-md">
+<option value="CD-SP-01">CD-SP-01 (São Paulo - Central)</option>
+<option value="CD-MG-01">CD-MG-01 (Minas Gerais)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">warehouse</span>
+</div>
+</div>
+<!-- Transfer Icon Decoration -->
+<div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/4 z-10 w-10 h-10 bg-primary-container text-white rounded-full items-center justify-center shadow-lg border-4 border-white">
+<span class="material-symbols-outlined">sync_alt</span>
+</div>
+<!-- Destination -->
+<div class="space-y-sm">
+<label class="text-label-md font-label-md text-on-surface-variant block">Armazém de Destino</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg p-3 pr-10 appearance-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-body-md font-body-md">
+<option selected="" value="CD-RJ-02">CD-RJ-02 (Rio de Janeiro - Filial)</option>
+<option value="CD-PR-03">CD-PR-03 (Paraná - Sul)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">local_shipping</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Items Table Card -->
+<div class="md:col-span-12 bg-white border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Itens para Transferência</h2>
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-white px-md py-2 rounded-lg flex items-center space-x-2 transition-all font-label-md text-label-md" onclick="addItem()" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Adicionar Produto</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="items-table">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md text-label-sm font-label-sm text-outline uppercase tracking-wider">Produto / SKU</th>
+<th class="px-lg py-md text-label-sm font-label-sm text-outline uppercase tracking-wider">Disponível (Origem)</th>
+<th class="px-lg py-md text-label-sm font-label-sm text-outline uppercase tracking-wider w-32">Qtd Transferência</th>
+<th class="px-lg py-md text-label-sm font-label-sm text-outline uppercase tracking-wider">Unidade</th>
+<th class="px-lg py-md text-label-sm font-label-sm text-outline uppercase tracking-wider text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg border border-outline-variant flex-shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A professional product photo of high-quality electronics equipment for an enterprise inventory system. Sharp focus on technical details, clean white background, minimalist industrial design. The image is bright and professional, fitting into a high-performance headless e-commerce ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFqa6n2TlWfh6nvh5848CKWsP9k-fqW8__beheon9hr20dWYMBN40dy77CiPiapT6zhk12MovS1dHhUhefiGECbcGKD7ZSk1YSxSOuDP8ZHuXB4j7j-GWWqQsTO5g2dMLysbRnw0q_3UlcO5d48WLlzvoAOAnY8IbGpHa9Tqf2-lMcWh1MwFD1JacTMKx0ikGnvucS3s2ge6MH8Ln3XGI131kXsDTSIYS3OIEDN9mFLWIYOieJxNwHZY2oPOxdZvrjacO2hjUIIRw"/>
+</div>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Teclado Mecânico pantazon X1</div>
+<div class="text-label-sm text-on-surface-variant">PAN-TEC-X1-BLK</div>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-body-md">150 unidades</td>
+<td class="px-lg py-md">
+<input class="w-full border border-outline-variant rounded p-2 focus:ring-1 focus:ring-primary outline-none quantity-input" max="150" min="1" onchange="validateQty(this, 150)" type="number" value="20"/>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">un</td>
+<td class="px-lg py-md text-right">
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-colors material-symbols-outlined" type="button">delete</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg border border-outline-variant flex-shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Close-up of a premium computer mouse with ergonomic design, photographed for an e-commerce catalog. Bright, studio lighting highlighting smooth textures and sleek metallic accents. Set against a pure white background to maintain a high-end commercial aesthetic. Professional and clean corporate photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvD2n4inFI1LoAdcY9jGuNvNfO5UkkVZOYDhxcwsHuqeTN-3JZYeQYPywMu1NSTxfimkBW0GEYudKM6aUGEo-LjZYU51YIpLDVbxjQEjDeYe-ABV-yDI9L3hzSfCHvL9IBbJY7H7KynPdhbFtFxSRbgMIgoOXVlVA-hhyacGCHPRX9QfO4LdEZx1r5SSJZWCIwjzk-XDXeJSqH5q43tbEC1yJkaWaU2KC1qdD15Ry6jYqpQ71ta5dV1YarfOKmWVDC0ugAuRM5Ni4"/>
+</div>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Mouse Optic Wireless S2</div>
+<div class="text-label-sm text-on-surface-variant">PAN-MSE-S2-GRY</div>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-body-md text-body-md">45 unidades</td>
+<td class="px-lg py-md">
+<input class="w-full border border-outline-variant rounded p-2 focus:ring-1 focus:ring-primary outline-none quantity-input" max="45" min="1" onchange="validateQty(this, 45)" type="number" value="15"/>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">un</td>
+<td class="px-lg py-md text-right">
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-colors material-symbols-outlined" type="button">delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Summary / Footer Table -->
+<div class="bg-surface-container-lowest p-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="text-on-surface-variant font-body-sm text-body-sm italic">
+                                * As quantidades excedentes ao estoque disponível não poderão ser processadas.
+                            </div>
+<div class="flex items-center space-x-xl">
+<div class="text-right">
+<div class="text-label-sm font-label-sm text-outline uppercase">Total de Itens</div>
+<div class="text-headline-sm font-headline-sm text-on-surface">35 unidades</div>
+</div>
+<div class="text-right">
+<div class="text-label-sm font-label-sm text-outline uppercase">SKUs Distintos</div>
+<div class="text-headline-sm font-headline-sm text-on-surface">2</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Observation & Actions -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 space-y-sm bg-white border border-outline-variant rounded-xl p-lg shadow-sm">
+<label class="text-label-md font-label-md text-on-surface-variant block">Observações da Transferência</label>
+<textarea class="w-full border border-outline-variant rounded-lg p-md focus:ring-2 focus:ring-primary outline-none font-body-md resize-none" placeholder="Ex: Reposição de estoque urgente para promoção Black Friday..." rows="4"></textarea>
+</div>
+<div class="bg-white border border-outline-variant rounded-xl p-lg shadow-sm flex flex-col justify-between">
+<div class="space-y-md">
+<h3 class="text-label-md font-label-md text-outline uppercase border-b border-outline-variant pb-2">Resumo da Ação</h3>
+<div class="space-y-sm">
+<div class="flex justify-between">
+<span class="text-body-sm text-on-surface-variant">Responsável:</span>
+<span class="text-body-sm font-semibold">Admin User</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-sm text-on-surface-variant">Data Prevista:</span>
+<span class="text-body-sm font-semibold">12/11/2024</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-sm mt-xl">
+<button class="w-full bg-primary text-white font-label-md text-label-md py-3 rounded-lg shadow-md hover:bg-on-primary-fixed-variant transition-all flex items-center justify-center space-x-2" type="button">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+<span>Iniciar Transferência</span>
+</button>
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-md text-label-md py-3 rounded-lg hover:bg-outline-variant/30 transition-all" type="button">
+                                    Salvar como Rascunho
+                                </button>
+<button class="w-full border border-outline-variant text-on-surface-variant font-label-md text-label-md py-3 rounded-lg hover:bg-surface-container transition-all" type="button">
+                                    Cancelar Operação
+                                </button>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Footer Component -->
+<footer class="mt-xl border-t border-outline-variant bg-surface-container-highest">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mb-sm">pantazon</div>
+<p class="text-body-sm text-on-surface-variant">Sua plataforma centralizada para gestão inteligente de logística e e-commerce headless.</p>
+</div>
+<div>
+<h4 class="text-label-sm font-label-sm text-primary font-bold uppercase mb-md">Gestão</h4>
+<ul class="space-y-base text-body-sm text-on-surface-variant">
+<li><a class="hover:underline transition-all" href="#">Sobre Nós</a></li>
+<li><a class="hover:underline transition-all" href="#">Informações de Envio</a></li>
+<li><a class="hover:underline transition-all" href="#">Contato</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-sm font-label-sm text-primary font-bold uppercase mb-md">Legal</h4>
+<ul class="space-y-base text-body-sm text-on-surface-variant">
+<li><a class="hover:underline transition-all" href="#">Política de Privacidade</a></li>
+<li><a class="hover:underline transition-all" href="#">Termos de Serviço</a></li>
+</ul>
+</div>
+<div class="flex flex-col justify-between">
+<div class="text-label-sm text-on-surface-variant">
+                            © 2024 pantazon E-Commerce. All rights reserved.
+                        </div>
+<div class="flex space-x-md mt-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">support_agent</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">verified_user</span>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        function validateQty(input, max) {
+            const val = parseInt(input.value);
+            if (val > max) {
+                input.value = max;
+                input.classList.add('border-error', 'text-error', 'animate-pulse');
+                setTimeout(() => {
+                    input.classList.remove('animate-pulse');
+                }, 1000);
+                alert(`Quantidade indisponível na origem. O máximo permitido é ${max}.`);
+            } else if (val < 1) {
+                input.value = 1;
+            } else {
+                input.classList.remove('border-error', 'text-error');
+            }
+        }
+
+        function addItem() {
+            // Simplified logic for simulation
+            alert("Modal de busca de produtos disparado. (Simulação)");
+        }
+
+        // Dropdown interactions and visual feedback
+        document.querySelectorAll('select').forEach(sel => {
+            sel.addEventListener('focus', () => {
+                sel.parentElement.classList.add('ring-2', 'ring-primary/20');
+            });
+            sel.addEventListener('blur', () => {
+                sel.parentElement.classList.remove('ring-2', 'ring-primary/20');
+            });
+        });
+    </script>
+</body></html>

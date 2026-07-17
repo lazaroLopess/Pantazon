@@ -1,0 +1,2 @@
+import type {HomePageData,PaginatedProducts,ProductSearchQuery,ShippingQuoteInput,ShippingQuoteResult,StoreCategory,StoreProductDetails} from '../types/catalog';
+export interface StoreCatalogService {getHome():Promise<HomePageData>;getProducts(query:ProductSearchQuery):Promise<PaginatedProducts>;getProductBySku(sku:string):Promise<StoreProductDetails|null>;getCategories():Promise<StoreCategory[]>;simulateShipping(input:ShippingQuoteInput):Promise<ShippingQuoteResult>}

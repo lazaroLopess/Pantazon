@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | pantazon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary": "#565e74",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#374559",
+                    "surface-tint": "#2151da",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container-high": "#e6e8ea",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#dae2fd",
+                    "outline-variant": "#c4c5d7",
+                    "tertiary-container": "#4f5d71",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#dce1ff",
+                    "primary": "#0037b0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "on-primary-fixed": "#001551",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#cad3ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#434655",
+                    "outline": "#747686",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#131b2e",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "2xl": "48px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "3xl": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .login-card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        .input-focus-halo:focus {
+            outline: none;
+            border-color: #0037b0;
+            box-shadow: 0 0 0 2px rgba(0, 55, 176, 0.2);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen items-center justify-center bg-surface">
+<main class="flex w-full max-w-[1440px] h-screen overflow-hidden bg-surface-container-lowest">
+<!-- Image Side (Lifestyle / Tech) -->
+<section class="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A clean, minimalist high-tech workspace featuring a premium laptop and smartphone on a white desk. The lighting is bright and airy with soft blue secondary tones reflecting the pantazon brand identity. A professional individual is partially visible in the background, out of focus, suggesting a productive enterprise environment. The overall aesthetic is professional, secure, and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtJ98T8pAOTk4PxQ_SeKkw-fdLXEum6aaLWngkTbxEhC-gjuwX8r-_G4UiEef124jlXOCuZnK2wenD8OsBdNmPnR1nWIOI8xtEjN-M4Ql_3jIsndR12SlCVHGnB3wHGBk804m9IkAciOgV-gKYuEdL3rxOvU_YcEldfHSYO85Vlz9QC10A1mkiKYE6yMd9XZMunVNikdvBtMq_VpVIREgcOMt5w65EJjTL-HkQhkdVfQMO9u8aHZqO1bcYWoUkurATsiIX3Ak5nSA"/>
+<div class="relative z-20 flex flex-col justify-end p-2xl w-full h-full text-on-primary">
+<div class="mb-lg">
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight bg-white/10 backdrop-blur-md px-md py-xs rounded-lg inline-block mb-md">
+                        pantazon
+                    </span>
+<h1 class="text-display-md font-display-md leading-tight mb-md">
+                        Transformando o Futuro do E-commerce Corporativo.
+                    </h1>
+<p class="text-body-lg font-body-lg text-white/90 max-w-lg">
+                        Acesse sua plataforma segura para gerenciar pedidos, analisar dados e escalar sua operação com tecnologia de ponta.
+                    </p>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-surface-dim"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-surface-variant"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-primary-fixed-dim"></div>
+</div>
+<span class="text-label-md font-label-md text-white/80">Junte-se a mais de 5.000 empresas parceiras.</span>
+</div>
+</div>
+</section>
+<!-- Form Side -->
+<section class="w-full lg:w-1/2 flex flex-col items-center justify-center px-lg md:px-2xl relative">
+<!-- Logo for mobile -->
+<div class="lg:hidden absolute top-xl left-lg">
+<span class="text-headline-md font-headline-md font-bold text-primary">pantazon</span>
+</div>
+<div class="w-full max-w-md">
+<div class="mb-xl">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-xs">Bem-vindo de volta</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Por favor, insira seus dados para acessar sua conta.</p>
+</div>
+<form action="#" class="space-y-lg" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="text-label-md font-label-md text-on-surface-variant" for="email">E-mail Corporativo</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full h-12 pl-xl pr-md rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-body-md transition-all input-focus-halo" id="email" placeholder="seu@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="text-label-md font-label-md text-on-surface-variant" for="password">Senha</label>
+<a class="text-label-sm font-label-sm text-primary hover:underline transition-all" href="#">Esqueceu a senha?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full h-12 pl-xl pr-12 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface text-body-md transition-all input-focus-halo" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-sm">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="text-body-sm font-body-sm text-on-surface-variant cursor-pointer" for="remember">Lembrar de mim por 30 dias</label>
+</div>
+<!-- Login Button -->
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:bg-on-primary-fixed-variant active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-sm login-card-shadow" type="submit">
+                        Acessar Conta
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Social Login Separator -->
+<div class="my-xl flex items-center gap-md">
+<div class="h-px bg-outline-variant flex-grow"></div>
+<span class="text-label-sm font-label-sm text-outline">OU ACESSE COM</span>
+<div class="h-px bg-outline-variant flex-grow"></div>
+</div>
+<!-- SSO Buttons -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm h-11 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors text-on-surface text-body-sm font-medium">
+<img alt="Google" class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSS1O0ZZRFGv3uReJFspZqbWRhdzm0Rajpe-aBDvXDUbg61pmXv87wuO5-R33Y8bl442uINiPeikEtCeqS76NR6_jDcW_Tpoi08re8hCs9D1DfmOdrS0yfSM0qP7xAesWyhiempsLg-xmh2cG2uSCEqPvoN9F__Qpx7PKnJ0d8Rm4874DAx7ainlT8EGz19hbmCtN8jpqKL7PccDv2rkiOLUpMsQMWcSmVhNL7Kte-URf2PeVkPKgy9JwGVE9Ct7nRCBX2vpYgykQ"/>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-sm h-11 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors text-on-surface text-body-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+                        SSO
+                    </button>
+</div>
+<!-- Create Account Link -->
+<p class="mt-2xl text-center text-body-sm font-body-sm text-on-surface-variant">
+                    Ainda não tem uma conta? 
+                    <a class="text-primary font-bold hover:underline ml-xs" href="#">Crie sua conta agora</a>
+</p>
+</div>
+<!-- Footer Small -->
+<footer class="absolute bottom-xl w-full text-center px-lg">
+<p class="text-label-sm font-label-sm text-outline">
+                    © 2024 pantazon E-Commerce. Todos os direitos reservados. 
+                    <br class="md:hidden"/>
+<a class="hover:text-on-surface transition-colors mx-sm" href="#">Privacidade</a>
+<a class="hover:text-on-surface transition-colors" href="#">Termos</a>
+</p>
+</footer>
+</section>
+</main>
+<script>
+        // Simple interactivity for password visibility
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const input = document.querySelector('#password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+
+        // Animation entry effect
+        window.addEventListener('DOMContentLoaded', () => {
+            const formContainer = document.querySelector('section:nth-child(2) > div');
+            formContainer.style.opacity = '0';
+            formContainer.style.transform = 'translateY(20px)';
+            formContainer.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            
+            setTimeout(() => {
+                formContainer.style.opacity = '1';
+                formContainer.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

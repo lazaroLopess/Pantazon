@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon | Product Label Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eceef0",
+                    "secondary-container": "#dae2fd",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "tertiary-container": "#4f5d71",
+                    "on-primary-fixed": "#001551",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#374559",
+                    "secondary": "#565e74",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed": "#dae2fd",
+                    "on-secondary": "#ffffff",
+                    "primary": "#0037b0",
+                    "primary-container": "#1d4ed8",
+                    "primary-fixed": "#dce1ff",
+                    "inverse-surface": "#2d3133",
+                    "surface": "#f7f9fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d5e3fc",
+                    "surface-dim": "#d8dadc",
+                    "on-background": "#191c1e",
+                    "surface-tint": "#2151da",
+                    "outline": "#747686",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "outline-variant": "#c4c5d7",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface": "#191c1e",
+                    "background": "#f7f9fb",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#b7c4ff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#5c647a",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-surface-variant": "#434655",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#131b2e",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "on-primary-container": "#cad3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "3xl": "64px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Geist"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="hidden lg:flex flex-col h-screen w-60 bg-on-secondary-fixed text-on-secondary shadow-md fixed left-0 top-0 py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-label-sm font-label-sm text-outline-variant opacity-80">Enterprise Manager</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center bg-primary text-white mx-2 my-1 p-3 rounded-lg shadow-sm font-label-md text-label-md translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined mr-sm">inventory_2</span>
+                Products
+            </a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">shopping_bag</span>
+                Orders
+            </a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">group</span>
+                Customers
+            </a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">leaderboard</span>
+                Analytics
+            </a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-md">
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">settings</span>
+                Settings
+            </a>
+<a class="flex items-center text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 lg:ml-60 flex flex-col min-h-screen">
+<!-- TopNavBar Anchor -->
+<header class="h-16 bg-surface border-b border-outline-variant flex justify-between items-center w-full px-lg md:px-xl sticky top-0 z-40">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm font-body-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Search products, SKUs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-gutter mr-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Categories</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Deals</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">Support</a>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-lg md:p-xl space-y-lg max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Product Label Manager</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Configure and print barcode labels for your warehouse inventory.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">history</span>
+                        Print Logs
+                    </button>
+<button class="px-md py-sm bg-primary text-white rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-xs standard-shadow">
+<span class="material-symbols-outlined text-[20px]">print</span>
+                        Print Selected
+                    </button>
+</div>
+</div>
+<!-- Filters & Bulk Controls Bento -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Filters Panel -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-md standard-shadow">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+<h3 class="font-headline-sm text-headline-sm">Filters</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="space-y-xs">
+<label class="text-label-sm font-label-sm text-outline">Category</label>
+<select class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm py-2 focus:ring-primary focus:border-primary">
+<option>All Categories</option>
+<option>Peripherals</option>
+<option>Components</option>
+<option>Storage</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-label-sm text-outline">Status</label>
+<select class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm py-2 focus:ring-primary focus:border-primary">
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Out of Stock</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-label-sm text-outline">Warehouse</label>
+<select class="w-full bg-surface-container-low border-outline-variant rounded-lg text-body-sm py-2 focus:ring-primary focus:border-primary">
+<option>Main Warehouse (PTZ-01)</option>
+<option>East Distribution</option>
+<option>Logistics Center B</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Bulk Actions Panel -->
+<div class="lg:col-span-4 bg-surface-container-high border border-outline-variant rounded-xl p-md standard-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-sm text-headline-sm">Bulk Controls</h3>
+<span class="px-2 py-0.5 bg-primary text-white text-[10px] font-bold rounded-full uppercase tracking-wider">2 Selected</span>
+</div>
+<div class="flex items-center gap-sm mt-md">
+<div class="flex-1">
+<label class="text-label-sm font-label-sm text-on-surface-variant block mb-xs">Set Quantity</label>
+<input class="w-full py-2 border-outline-variant rounded-lg text-body-sm text-center" type="number" value="10"/>
+</div>
+<button class="mt-6 p-2 bg-primary text-white rounded-lg hover:bg-primary-container transition-colors" title="Apply to all">
+<span class="material-symbols-outlined">done_all</span>
+</button>
+</div>
+</div>
+<div class="flex gap-sm mt-md">
+<button class="flex-1 py-2 text-error font-label-md text-label-md hover:bg-error-container/20 rounded-lg transition-colors border border-error/20">
+                            Clear selection
+                        </button>
+<button class="flex-1 py-2 bg-on-surface text-surface font-label-md text-label-md hover:opacity-90 rounded-lg transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                            Configure Print
+                        </button>
+</div>
+</div>
+</div>
+<!-- Main Table and Preview Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Table Section -->
+<div class="xl:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden standard-shadow">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="p-md w-12 text-center">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="p-md text-label-md font-label-md text-on-surface-variant">Product Name</th>
+<th class="p-md text-label-md font-label-md text-on-surface-variant">SKU</th>
+<th class="p-md text-label-md font-label-md text-on-surface-variant">Stock</th>
+<th class="p-md text-label-md font-label-md text-on-surface-variant w-32">Print Qty</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-center">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-outline overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up studio photograph of a sleek, black mechanical gaming keyboard with RGB backlighting, resting on a clean white professional surface. Minimalist high-tech corporate aesthetic with sharp focus and cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsDTnwZjBbpksTfyUyYw1-DQZcd7Cak24OGPJ3GuuxwoKTkPwIo9bITP4kR-1A-AMuPZXjtGIxdPwNzdiZU0CSbRKU-IqIxVcT73bMG76YYTPEhosMuFOlY0AuM-tkzLOr4vrwWVPahgzynO-GlfKTjks5b46X29gsfuu2bD7wX487nGbm5u32MKCnlf8w9gxcNwy4fnDV1RTIVoiqV6conYPcRg71qBj9HfzVv6r4yh4tUIlqON5kMdHEQV9yszeC0XAabpgwWBw"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Teclado pantazon G1</div>
+<div class="text-label-sm text-outline">Gaming Peripherals</div>
+</div>
+</div>
+</td>
+<td class="p-md font-mono text-body-sm text-primary">PTZ-KBD-001</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-green-100 text-green-700 text-[12px] font-bold rounded-full">42 units</span>
+</td>
+<td class="p-md">
+<input class="w-full py-1 border-outline-variant rounded bg-surface text-center text-body-sm" type="number" value="10"/>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-md text-center">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-outline overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium wireless computer mouse with an ergonomic design, finished in matte charcoal gray with metallic accents. Set against a clean, white background with soft shadows, evoking a sense of professional enterprise efficiency and modern design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ybgfMlrvIwnlRFsV7RcgM-Vvm6yk2Xs2yhACk_Z-YFzSnFlFKRcCshUr-Svis5UmPgOp2HfMmUt9LYkXY_e5v1ATn3Zs0WSlIHtJxzhnyD2ZhwqPNcqiJYgdqUTEO5DXVsT4O6cC792Wo5C4ykPvqfv67YuEDSLzm3EvGgb1wYpFkqYOa0vYeMPEa7o2MBBCG8oZH2s4IhUDsxSUKISwV9YubRMKLyBNQcvLWOodCp9VoEu_XjyiY3oIPdcm12gHzKwlxuT94QM"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Mouse Precision Pro</div>
+<div class="text-label-sm text-outline">Office Peripherals</div>
+</div>
+</div>
+</td>
+<td class="p-md font-mono text-body-sm text-primary">PTZ-MSE-442</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-amber-100 text-amber-700 text-[12px] font-bold rounded-full">12 units</span>
+</td>
+<td class="p-md">
+<input class="w-full py-1 border-outline-variant rounded bg-surface text-center text-body-sm" type="number" value="5"/>
+</td>
+</tr>
+<!-- Dummy Rows for context -->
+<tr class="hover:bg-surface-container-low transition-colors group opacity-60">
+<td class="p-md text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Monitor UltraVision 27</div>
+<div class="text-label-sm text-outline">Displays</div>
+</div>
+</div>
+</td>
+<td class="p-md font-mono text-body-sm">PTZ-MON-991</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-red-100 text-red-700 text-[12px] font-bold rounded-full">0 units</span>
+</td>
+<td class="p-md">
+<input class="w-full py-1 border-outline-variant rounded bg-surface-container-high text-center text-body-sm cursor-not-allowed" disabled="" type="number" value="0"/>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Preview Section -->
+<div class="xl:col-span-1 space-y-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md standard-shadow h-full">
+<div class="flex items-center justify-between mb-lg border-b border-outline-variant pb-sm">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">visibility</span>
+                                Label Preview
+                            </h3>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">zoom_in</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">open_in_new</span></button>
+</div>
+</div>
+<div class="flex flex-col gap-gutter items-center justify-start overflow-y-auto max-h-[600px] py-md custom-scrollbar">
+<!-- Label Template 1 -->
+<div class="w-full max-w-[320px] bg-white border-2 border-dashed border-outline-variant p-md rounded shadow-sm relative group overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+<span class="bg-primary text-white text-[10px] px-2 py-1 rounded font-bold">READY TO PRINT</span>
+</div>
+<div class="flex justify-between items-start mb-sm">
+<div class="text-headline-md font-headline-md text-black" style="font-size: 14px; line-height: 1;">pantazon</div>
+<div class="text-[10px] font-mono text-outline">v2.4</div>
+</div>
+<div class="border-t-2 border-black pt-sm mb-sm">
+<p class="text-[14px] font-bold uppercase leading-tight">Teclado pantazon G1</p>
+<p class="text-[10px] text-on-surface-variant">PTZ-KBD-001 | Gaming</p>
+</div>
+<div class="flex justify-center my-md">
+<!-- Barcode Pattern (CSS based) -->
+<div class="h-12 w-full flex items-end gap-[2px]">
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+</div>
+</div>
+<div class="text-center font-mono text-[12px] tracking-[4px] font-bold">PTZ001992831</div>
+</div>
+<!-- Label Template 2 -->
+<div class="w-full max-w-[320px] bg-white border-2 border-dashed border-outline-variant p-md rounded shadow-sm relative group overflow-hidden opacity-90">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+<span class="bg-primary text-white text-[10px] px-2 py-1 rounded font-bold">READY TO PRINT</span>
+</div>
+<div class="flex justify-between items-start mb-sm">
+<div class="text-headline-md font-headline-md text-black" style="font-size: 14px; line-height: 1;">pantazon</div>
+<div class="text-[10px] font-mono text-outline">v2.4</div>
+</div>
+<div class="border-t-2 border-black pt-sm mb-sm">
+<p class="text-[14px] font-bold uppercase leading-tight">Mouse Precision Pro</p>
+<p class="text-[10px] text-on-surface-variant">PTZ-MSE-442 | Office</p>
+</div>
+<div class="flex justify-center my-md">
+<!-- Barcode Pattern (CSS based) -->
+<div class="h-12 w-full flex items-end gap-[2px]">
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[4px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+<div class="h-full bg-black w-[2px]"></div>
+<div class="h-full bg-black w-[3px]"></div>
+<div class="h-full bg-black w-[1px]"></div>
+</div>
+</div>
+<div class="text-center font-mono text-[12px] tracking-[4px] font-bold">PTZ442881023</div>
+</div>
+</div>
+<div class="mt-md p-sm bg-surface-container-low rounded-lg border border-outline-variant/50">
+<div class="flex items-center gap-xs text-label-sm text-on-surface-variant mb-xs">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                                Print configuration:
+                            </div>
+<p class="text-[11px] text-outline">Thermal Transfer, 100mm x 50mm, Black/White. 2 SKU active.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Anchor -->
+<footer class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto bg-surface-container-highest border-t border-outline-variant">
+<div class="md:col-span-2">
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface mb-sm">pantazon</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-sm mb-md">Headless e-commerce infrastructure for high-performance enterprise retail operations. Precision logistics and inventory management.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+</div>
+<div>
+<h5 class="text-label-md font-bold text-on-surface mb-sm">System</h5>
+<nav class="flex flex-col gap-xs">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">About Us</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+</nav>
+</div>
+<div>
+<h5 class="text-label-md font-bold text-on-surface mb-sm">Support</h5>
+<nav class="flex flex-col gap-xs">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Shipping Info</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Contact</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline transition-all" href="#">Documentation</a>
+</nav>
+</div>
+</footer>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple ripple-like effect on print button
+        document.querySelector('.bg-primary.text-white').addEventListener('mousedown', function(e) {
+            const btn = e.currentTarget;
+            btn.style.transform = 'scale(0.98)';
+        });
+        document.querySelector('.bg-primary.text-white').addEventListener('mouseup', function(e) {
+            const btn = e.currentTarget;
+            btn.style.transform = 'scale(1)';
+        });
+
+        // Search bar focus glow
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

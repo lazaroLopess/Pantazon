@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suporte Enviado | pantazon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#d5e3fc",
+                        "secondary": "#565e74",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#374559",
+                        "surface-tint": "#2151da",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#dae2fd",
+                        "outline-variant": "#c4c5d7",
+                        "tertiary-container": "#4f5d71",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed": "#dce1ff",
+                        "primary": "#0037b0",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "on-primary-fixed": "#001551",
+                        "secondary-container": "#dae2fd",
+                        "primary-container": "#1d4ed8",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-primary": "#b7c4ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#cad3ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#434655",
+                        "outline": "#747686",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed": "#131b2e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "3xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .confirmation-card-glow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar (As per Shared Components JSON) -->
+<header class="bg-surface border-b border-outline-variant w-full sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<div class="text-headline-md font-headline-md font-bold text-primary">pantazon</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">New Arrivals</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-lg">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">person</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center px-md py-3xl relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<div class="max-w-[640px] w-full bg-surface-container-lowest border border-outline-variant rounded-xl confirmation-card-glow p-xl md:p-3xl text-center relative z-10">
+<!-- Success Icon/Illustration Area -->
+<div class="mb-xl flex justify-center">
+<div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center animate-float">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Success Message -->
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Suporte Enviado com Sucesso!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">
+                Obrigado por entrar em contato. Sua solicitação foi recebida por nossa equipe técnica e está sendo processada.
+            </p>
+<!-- Protocol Box (Bento-style snippet) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<div class="bg-surface-container-low p-lg rounded-lg border border-outline-variant flex flex-col items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Protocolo de Atendimento</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">#PZ-88234-2024</span>
+</div>
+<div class="bg-surface-container-low p-lg rounded-lg border border-outline-variant flex flex-col items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Prazo de Resposta</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Até 24 horas úteis</span>
+</div>
+</div>
+<!-- Contextual Info -->
+<div class="text-left bg-primary/5 p-lg rounded-lg mb-xl border-l-4 border-primary">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<p class="font-body-md text-on-surface-variant">
+                            Enviamos uma cópia deste chamado para o seu e-mail cadastrado. Você pode acompanhar o status do seu pedido diretamente pela sua conta pantazon.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-md justify-center">
+<a class="bg-primary hover:bg-on-primary-fixed-variant text-white px-xl py-md rounded-lg font-label-md text-label-md transition-all duration-200 shadow-md flex items-center justify-center gap-xs" href="#">
+<span class="material-symbols-outlined">home</span>
+                    Voltar para o Início
+                </a>
+<a class="bg-surface-container-highest hover:bg-surface-variant text-on-surface px-xl py-md rounded-lg font-label-md text-label-md border border-outline-variant transition-all duration-200 flex items-center justify-center gap-xs" href="#">
+<span class="material-symbols-outlined">description</span>
+                    Meus Chamados
+                </a>
+</div>
+</div>
+</main>
+<!-- Featured Image Section (Bento style at bottom for visual relief) -->
+<section class="max-w-container-max mx-auto px-lg md:px-xl mb-3xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg h-48">
+<div class="relative rounded-xl overflow-hidden md:col-span-2 shadow-sm border border-outline-variant">
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/60 to-transparent z-10"></div>
+<div class="absolute bottom-md left-md z-20 text-white">
+<p class="font-label-sm text-label-sm opacity-80 mb-xs">Centro de Ajuda</p>
+<h3 class="font-headline-sm text-headline-sm">Já conferiu nossa base de conhecimento?</h3>
+</div>
+<img class="w-full h-full object-cover" data-alt="A clean and professional workspace featuring a minimalist desk with a sleek laptop, a small plant, and soft natural lighting coming from a nearby window. The atmosphere is calm and productive, reflecting pantazon's corporate modern aesthetic with white surfaces and deep navy accents in the background. The mood is highly professional and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoapu79VohBUPLkKptksHJdLlbBpjkybsMlWwwYggT3nU83l16upo2Mi_P2RltY4Wv19-5tA9LBKUx6VhHDiJwZ3x0iVd8p_6jR195DEcIMdMtCJX59oGw_wQXBeR9t1VN7sYFsgXmctmE1k1TnudBb7EHTXxzLudHiCxC1Q0I9GJOEbLMpMEG_TcxL6-vKA44H-eYhx_iasKNqPCcc_tifdZ0mJfAKOlyzR2t1BdXevB1VrnFXvZHnYdmMmHfbfpRgLfCECqf02s"/>
+</div>
+<div class="relative rounded-xl overflow-hidden bg-primary-container text-on-primary-container p-lg flex flex-col justify-end border border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-4xl mb-md">live_help</span>
+<h3 class="font-headline-sm text-headline-sm mb-xs">Chat ao Vivo</h3>
+<p class="font-body-sm text-body-sm opacity-90">Seg-Sex: 08:00 às 18:00</p>
+</div>
+</div>
+</section>
+<!-- Footer (As per Shared Components JSON) -->
+<footer class="bg-surface-container-highest border-t border-outline-variant w-full">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col gap-md">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Soluções inteligentes para o seu negócio e dia a dia. Experiência de compra premium e suporte dedicado.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md">Suporte</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-on-surface-variant font-label-sm hover:underline transition-all" href="#">FAQ</a></li>
+<li><a class="text-on-surface-variant font-label-sm hover:underline transition-all" href="#">Shipping Info</a></li>
+<li><a class="text-primary font-bold font-label-sm" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md">Empresa</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-on-surface-variant font-label-sm hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant font-label-sm hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant font-label-sm hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="flex flex-col justify-between">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md">Newsletter</h4>
+<div class="flex gap-xs">
+<input class="bg-surface-container-lowest border border-outline px-sm py-xs rounded text-body-sm w-full" placeholder="E-mail" type="text"/>
+<button class="bg-primary text-white p-xs rounded">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<div class="mt-lg md:mt-0 text-label-sm font-label-sm text-on-surface-variant opacity-70">
+                    © 2024 pantazon E-Commerce. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the protocol box
+        const protocolBox = document.querySelector('.bg-surface-container-low');
+        if(protocolBox) {
+            protocolBox.addEventListener('mouseover', () => {
+                protocolBox.style.transform = 'scale(1.02)';
+                protocolBox.style.transition = 'transform 0.2s ease-out';
+            });
+            protocolBox.addEventListener('mouseout', () => {
+                protocolBox.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body></html>

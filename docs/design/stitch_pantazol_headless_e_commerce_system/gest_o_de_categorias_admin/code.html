@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon Admin - Category Management</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#dae2fd",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#5c647a",
+                    "on-secondary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-dim": "#d8dadc",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed": "#d5e3fc",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "primary-fixed": "#dce1ff",
+                    "on-primary-container": "#cad3ff",
+                    "inverse-surface": "#2d3133",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#2151da",
+                    "secondary": "#565e74",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "surface": "#f7f9fb",
+                    "tertiary-container": "#4f5d71",
+                    "outline-variant": "#c4c5d7",
+                    "outline": "#747686",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "on-secondary-fixed": "#131b2e",
+                    "primary": "#0037b0",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#001551",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "tertiary": "#374559",
+                    "on-secondary-fixed-variant": "#3f465c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "3xl": "64px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        .transition-active {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .drag-handle:hover {
+            cursor: grab;
+        }
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar (Admin) -->
+<aside class="hidden lg:flex flex-col h-screen w-60 bg-on-secondary-fixed text-on-secondary shadow-md sticky top-0 py-md">
+<div class="px-md mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-label-sm font-label-sm text-outline-variant">Enterprise Manager</p>
+</div>
+<nav class="flex-grow">
+<div class="flex flex-col">
+<!-- Dashboard -->
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Products (Active because Categories is a sub-set of Products intent) -->
+<a class="bg-primary text-white rounded-lg mx-2 my-1 p-3 flex items-center gap-3 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<!-- Orders -->
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<!-- Customers -->
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<!-- Analytics -->
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto flex flex-col border-t border-outline/20 pt-md">
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col min-w-0">
+<!-- TopNavBar (Simulated Header) -->
+<header class="bg-surface sticky top-0 z-30 h-16 flex items-center px-lg md:px-xl border-b border-outline-variant">
+<div class="flex-grow flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">inventory_2</span>
+<span class="text-on-surface-variant font-body-md">Products</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+<span class="text-on-surface font-semibold font-body-md">Categories</span>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex relative group">
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search categories..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+</div>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm">
+                        AU
+                    </div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-lg md:p-xl space-y-lg max-w-7xl mx-auto w-full">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-background">Category Management</h2>
+<p class="text-body-md text-on-surface-variant">Organize and structure your product hierarchy</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="bg-white border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">import_export</span>
+                            Export
+                        </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-primary-container transition-active shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                            Add Category
+                        </button>
+</div>
+</div>
+<!-- Category Tree/List Container -->
+<div class="bg-white rounded-xl border border-outline-variant standard-shadow overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-12 bg-surface-container-lowest border-b border-outline-variant px-md py-4 text-label-sm text-outline uppercase tracking-wider font-semibold">
+<div class="col-span-5 flex items-center gap-md">
+<span class="w-6"></span> <!-- Space for drag handle -->
+                            Category Name &amp; Hierarchy
+                        </div>
+<div class="col-span-2">Slug</div>
+<div class="col-span-1 text-center">Products</div>
+<div class="col-span-1 text-center">Position</div>
+<div class="col-span-1 text-center">Visible</div>
+<div class="col-span-2 text-right">Actions</div>
+</div>
+<!-- Category Items -->
+<div class="divide-y divide-outline-variant/30">
+<!-- Row 1: Root Category (Electronics) -->
+<div class="group hover:bg-surface-container-low transition-colors">
+<div class="grid grid-cols-12 px-md py-4 items-center">
+<div class="col-span-5 flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant drag-handle group-hover:text-outline transition-colors">drag_indicator</span>
+<div class="flex items-center gap-3">
+<button class="w-6 h-6 flex items-center justify-center rounded hover:bg-outline-variant/20">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<span class="font-semibold text-on-surface">Eletrônicos</span>
+</div>
+</div>
+<div class="col-span-2 text-body-sm text-on-surface-variant font-mono">eletronicos</div>
+<div class="col-span-1 text-center text-body-sm">452</div>
+<div class="col-span-1 text-center text-body-sm">1</div>
+<div class="col-span-1 flex justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<div class="col-span-2 flex items-center justify-end gap-2">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors" title="Add Subcategory">
+<span class="material-symbols-outlined text-lg">add_box</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-error transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 2: Sub-category (Smartphones) -->
+<div class="group hover:bg-surface-container-low transition-colors bg-surface-container-lowest/50">
+<div class="grid grid-cols-12 px-md py-4 items-center">
+<div class="col-span-5 flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant/30 drag-handle group-hover:text-outline transition-colors">drag_indicator</span>
+<div class="flex items-center gap-3 pl-12">
+<div class="h-1 w-4 border-l-2 border-b-2 border-outline-variant/50 rounded-bl-lg -mt-4 mr-1"></div>
+<div class="h-8 w-8 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-75">smartphone</span>
+</div>
+<span class="font-medium text-on-surface">Smartphones</span>
+</div>
+</div>
+<div class="col-span-2 text-body-sm text-on-surface-variant font-mono">smartphones</div>
+<div class="col-span-1 text-center text-body-sm">128</div>
+<div class="col-span-1 text-center text-body-sm">1</div>
+<div class="col-span-1 flex justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<div class="col-span-2 flex items-center justify-end gap-2">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_box</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 3: Sub-category (Acessórios) -->
+<div class="group hover:bg-surface-container-low transition-colors bg-surface-container-lowest/50">
+<div class="grid grid-cols-12 px-md py-4 items-center">
+<div class="col-span-5 flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant/30 drag-handle group-hover:text-outline transition-colors">drag_indicator</span>
+<div class="flex items-center gap-3 pl-12">
+<div class="h-1 w-4 border-l-2 border-b-2 border-outline-variant/50 rounded-bl-lg -mt-4 mr-1"></div>
+<div class="h-8 w-8 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-75">headphones</span>
+</div>
+<span class="font-medium text-on-surface">Acessórios</span>
+</div>
+</div>
+<div class="col-span-2 text-body-sm text-on-surface-variant font-mono">acessorios</div>
+<div class="col-span-1 text-center text-body-sm">324</div>
+<div class="col-span-1 text-center text-body-sm">2</div>
+<div class="col-span-1 flex justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<div class="col-span-2 flex items-center justify-end gap-2">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_box</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 4: Root Category (Home & Decor) -->
+<div class="group hover:bg-surface-container-low transition-colors">
+<div class="grid grid-cols-12 px-md py-4 items-center">
+<div class="col-span-5 flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant drag-handle group-hover:text-outline transition-colors">drag_indicator</span>
+<div class="flex items-center gap-3">
+<button class="w-6 h-6 flex items-center justify-center rounded hover:bg-outline-variant/20">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">home</span>
+</div>
+<span class="font-semibold text-on-surface">Casa e Decoração</span>
+</div>
+</div>
+<div class="col-span-2 text-body-sm text-on-surface-variant font-mono">casa-decoracao</div>
+<div class="col-span-1 text-center text-body-sm">89</div>
+<div class="col-span-1 text-center text-body-sm">2</div>
+<div class="col-span-1 flex justify-center">
+<span class="material-symbols-outlined text-outline-variant">visibility_off</span>
+</div>
+<div class="col-span-2 flex items-center justify-end gap-2">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_box</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 5: Root Category (Moda) -->
+<div class="group hover:bg-surface-container-low transition-colors">
+<div class="grid grid-cols-12 px-md py-4 items-center">
+<div class="col-span-5 flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant drag-handle group-hover:text-outline transition-colors">drag_indicator</span>
+<div class="flex items-center gap-3">
+<button class="w-6 h-6 flex items-center justify-center rounded hover:bg-outline-variant/20">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">apparel</span>
+</div>
+<span class="font-semibold text-on-surface">Moda</span>
+</div>
+</div>
+<div class="col-span-2 text-body-sm text-on-surface-variant font-mono">moda</div>
+<div class="col-span-1 text-center text-body-sm">1.2k</div>
+<div class="col-span-1 text-center text-body-sm">3</div>
+<div class="col-span-1 flex justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<div class="col-span-2 flex items-center justify-end gap-2">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_box</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer of the table -->
+<div class="bg-surface-container-lowest p-md border-t border-outline-variant flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Showing 5 categories (12 subcategories)</span>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded hover:bg-surface-container text-outline transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-semibold px-2">1</span>
+<button class="p-2 rounded hover:bg-surface-container text-outline transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Helper Tip Card -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-lg flex items-start gap-md">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<div>
+<h4 class="font-semibold text-primary">Pro Tip: Sorting &amp; Hierarchy</h4>
+<p class="text-body-sm text-on-surface-variant max-w-2xl mt-1">
+                            You can drag and drop categories to reorder them or nest them within other categories. Changing a parent category's visibility will automatically affect its children's visibility status on the storefront.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container-highest">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</h3>
+<p class="mt-4 text-body-sm text-on-surface-variant">Empowering enterprise merchants with cutting-edge e-commerce infrastructure.</p>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold text-on-surface mb-4">Quick Links</h4>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li><a class="hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold text-on-surface mb-4">Support</h4>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li><a class="hover:underline transition-all" href="#">Contact</a></li>
+<li><a class="hover:underline transition-all" href="#">Shipping Info</a></li>
+<li><a class="hover:underline transition-all" href="#">Documentation</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-bold text-on-surface mb-4">Newsletter</h4>
+<div class="flex gap-2">
+<input class="bg-white border-outline-variant rounded-lg text-body-sm flex-grow" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="w-full py-md px-lg md:px-xl max-w-container-max mx-auto border-t border-outline-variant flex justify-between items-center text-label-sm text-on-surface-variant">
+<span>© 2024 pantazon E-Commerce. All rights reserved.</span>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dropdown expansion logic for categories
+            const toggleBtns = document.querySelectorAll('button:has(.material-symbols-outlined)');
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const icon = btn.querySelector('.material-symbols-outlined');
+                    if (icon && (icon.innerText === 'expand_more' || icon.innerText === 'chevron_right')) {
+                        icon.innerText = icon.innerText === 'expand_more' ? 'chevron_right' : 'expand_more';
+                        // In a real app, this would toggle the visibility of the children rows
+                    }
+                });
+            });
+
+            // Active state handling for sidebar (already mapped via classes, but can handle hover effects)
+            const navLinks = document.querySelectorAll('aside nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('mousedown', () => {
+                    link.classList.add('opacity-80');
+                });
+                link.addEventListener('mouseup', () => {
+                    link.classList.remove('opacity-80');
+                });
+            });
+        });
+    </script>
+</body></html>

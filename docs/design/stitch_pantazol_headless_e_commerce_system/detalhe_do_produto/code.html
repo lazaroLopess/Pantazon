@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon - Detalhe do Produto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#c7d6ee",
+                    "tertiary-container": "#4f5d71",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-surface-variant": "#434655",
+                    "on-primary-container": "#cad3ff",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "primary": "#0037b0",
+                    "primary-fixed": "#dce1ff",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-container": "#dae2fd",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#5c647a",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c4c5d7",
+                    "background": "#f7f9fb",
+                    "secondary": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "surface-container-low": "#f2f4f6",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-tint": "#2151da",
+                    "outline": "#747686",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1d4ed8",
+                    "secondary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface-container-high": "#e6e8ea",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "on-primary-fixed": "#001551",
+                    "tertiary": "#374559",
+                    "surface-container-highest": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "2xl": "48px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "label-md": ["Geist"],
+                    "display-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .zoom-container:hover img {
+            transform: scale(1.5);
+            cursor: zoom-in;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">pantazon</span>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-body-md font-body-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-body-md font-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-body-md font-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">New Arrivals</a>
+<a class="text-body-md font-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-label-md w-64 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Buscar produtos..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-2xl max-w-container-max mx-auto px-lg md:px-xl">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-label-sm text-on-surface-variant mb-lg">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Eletrônicos</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Dispositivos Inteligentes</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-medium">SmartWatch Horizon Pro v4</span>
+</nav>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left: Gallery -->
+<div class="lg:col-span-7 flex flex-col-reverse md:flex-row gap-md">
+<!-- Thumbnails -->
+<div class="flex md:flex-col gap-sm overflow-x-auto md:overflow-y-auto max-h-[600px] custom-scrollbar">
+<div class="flex-shrink-0 w-20 h-20 border-2 border-primary rounded-lg overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close-up detailed view of a sleek, titanium-bodied smartwatch with a vibrant OLED circular display showing a professional fitness dashboard. The lighting is studio-quality, clean, and minimalist, emphasizing the premium metal texture and the deep black contrast of the screen. Soft blue and silver tones dominate the aesthetic, reflecting a high-performance corporate tech vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGLSsucIetjYNdvNWJkk8sfypnT_UIQEXvg5QWAzFCl6au45NwmQSltQlXtxa9IPkx0Nki-Vcztg4r5iXJBshc5Q-osFCuPJFhpIWvSrZKnFzSNpSYkZTidPkInLdPtACLmQENKEfkiJnCpgyJNA-gTnrZnee8W6ugC8yO6ELUgvhoi25TkupZQmfInu6YQHJo7GafAkk1iBuBagYyZIVeqWoOuYlhsnZlEJJbxq0J50a9kFOMZA3zpNMfsqZjHPxZ8YgkhOIEvK4"/>
+</div>
+<div class="flex-shrink-0 w-20 h-20 border border-outline-variant rounded-lg overflow-hidden cursor-pointer hover:border-primary/50 transition-colors">
+<img class="w-full h-full object-cover" data-alt="Side profile shot of a modern smartwatch featuring a brushed metal crown and a charcoal-gray silicone strap. The background is a soft-focus office environment with neutral tones and clean lines, suggesting an enterprise setting. The product design is clean, thin, and ergonomic, highlighting the sophisticated industrial engineering and professional maturity of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNYj0wxdTldI16UkONV9RrPwzuuYnElTrrR7MkF383qovYpWSvvANNeKMqLirQc33NNDznKDn8ZxhJYGbrVYy6ZEMH6XqYLwtPi1BLqIx4VnRQ-oQQUQPjbtWKVmV0FH0qb9bmTPS1fSDs0A2cM1Ke2YLfA571591riLdiBVi_CzSgz172c0yy4LMd_MMRZXCqf98wyJ-QmLt5KGF55dSrvX6JT7fHBSL7uDdrOZbaEYNR_ZlfeVOX2xsl-kb3W6mYAOhV2RE3nVU"/>
+</div>
+<div class="flex-shrink-0 w-20 h-20 border border-outline-variant rounded-lg overflow-hidden cursor-pointer hover:border-primary/50 transition-colors">
+<img class="w-full h-full object-cover" data-alt="A lifestyle shot of an enterprise professional wearing a smartwatch on their wrist while working on a high-end laptop. The image is bright with high-key lighting, capturing the device in a real-world, high-productivity scenario. The color palette is dominated by professional greys, whites, and subtle navy blues, aligning with the pantazon brand identity of reliable competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbEtWIEXTC2CwgyoxfuwSGxnvqsPPVLpVmYUDs_nCyZFMXkuouXxQJXiKUcHR4BKv97auO3F_5PnPJZaVnzldqBwv5v2Bzonlh79ATriPhPtlKb5HjRBagUf5w8Quj4A2UA-5tusW8DJ-GcEyWbnAoNI4fNAFbl9-nGAbiMgsg5S9rOFFBxcezgUua-MfD37h737KveCiOT8ooYE-Y6EgjXdr6X-PezODc716axx8R6rcYvw2sInjySvfRAnddrG4vTcvPV6sg_Gg"/>
+</div>
+</div>
+<!-- Main Image -->
+<div class="flex-grow bg-white border border-outline-variant rounded-xl overflow-hidden relative zoom-container group">
+<img class="w-full h-full object-contain transition-transform duration-300" data-alt="The primary hero image of the SmartWatch Horizon Pro v4, positioned centered against a minimalist, light-grey gradient background. The watch display is active, showing a sophisticated world-clock and activity tracker interface. The image is crystal clear, high-resolution, and uses professional studio lighting to bring out the subtle reflections on the curved sapphire crystal glass and the metallic bezel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj3v8FQNBk8taia3RQR2AnzmqA5lIt_kxKJFpt-YXZGhd_k_j-TH-BKGQYaPDaWVOu3Ah1MCWwCKXlO5OFqlZkoR--_gbeS33ij26tslFBXsBfwe6giXddbCkaageoYtYhnBRqmwYjcw-zUUA-hW5bhpAxNPrtBhHD7CHlHopMlDsQ3hh2G-G7g0GpaRMw_AhZ5s2edd5kotZwzWFW9ESDyquyHyJdZvDlyBtbRzZZzeS_EQxEbfYMVgML0II0DhOJ9ecvbvkwcPQ"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full shadow-sm text-on-surface-variant hover:text-primary cursor-pointer transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</div>
+</div>
+</div>
+<!-- Right: Product Info -->
+<div class="lg:col-span-5 space-y-lg">
+<div class="space-y-sm">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-semibold">MAIS VENDIDO</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">SmartWatch Horizon Pro v4 - Edição Titanium</h1>
+<div class="flex items-center gap-sm">
+<div class="flex text-[#FFB800]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-body-sm text-on-surface-variant">(1,248 avaliações)</span>
+<span class="text-outline-variant">|</span>
+<span class="text-body-sm font-medium">SKU: HZ4-TIT-2024</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant">
+<div class="flex items-baseline gap-md mb-2">
+<span class="text-display-md font-display-md text-primary">R$ 1.899,00</span>
+<span class="text-body-md text-on-surface-variant line-through">R$ 2.499,00</span>
+<span class="text-error font-bold text-label-md">(-24% OFF)</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">em até 10x de R$ 189,90 sem juros</p>
+<div class="mt-md flex items-center gap-2 text-green-700">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-semibold">Em estoque - Pronta entrega</span>
+</div>
+</div>
+<!-- Variations -->
+<div class="space-y-lg">
+<div>
+<label class="block text-label-md font-bold text-on-surface mb-sm">Selecione a Cor: <span class="font-normal text-on-surface-variant" id="color-label">Espaço Grey</span></label>
+<div class="flex gap-md">
+<button class="w-10 h-10 rounded-full border-2 border-primary p-0.5 bg-white ring-offset-2 hover:ring-2 ring-primary/20 transition-all">
+<div class="w-full h-full rounded-full bg-[#374151]"></div>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant p-0.5 bg-white hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-[#D1D5DB]"></div>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant p-0.5 bg-white hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-[#1E3A8A]"></div>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-bold text-on-surface mb-sm">Tamanho do Mostrador</label>
+<div class="flex gap-sm">
+<button class="px-md py-sm border-2 border-primary text-primary font-bold rounded-lg text-label-md">44mm</button>
+<button class="px-md py-sm border border-outline-variant text-on-surface-variant font-medium rounded-lg text-label-md hover:border-primary transition-colors">41mm</button>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="space-y-md pt-md">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-all shadow-md active:scale-[0.98]">
+<span class="material-symbols-outlined">shopping_cart</span>
+                            Adicionar ao Carrinho
+                        </button>
+<button class="flex items-center justify-center gap-sm bg-on-secondary-fixed text-on-secondary py-4 rounded-lg font-bold hover:opacity-90 transition-all active:scale-[0.98]">
+                            Comprar Agora
+                        </button>
+</div>
+<div class="flex items-center gap-md p-md bg-surface-container-high rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<div class="flex-grow">
+<p class="text-label-md font-bold">Frete Grátis para São Paulo</p>
+<p class="text-body-sm text-on-surface-variant">Entrega estimada entre 3 a 5 dias úteis.</p>
+</div>
+<button class="text-primary text-label-md font-bold hover:underline">Alterar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Tabs & Content -->
+<div class="mt-3xl grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Sidebar-like navigation for info -->
+<div class="lg:col-span-3 space-y-base hidden lg:block">
+<button class="w-full text-left p-md bg-primary text-white rounded-lg font-bold transition-all">Descrição Geral</button>
+<button class="w-full text-left p-md hover:bg-surface-container-high text-on-surface-variant font-medium rounded-lg transition-all">Especificações Técnicas</button>
+<button class="w-full text-left p-md hover:bg-surface-container-high text-on-surface-variant font-medium rounded-lg transition-all">Manual do Usuário</button>
+<button class="w-full text-left p-md hover:bg-surface-container-high text-on-surface-variant font-medium rounded-lg transition-all">Garantia e Trocas</button>
+</div>
+<!-- Content Area -->
+<div class="lg:col-span-9 space-y-2xl">
+<!-- Description -->
+<section>
+<h2 class="text-headline-sm font-headline-sm mb-lg border-b border-outline-variant pb-base">Descrição Detalhada</h2>
+<div class="prose max-w-none text-body-md text-on-surface-variant leading-relaxed space-y-md">
+<p>O <strong>SmartWatch Horizon Pro v4</strong> redefine o que se espera de um assistente de pulso para profissionais de alta performance. Construído com um corpo de Titanium Aeroespacial e vidro de Safira, ele oferece resistência inigualável sem comprometer a elegância corporativa.</p>
+<p>Equipado com o novo processador Quantum P3, o Horizon Pro v4 oferece uma interface fluida com mais de 100 modos de produtividade e integração nativa com ecossistemas de trabalho em nuvem. A bateria de longa duração garante até 7 dias de uso intenso com uma única carga rápida.</p>
+<ul class="list-disc pl-md space-y-sm">
+<li>Monitoramento cardíaco avançado e ECG integrado.</li>
+<li>GPS Dual-Band de alta precisão para rastreamento global.</li>
+<li>Integração com Microsoft Teams e Slack para notificações críticas.</li>
+<li>Resistência à água até 50 metros (5ATM).</li>
+</ul>
+</div>
+</section>
+<!-- Technical Specs Table -->
+<section>
+<h2 class="text-headline-sm font-headline-sm mb-lg border-b border-outline-variant pb-base">Especificações Técnicas</h2>
+<div class="border border-outline-variant rounded-xl overflow-hidden bg-white">
+<table class="w-full text-left border-collapse">
+<tbody>
+<tr class="border-b border-outline-variant">
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface w-1/3">Processador</th>
+<td class="p-md text-body-sm text-on-surface-variant">Quantum P3 Hexa-core Enterprise Edition</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface">Tela</th>
+<td class="p-md text-body-sm text-on-surface-variant">1.9" OLED Always-on, 2000 nits de brilho máximo</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface">Material</th>
+<td class="p-md text-body-sm text-on-surface-variant">Titanium Grau 5 e Cristal de Safira</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface">Bateria</th>
+<td class="p-md text-body-sm text-on-surface-variant">500mAh (Até 14 dias em modo econômico)</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface">Sensores</th>
+<td class="p-md text-body-sm text-on-surface-variant">BioSensor 4.0 (ECG, SpO2, Estresse), Altímetro, Barômetro</td>
+</tr>
+<tr>
+<th class="p-md bg-surface-container-low text-label-md font-bold text-on-surface">Conectividade</th>
+<td class="p-md text-body-sm text-on-surface-variant">Bluetooth 5.3, Wi-Fi 6, NFC para pagamentos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+<!-- Related Products -->
+<section class="mt-3xl">
+<h2 class="text-headline-md font-headline-md mb-xl">Produtos Relacionados</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all group">
+<div class="relative aspect-square rounded-lg overflow-hidden mb-md bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A pair of high-end, noise-canceling over-ear headphones in matte black. The design is sleek and minimalist, aimed at business travelers and focused professionals. The lighting is soft and directional, highlighting the leather texture of the earcups and the smooth finish of the headband. The aesthetic is purely professional and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqcpUd-okrgdh1i-jdKhOTKTHleVca88NNvXx--HAwHlkP5rybHqXKQRUp7WDgehmhPdk5VXjXg1qb9SWWRiFYFkZK05GOQFoLB9t0Wn0yewtS3YTdVWVj4HoS0j8CdO_jiWALHaRq8i5frUDdBcoKuqGQE9UL19_2p3THup2U8oiYEMXTV-aGhlaZXzY8Ywj_iZyHl8rM7-ZSO_qIsTxUuO-gF2A7X22BJwIQo7RDk6nXwXv-MZhF70MF1HMh_NMM8q_N3OPcqFo"/>
+</div>
+<p class="text-label-sm text-on-surface-variant font-medium">Aúdio &amp; Som</p>
+<h3 class="text-body-md font-bold text-on-surface mb-sm line-clamp-1">Headphone SilentFlow Elite</h3>
+<div class="flex items-center justify-between mt-md">
+<span class="text-headline-sm text-primary font-bold">R$ 1.249,00</span>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all group">
+<div class="relative aspect-square rounded-lg overflow-hidden mb-md bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A professional ultra-slim tablet with a stylus, displayed against a dark marble surface. The screen shows a vibrant architectural blueprint. The design language is consistent with enterprise-grade technology—thin bezels, metallic finish, and high-performance specs. The color palette is composed of deep greys, cool whites, and vibrant accent colors on the display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwNGO7klqLKyWM5r_4qM9OIqYeWOt2g6IBV8z-Wz2BQJEYc-08ni7XWWW38xG8IbGrZEkMqNA_f44vGcYx85x9qUf1C9jWWecIorh7JzES7t1eGX0il03SLGoopvGEkIQh-KtvCLVYQkyeTsxPoVduYQC1XrQTqnkiUrWWxd7NwRY0YvZCoxy6i6SlGFFHMHeoZzL9Hku_JEDRhMZP-PxljFaQfJFmUTbwz1zCNsx-1WPe9nyZlkxcIBCnEdDQFGbqdnwJkOcGcL0"/>
+</div>
+<p class="text-label-sm text-on-surface-variant font-medium">Tablets</p>
+<h3 class="text-body-md font-bold text-on-surface mb-sm line-clamp-1">Tablet ProVision 12.9"</h3>
+<div class="flex items-center justify-between mt-md">
+<span class="text-headline-sm text-primary font-bold">R$ 4.599,00</span>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all group">
+<div class="relative aspect-square rounded-lg overflow-hidden mb-md bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An ergonomic mechanical keyboard for executives, featuring a low-profile aluminum chassis and subtle white backlighting under the keys. The setting is a clean, modern desk with a minimal aesthetic. The lighting is bright and airy, giving the product a clean, high-utility professional look. Navy and silver accents align with the corporate brand style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArYaXpf1455AACuELAzEEjWFGxaN-pd6-lLOAbRoCw5v8a1mkXIHEZaNBX2kdykEJLe7-T-NeM0q_kqPGCc1dhy8jcl0aYx8sveyIJYRqIDk86Csyo2X1qz0r34bNhaazZpVdUvet0yU1Dg_4ZI7Eq2OMKJUTPL9_fsk_k3wqM_bCv9iSep7KvB4-WXe6vqMtWCgTPfAyZ1rSiezYg3xTDqcUPZ9iMUoobs7Z4_XPwA0-El_l3BIl6OME0zoRe4e8oSoyVIOKpFeQ"/>
+</div>
+<p class="text-label-sm text-on-surface-variant font-medium">Acessórios</p>
+<h3 class="text-body-md font-bold text-on-surface mb-sm line-clamp-1">Teclado Mecânico Stealth</h3>
+<div class="flex items-center justify-between mt-md">
+<span class="text-headline-sm text-primary font-bold">R$ 899,00</span>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all group">
+<div class="relative aspect-square rounded-lg overflow-hidden mb-md bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A compact, high-speed portable SSD drive with a rugged carbon fiber texture. It is resting on a stack of professional notebooks in a modern office. The image style is sharp and data-focused, symbolizing efficiency and storage security. Deep blacks and industrial greys dominate the color scheme, matching the pantazon e-commerce ecosystem aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB61mqxlyK3mxNJGzE8W4jHoa2NYiwwEHQXDqnqVecdGPGve2Cb_-fEt0YLFbe9LjCQO-MXBolQW8FxB-ss0CbB6PoRls6wdSLsztgmthZipFJy4Oo-DJ1ZeYV0SpG-8mp4CiKyfv5IuzYDmGUDJcMWyWMew-vQEV1N6nfrRQhsVwGsGzWiavZs5GNGq2tmkwglYzebgjLva3p0J2aDXq2kBfNUw4AD34MwXQjegYc3iSQJtMDIWsGrN7QahE9VrAJtMbzanvMX6ys"/>
+</div>
+<p class="text-label-sm text-on-surface-variant font-medium">Armazenamento</p>
+<h3 class="text-body-md font-bold text-on-surface mb-sm line-clamp-1">SSD Externo Titan 2TB</h3>
+<div class="flex items-center justify-between mt-md">
+<span class="text-headline-sm text-primary font-bold">R$ 1.499,00</span>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-md">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-on-background">pantazon</span>
+<p class="text-body-sm text-on-surface-variant">Elevando o padrão do comércio corporativo com tecnologia de ponta e logística de precisão.</p>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">face_nod</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">alternate_email</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">hub</span>
+</div>
+</div>
+<div class="space-y-sm">
+<h4 class="font-bold text-on-surface">Empresa</h4>
+<ul class="space-y-xs">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-bold text-on-surface">Suporte</h4>
+<ul class="space-y-xs">
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Shipping Info</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">Contact</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline transition-all" href="#">FAQs</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h4 class="font-bold text-on-surface">Newsletter</h4>
+<p class="text-label-sm text-on-surface-variant">Assine para receber ofertas exclusivas e atualizações de produtos.</p>
+<div class="flex gap-xs">
+<input class="bg-surface border border-outline-variant rounded px-3 py-2 text-label-sm w-full outline-none focus:ring-1 focus:ring-primary" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary text-white px-md py-2 rounded text-label-sm font-bold hover:bg-primary/90 transition-all">OK</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-lg md:px-xl py-lg border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-md">
+<span class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</span>
+<div class="flex gap-lg items-center opacity-50">
+<span class="material-symbols-outlined text-[32px]">credit_card</span>
+<span class="material-symbols-outlined text-[32px]">account_balance</span>
+<span class="material-symbols-outlined text-[32px]">contactless</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and Light Interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.innerText.includes('Carrinho')) {
+                    const icon = this.querySelector('.material-symbols-outlined');
+                    icon.innerText = 'check';
+                    this.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        icon.innerText = 'shopping_cart';
+                        this.classList.remove('bg-green-600');
+                    }, 2000);
+                }
+            });
+        });
+
+        // Simple variant selection simulation
+        const colorButtons = document.querySelectorAll('[id="color-label"]').length ? [] : document.querySelectorAll('button > div');
+        const colorLabel = document.getElementById('color-label');
+        
+        document.querySelectorAll('.w-10.h-10').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.w-10.h-10').forEach(b => b.classList.remove('border-primary'));
+                document.querySelectorAll('.w-10.h-10').forEach(b => b.classList.add('border-outline-variant'));
+                this.classList.add('border-primary');
+                this.classList.remove('border-outline-variant');
+                
+                // Change label text based on background color (simplified)
+                const bgColor = this.querySelector('div').classList.contains('bg-[#374151]') ? 'Espaço Grey' : 
+                                this.querySelector('div').classList.contains('bg-[#D1D5DB]') ? 'Prata Polar' : 'Azul Noturno';
+                colorLabel.innerText = bgColor;
+            });
+        });
+    </script>
+</body></html>

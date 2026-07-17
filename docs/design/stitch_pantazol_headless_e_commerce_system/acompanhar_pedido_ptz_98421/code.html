@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon | Rastreamento de Pedido</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#3a485b",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#d5e3fc",
+                        "secondary": "#565e74",
+                        "on-tertiary-container": "#c7d6ee",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#374559",
+                        "surface-tint": "#2151da",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#b9c7df",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#dae2fd",
+                        "outline-variant": "#c4c5d7",
+                        "tertiary-container": "#4f5d71",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed": "#dce1ff",
+                        "primary": "#0037b0",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#0d1c2e",
+                        "on-primary-fixed": "#001551",
+                        "secondary-container": "#dae2fd",
+                        "primary-container": "#1d4ed8",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-primary": "#b7c4ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#cad3ff",
+                        "on-secondary-container": "#5c647a",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#434655",
+                        "outline": "#747686",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed": "#131b2e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "3xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                        "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .timeline-line {
+            background: repeating-linear-gradient(to right, #E2E8F0, #E2E8F0 10px, transparent 10px, transparent 20px);
+        }
+        .timeline-line-active {
+            background: #0037b0;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary">pantazon</span>
+<nav class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Categories</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Deals</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">New Arrivals</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-64" placeholder="Buscar pedido..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="mt-24 mb-xl px-md md:px-xl max-w-container-max mx-auto">
+<!-- Breadcrumb -->
+<div class="mb-lg flex items-center gap-xs text-on-surface-variant font-label-md">
+<a class="hover:text-primary" href="#">Meus Pedidos</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-bold">Pedido #PTZ-882910</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Tracking Content -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Status Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg standard-shadow">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-xl">
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface mb-xs">Status do Pedido</h1>
+<p class="text-on-surface-variant font-body-sm">Pedido atualizado em: 24 de Outubro, 2023 - 14:35</p>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed px-md py-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="font-label-md">EM TRÂNSITO</span>
+</div>
+</div>
+<!-- Visual Timeline -->
+<div class="relative py-xl">
+<div class="absolute top-1/2 left-0 w-full h-[2px] -translate-y-1/2 timeline-line hidden md:block"></div>
+<div class="absolute top-1/2 left-0 w-3/4 h-[2px] -translate-y-1/2 bg-primary hidden md:block"></div>
+<div class="relative grid grid-cols-1 md:grid-cols-5 gap-xl md:gap-0">
+<!-- Step 1 -->
+<div class="flex flex-row md:flex-col items-center gap-md md:gap-base text-center group">
+<div class="z-10 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center standard-shadow">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</div>
+<div class="flex flex-col md:items-center text-left md:text-center pt-md">
+<span class="font-label-md text-on-surface font-bold">Pedido Realizado</span>
+<span class="text-body-sm text-on-surface-variant">22 Out, 09:12</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-row md:flex-col items-center gap-md md:gap-base text-center group">
+<div class="z-10 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center standard-shadow">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div class="flex flex-col md:items-center text-left md:text-center pt-md">
+<span class="font-label-md text-on-surface font-bold">Pagamento Confirmado</span>
+<span class="text-body-sm text-on-surface-variant">22 Out, 09:45</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-row md:flex-col items-center gap-md md:gap-base text-center group">
+<div class="z-10 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center standard-shadow">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+</div>
+<div class="flex flex-col md:items-center text-left md:text-center pt-md">
+<span class="font-label-md text-on-surface font-bold">Em Separação</span>
+<span class="text-body-sm text-on-surface-variant">23 Out, 11:20</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-row md:flex-col items-center gap-md md:gap-base text-center group">
+<div class="z-10 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center standard-shadow ring-4 ring-primary-container/20">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div class="flex flex-col md:items-center text-left md:text-center pt-md">
+<span class="font-label-md text-primary font-bold">Enviado</span>
+<span class="text-body-sm text-on-surface-variant">24 Out, 14:02</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-row md:flex-col items-center gap-md md:gap-base text-center group">
+<div class="z-10 w-10 h-10 rounded-full bg-surface-container-high text-outline flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">package_2</span>
+</div>
+<div class="flex flex-col md:items-center text-left md:text-center pt-md">
+<span class="font-label-md text-on-surface-variant">Entregue</span>
+<span class="text-body-sm text-on-surface-variant">Previsão: 27 Out</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Order Details & Shipping Map Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Delivery Address -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg standard-shadow">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<h2 class="text-headline-sm font-headline-sm">Endereço de Entrega</h2>
+</div>
+<div class="space-y-xs text-on-surface-variant">
+<p class="font-bold text-on-surface">Ricardo Silveira</p>
+<p>Avenida Paulista, 1500 - Apto 42</p>
+<p>Bela Vista - São Paulo / SP</p>
+<p>CEP: 01310-200</p>
+</div>
+</div>
+<!-- Carrier Info -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg standard-shadow">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">local_post_office</span>
+<h2 class="text-headline-sm font-headline-sm">Transportadora</h2>
+</div>
+<div class="space-y-xs text-on-surface-variant">
+<p class="font-bold text-on-surface">LogiExpress S.A.</p>
+<p>Código de Rastreio: <span class="text-primary font-mono cursor-pointer hover:underline">LX992837711BR</span></p>
+<p>Método: Entrega Expressa (2-4 dias úteis)</p>
+<button class="mt-md text-primary font-label-md flex items-center gap-xs hover:gap-sm transition-all">
+                                Ver detalhes no site da transportadora <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Items -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg standard-shadow">
+<h2 class="text-headline-sm font-headline-sm mb-lg">Itens do Pedido (3)</h2>
+<div class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<div class="py-md flex items-center justify-between first:pt-0 last:pb-0">
+<div class="flex items-center gap-md">
+<div class="w-20 h-20 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up product shot of high-end wireless noise-canceling headphones in sleek matte black finish. The lighting is soft and studio-quality, emphasizing the premium textures and metallic accents. Minimalist background in soft gray consistent with a modern e-commerce storefront aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTV9f-E9bTlQePoES_9l7DyMYS085nkUnfTVKy6J5d8nIuYB7sQFlCa6tWKFX78QlSMKwS4u2TnhCeZ2l_AIhw82RXT2IUlCDMF1u7MbIX1xIa-aZIEXTSKuZ7OMwpHytYal90JXMBxjwShktnunZjzQRRE-3ZnaaZaSsbyGRDa_xRhc8uxol2XwdOdEkTm4g6uXHq2d_Pya-JZJw3NBoknMLjGJMJFY3mCWcmh9o_39aA4_Lp7PC1X3fE45WVjrssd0mcDlpU7GY"/>
+</div>
+<div>
+<p class="font-body-md font-bold">Headphone Wireless Titan X1</p>
+<p class="text-body-sm text-on-surface-variant">Cor: Space Gray | Qtd: 1</p>
+</div>
+</div>
+<span class="font-bold text-primary">R$ 1.299,00</span>
+</div>
+<!-- Item 2 -->
+<div class="py-md flex items-center justify-between last:pb-0">
+<div class="flex items-center gap-md">
+<div class="w-20 h-20 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A premium leather protective case for headphones, presented in a minimalist, professional studio setting. The case has a rich cognac brown texture with visible fine stitching. The lighting is elegant and highlights the quality of the material against a clean, light-mode background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPriqe9YIYBfX8ncxJncFYmoFCA6_AzibQb1Wm6Qvmz39Axxqpt6ILtW9xxph4nqhuaf6k5faaML6EYd1HQriHDfWwd-cgJ2CWKB7BvnGsNamCBx5pdTFlmlQJXjpIWKBHBnzhBXoy4RYeIGmfxYmKRGyTXXRE-XN9BQjCr-mAHpwe0rHImNolJMQYtt2SErEeznIS77A9d5S5ec-eppXEFzMyFUpajgb7Z7ZYm3zYhk_Bq9Fy2Y3uwdcxFUxKsanHm1GNaE_P4jo"/>
+</div>
+<div>
+<p class="font-body-md font-bold">Capa Protetora de Couro</p>
+<p class="text-body-sm text-on-surface-variant">Cor: Marrom | Qtd: 1</p>
+</div>
+</div>
+<span class="font-bold text-primary">R$ 149,90</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Summary & Support -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Order Summary -->
+<aside class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg standard-shadow sticky top-24">
+<h2 class="text-headline-sm font-headline-sm mb-lg">Resumo Financeiro</h2>
+<div class="space-y-md mb-lg">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>R$ 1.448,90</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Frete</span>
+<span class="text-primary font-bold">Grátis</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Descontos (CUPOM10)</span>
+<span class="text-error">- R$ 144,89</span>
+</div>
+<div class="pt-md border-t border-outline-variant flex justify-between text-headline-sm font-bold text-on-surface">
+<span>Total</span>
+<span>R$ 1.304,01</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg mb-lg">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">credit_card</span>
+<div class="text-body-sm">
+<p class="font-bold text-on-surface">Cartão de Crédito</p>
+<p class="text-on-surface-variant">Final **** 1289</p>
+<p class="text-on-surface-variant">Parcelado em 10x sem juros</p>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<button class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">headset_mic</span>
+                            Suporte ao Cliente
+                        </button>
+<button class="w-full bg-surface-container-high text-on-surface py-3 rounded-lg font-bold hover:bg-outline-variant transition-colors">
+                            Imprimir Nota Fiscal
+                        </button>
+</div>
+</aside>
+<!-- Help Widget -->
+<div class="bg-secondary-container text-on-secondary-container p-lg rounded-xl flex flex-col gap-md">
+<h3 class="font-headline-sm">Dúvidas sobre o pedido?</h3>
+<p class="text-body-sm opacity-90">Confira nossa central de ajuda para saber mais sobre prazos de entrega e políticas de devolução.</p>
+<a class="font-bold flex items-center gap-xs hover:underline" href="#">
+                        Acessar Central de Ajuda
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant mt-3xl">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-md">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</span>
+<p class="text-body-sm text-on-surface-variant">A melhor experiência em e-commerce para empresas e consumidores de alto desempenho.</p>
+</div>
+<div>
+<h4 class="font-bold mb-md">Empresa</h4>
+<ul class="space-y-sm text-label-sm text-on-surface-variant">
+<li><a class="hover:underline" href="#">About Us</a></li>
+<li><a class="hover:underline" href="#">Contact</a></li>
+<li><a class="hover:underline" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-md">Jurídico</h4>
+<ul class="space-y-sm text-label-sm text-on-surface-variant">
+<li><a class="hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="hover:underline" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-md">Newsletter</h4>
+<div class="flex gap-xs">
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-sm w-full outline-none focus:border-primary" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-md text-center text-label-sm text-on-surface-variant">
+            © 2024 pantazon E-Commerce. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Micro-interactions and subtle effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-[0.98]');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-[0.98]');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-[0.98]');
+            });
+        });
+
+        // Dynamic header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

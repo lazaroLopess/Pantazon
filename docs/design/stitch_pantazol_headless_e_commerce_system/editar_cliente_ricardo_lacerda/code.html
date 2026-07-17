@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Customer: Ricardo Lacerda | pantazon Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .sidebar-transition {
+            transition: transform 0.2s ease-in-out;
+        }
+        /* Custom Scrollbar for Admin UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #CBD5E1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#eceef0",
+                      "secondary-container": "#dae2fd",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#3a485b",
+                      "tertiary-container": "#4f5d71",
+                      "on-primary-fixed": "#001551",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary": "#374559",
+                      "secondary": "#565e74",
+                      "surface-bright": "#f7f9fb",
+                      "secondary-fixed": "#dae2fd",
+                      "on-secondary": "#ffffff",
+                      "primary": "#0037b0",
+                      "primary-container": "#1d4ed8",
+                      "primary-fixed": "#dce1ff",
+                      "inverse-surface": "#2d3133",
+                      "surface": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary-container": "#c7d6ee",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#d5e3fc",
+                      "surface-dim": "#d8dadc",
+                      "on-background": "#191c1e",
+                      "surface-tint": "#2151da",
+                      "outline": "#747686",
+                      "on-tertiary-fixed": "#0d1c2e",
+                      "outline-variant": "#c4c5d7",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-high": "#e6e8ea",
+                      "on-surface": "#191c1e",
+                      "background": "#f7f9fb",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#5c647a",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "on-surface-variant": "#434655",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed": "#131b2e",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#b9c7df",
+                      "on-primary-container": "#cad3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "3xl": "64px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "2xl": "48px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["Geist"],
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="hidden lg:flex flex-col h-screen w-60 bg-on-secondary-fixed text-on-secondary shadow-md fixed left-0 top-0 py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-label-sm font-label-sm text-outline-variant opacity-70">Enterprise Manager</p>
+</div>
+<nav class="flex-1 flex flex-col space-y-1">
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<!-- Active Tab: Customers -->
+<a class="bg-primary text-white rounded-lg mx-2 my-1 p-3 flex items-center gap-3 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-md">
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-60 min-h-screen pb-xl">
+<!-- Header -->
+<header class="h-16 flex justify-between items-center px-lg md:px-xl bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="lg:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<nav class="flex items-center gap-xs text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-primary" href="#">Customers</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Edit Ricardo Lacerda</span>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<span class="hidden md:inline-block text-label-sm font-label-sm text-outline">Last updated: 2 hours ago</span>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="A clean, professional headshot of a high-level enterprise software administrator wearing professional attire. The lighting is bright and even, against a neutral studio background, maintaining the corporate modern aesthetic. High-quality portrait photography for a system profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZpTWiLqS11pGB1qxmWtHQdqlyiGzu1abVOtL2Tg7omQoNXeWK17044wKMthx0u6_QKRuuBYncfykmXtdaAbDHE379K4PmAgl9_TF6ubwpyrZa9yYbzGfNFD4-rH2GENJlMQh4Z9227du0ss4TOJG6xxtbJvcKvOaETtFStgcdXvh6yngkiU0KoydZLzP0XUkmwfnYcmiZQhYLkyZA9ezJMn6319SeUNRPdqrRlsqyKiI__XVIWM4TO8OumRohbcaSxKTHbNiSFvI"/>
+</div>
+</div>
+</header>
+<!-- Form Layout -->
+<div class="max-w-[1000px] mx-auto py-xl px-lg">
+<!-- Warning Banner for Sensitive Changes -->
+<div class="mb-lg bg-error-container text-on-error-container p-md rounded-lg flex items-start gap-md border border-error/20">
+<span class="material-symbols-outlined text-error">warning</span>
+<div>
+<h4 class="font-bold text-label-md font-label-md">Security Advisory</h4>
+<p class="text-body-sm font-body-sm opacity-90">Modifying document numbers or blocking users will trigger a mandatory compliance review and notify the account holder immediately.</p>
+</div>
+</div>
+<form class="space-y-gutter">
+<!-- Layout: Bento-style Cards -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Personal & Contact (8 Cols) -->
+<div class="md:col-span-8 space-y-gutter">
+<!-- Personal Data Card -->
+<section class="bg-surface-container-lowest border border-outline-variant p-xl rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">person</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Personal Data</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Full Name</label>
+<input class="w-full h-11 px-md bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="text" value="Ricardo Lacerda"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Birth Date</label>
+<input class="w-full h-11 px-md bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="date" value="1985-06-12"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Document Number (Masked)</label>
+<div class="relative">
+<input class="w-full h-11 px-md bg-surface-container-low border border-outline-variant rounded-lg cursor-not-allowed" readonly="" type="text" value="***.482.901-**"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-primary hover:bg-primary-container/10 p-1 rounded transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<span class="text-[11px] text-outline italic">Sensitive field. Only authorized personnel can unmask.</span>
+</div>
+</div>
+</section>
+<!-- Contact Information Card -->
+<section class="bg-surface-container-lowest border border-outline-variant p-xl rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">mail</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Contact</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Email Address</label>
+<input class="w-full h-11 px-md bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="email" value="ricardo.lacerda@enterprise.com"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Primary Phone</label>
+<input class="w-full h-11 px-md bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="tel" value="+55 (11) 98273-4410"/>
+</div>
+</div>
+</section>
+<!-- Internal Observations -->
+<section class="bg-surface-container-lowest border border-outline-variant p-xl rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Internal Observations</h2>
+</div>
+<textarea class="w-full p-md bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-sm font-body-sm" placeholder="Add confidential notes for staff members..." rows="4">Client since 2019. Prefers express shipping for all bulk orders. Frequent attendee at regional commerce summits.</textarea>
+</section>
+</div>
+<!-- Right Column: Status & Preferences (4 Cols) -->
+<aside class="md:col-span-4 space-y-gutter">
+<!-- Account Status Card -->
+<section class="bg-surface-container-lowest border border-outline-variant p-xl rounded-xl shadow-sm">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-md">Account Status</h2>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-md bg-surface-container rounded-lg border border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-body-sm font-body-sm font-semibold">Active</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<button class="w-full flex items-center justify-center gap-sm py-md text-error font-semibold hover:bg-error/5 rounded-lg border border-error/20 transition-colors" onclick="confirmBlock()" type="button">
+<span class="material-symbols-outlined">block</span>
+<span class="text-label-md">Request Account Block</span>
+</button>
+<p class="text-[12px] text-on-surface-variant text-center px-sm">Blocking will restrict access to order history and active loyalty programs.</p>
+</div>
+</section>
+<!-- Preferences Card -->
+<section class="bg-surface-container-lowest border border-outline-variant p-xl rounded-xl shadow-sm">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-md">Preferences</h2>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant" id="pref_promo" type="checkbox"/>
+<label class="text-body-sm font-body-sm" for="pref_promo">Marketing Emails</label>
+</div>
+<div class="flex items-center gap-md">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant" id="pref_sms" type="checkbox"/>
+<label class="text-body-sm font-body-sm" for="pref_sms">SMS Notifications</label>
+</div>
+<div class="flex items-center gap-md">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant" id="pref_privacy" type="checkbox"/>
+<label class="text-body-sm font-body-sm" for="pref_privacy">Third-party Sharing</label>
+</div>
+<div class="pt-md mt-md border-t border-outline-variant">
+<label class="text-label-sm font-label-sm text-on-surface-variant mb-xs block">Preferred Language</label>
+<select class="w-full h-10 px-sm bg-white border border-outline-variant rounded-lg text-body-sm outline-none">
+<option>Portuguese (Brazil)</option>
+<option>English (US)</option>
+<option>Spanish</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Quick Profile Card -->
+<div class="bg-primary/5 border border-primary/10 p-xl rounded-xl overflow-hidden relative">
+<div class="flex flex-col items-center gap-sm relative z-10">
+<div class="w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A detailed, corporate-style photo of an elegant male executive in his 40s, with a friendly yet professional expression. He is wearing a modern charcoal blazer over a crisp white shirt. The image is bright, with clean edges and high contrast, suitable for a professional admin panel profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxuJMJUO4X3SpMuaA-c0aV9xbi3NdYPZ1c4vmcuzeHYOQ58ZJK_c135CI3pqdg_4-4PQp9aWr-OfIlsVNEnzVduY7grwI2H3P-UYrA3O6SgHG55W4oTO6sXakNMp5VxIaN5s7QotRpb8QdqV6WLqTkAKuuKNq5GYpeMsmYIHcJUpd8EzGhfzKew-dIdSixj57QbSpNhWWbPNki6VUgjFwOvzGgPj0q2R9r-toIHXn8p0K_a-BHvSuXTYL1XVti0POtRDPae2sSIg"/>
+</div>
+<div class="text-center">
+<p class="font-bold text-on-surface">Ricardo Lacerda</p>
+<p class="text-label-sm font-label-sm text-primary">Enterprise Partner</p>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-primary">verified</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-md pt-xl border-t border-outline-variant mt-3xl">
+<button class="flex items-center gap-sm text-primary hover:bg-primary/5 px-lg py-md rounded-lg transition-colors order-2 md:order-1" type="button">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Restore Default</span>
+</button>
+<div class="flex items-center gap-md w-full md:w-auto order-1 md:order-2">
+<button class="flex-1 md:flex-none px-xl py-md text-on-surface-variant hover:bg-surface-container-highest rounded-lg font-semibold transition-all" type="button">
+                            Cancel
+                        </button>
+<button class="flex-1 md:flex-none px-2xl py-md bg-primary text-white hover:bg-primary-container rounded-lg font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5" type="submit">
+                            Save Changes
+                        </button>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- Modal for Block Confirmation (Hidden by default) -->
+<div class="fixed inset-0 bg-black/60 z-[100] hidden items-center justify-center p-md backdrop-blur-sm" id="blockModal">
+<div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-xl border border-outline-variant">
+<div class="flex items-center gap-md text-error mb-md">
+<span class="material-symbols-outlined text-[32px]">warning</span>
+<h3 class="text-headline-sm font-headline-sm">Confirm Block</h3>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-xl">
+                Are you sure you want to block <strong>Ricardo Lacerda</strong>? This will immediately suspend all platform access and notify the customer success team.
+            </p>
+<div class="flex gap-md">
+<button class="flex-1 py-md border border-outline-variant rounded-lg font-semibold hover:bg-surface-container transition-colors" onclick="closeModal()">Abort</button>
+<button class="flex-1 py-md bg-error text-white rounded-lg font-bold hover:bg-red-700 transition-colors" onclick="executeBlock()">Yes, Block Account</button>
+</div>
+</div>
+</div>
+<script>
+        function confirmBlock() {
+            document.getElementById('blockModal').classList.remove('hidden');
+            document.getElementById('blockModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('blockModal').classList.add('hidden');
+            document.getElementById('blockModal').classList.remove('flex');
+        }
+
+        function executeBlock() {
+            alert('Account blocking protocol initiated for Ricardo Lacerda.');
+            closeModal();
+        }
+
+        // Simple interaction for form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Success';
+                btn.classList.replace('bg-primary', 'bg-green-600');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.classList.replace('bg-green-600', 'bg-primary');
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

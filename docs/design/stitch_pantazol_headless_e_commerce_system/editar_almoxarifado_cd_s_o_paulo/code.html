@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Warehouse: CD São Paulo - Principal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-container": "#eceef0",
+                "secondary-container": "#dae2fd",
+                "on-secondary-fixed-variant": "#3f465c",
+                "surface-container-lowest": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-tertiary-fixed-variant": "#3a485b",
+                "tertiary-container": "#4f5d71",
+                "on-primary-fixed": "#001551",
+                "surface-variant": "#e0e3e5",
+                "tertiary": "#374559",
+                "secondary": "#565e74",
+                "surface-bright": "#f7f9fb",
+                "secondary-fixed": "#dae2fd",
+                "on-secondary": "#ffffff",
+                "primary": "#1D4ED8",
+                "primary-container": "#1d4ed8",
+                "primary-fixed": "#dce1ff",
+                "inverse-surface": "#2d3133",
+                "surface": "#f7f9fb",
+                "surface-container-highest": "#e0e3e5",
+                "on-tertiary-container": "#c7d6ee",
+                "on-tertiary": "#ffffff",
+                "primary-fixed-dim": "#b7c4ff",
+                "on-error": "#ffffff",
+                "tertiary-fixed": "#d5e3fc",
+                "surface-dim": "#d8dadc",
+                "on-background": "#191c1e",
+                "surface-tint": "#2151da",
+                "outline": "#747686",
+                "on-tertiary-fixed": "#0d1c2e",
+                "outline-variant": "#c4c5d7",
+                "surface-container-low": "#f2f4f6",
+                "surface-container-high": "#e6e8ea",
+                "on-surface": "#191c1e",
+                "background": "#f7f9fb",
+                "secondary-fixed-dim": "#bec6e0",
+                "inverse-primary": "#b7c4ff",
+                "error-container": "#ffdad6",
+                "on-secondary-container": "#5c647a",
+                "on-primary-fixed-variant": "#0039b5",
+                "on-surface-variant": "#434655",
+                "on-primary": "#ffffff",
+                "inverse-on-surface": "#eff1f3",
+                "on-secondary-fixed": "#131b2e",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#b9c7df",
+                "on-primary-container": "#cad3ff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "8px",
+                "xl": "12px",
+                "full": "9999px"
+              },
+              "spacing": {
+                "sm": "8px",
+                "md": "16px",
+                "gutter": "24px",
+                "3xl": "64px",
+                "xs": "4px",
+                "lg": "24px",
+                "base": "4px",
+                "xl": "32px",
+                "2xl": "48px",
+                "container-max": "1280px"
+              },
+              "fontFamily": {
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-sm": ["Geist"],
+                "body-sm": ["Inter"],
+                "label-md": ["Geist"],
+                "display-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "headline-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "display-md": ["Inter"]
+              },
+              "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="hidden lg:flex flex-col h-screen w-60 fixed left-0 bg-on-secondary-fixed text-on-secondary dark:bg-on-background dark:text-on-surface shadow-md py-md">
+<div class="px-md mb-xl">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</h1>
+<p class="text-label-sm font-label-sm text-outline-variant">Enterprise Manager</p>
+</div>
+<nav class="flex-1">
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-sm">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center bg-primary dark:bg-primary-container text-white dark:text-on-primary-container rounded-lg mx-2 my-1 p-3 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-sm">inventory_2</span>
+<span class="font-label-md text-label-md">Products</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-sm">shopping_bag</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-sm">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white dark:text-surface-variant dark:hover:text-on-surface mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mr-sm">leaderboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant/20 pt-md">
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center text-outline-variant hover:text-white mx-2 my-1 p-3 hover:bg-primary-container/20 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-sm">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-60 min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="h-16 flex justify-between items-center w-full px-lg md:px-xl border-b border-outline-variant bg-surface dark:bg-inverse-surface z-10">
+<div class="flex items-center gap-md">
+<a class="flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">Warehouse Editor</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-white px-md py-sm rounded-lg font-label-md text-label-md hover:bg-blue-700 transition-all standard-shadow">
+                    Save Changes
+                </button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-lg md:p-xl flex-1 max-w-container-max w-full mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
+<!-- Main Form Section -->
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Basic Information Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-xl standard-shadow">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">warehouse</span>
+<h3 class="text-headline-sm font-headline-sm">General Information</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Warehouse Name</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:ring-opacity-20 focus:border-primary outline-none text-body-md font-body-md" type="text" value="CD São Paulo - Principal"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Code</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm text-body-md font-body-md cursor-not-allowed" readonly="" type="text" value="WH-SP-001"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Responsible Manager</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm pr-10 focus:ring-2 focus:ring-primary focus:ring-opacity-20 focus:border-primary outline-none text-body-md font-body-md" type="text" value="Ricardo Mendes"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">person_search</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Status</label>
+<select class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:ring-opacity-20 focus:border-primary outline-none text-body-md font-body-md">
+<option selected="" value="active">Active</option>
+<option value="maintenance">Maintenance</option>
+<option value="inactive">Inactive</option>
+</select>
+</div>
+<div class="md:col-span-2 flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Full Address</label>
+<textarea class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:ring-opacity-20 focus:border-primary outline-none text-body-md font-body-md" rows="2">Av. das Nações Unidas, 12551 - Pinheiros, São Paulo - SP, 04578-903</textarea>
+</div>
+</div>
+</div>
+<!-- Operational Settings -->
+<div class="bg-white border border-outline-variant rounded-xl p-xl standard-shadow">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="text-headline-sm font-headline-sm">Operational Parameters</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Operating Hours</label>
+<div class="flex gap-sm">
+<input class="flex-1 bg-white border border-outline-variant rounded-lg px-md py-sm outline-none text-body-md font-body-md" type="time" value="06:00"/>
+<span class="flex items-center text-outline">to</span>
+<input class="flex-1 bg-white border border-outline-variant rounded-lg px-md py-sm outline-none text-body-md font-body-md" type="time" value="22:00"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Storage Capacity (m³)</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm pr-12 outline-none text-body-md font-body-md" type="number" value="15000"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-label-sm text-outline">m³</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact & Deactivation Section -->
+<div class="lg:col-span-1 space-y-gutter">
+<!-- Warehouse Map Visualization -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden standard-shadow">
+<div class="h-48 w-full bg-surface-container relative">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean, professional bird's eye view satellite map visualization of an industrial logistics zone in São Paulo, Brazil. The map uses a sophisticated dark-navy and silver theme with subtle grid lines and pin markers. Modern, corporate aesthetic with high-contrast detail, reflecting a logistics management interface." data-location="São Paulo, Brazil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWl3TpxwHPwTe2B7sJKASRvPTCFTqwDIiwLrIXsAA028fsewVmcSBo3Pc0P0KLaepOkSCSaXrbuxHGt748l-7fGXznfrocgqn4g1P9hXgC2EJz0JihZGkHGIC64WHYH-kZTD27VOvuJuVau9mpt_HmJTdCSrp39UiarnNXBDF5qTyEDOiWVMUVNs1NtB-VKbi5kB--FYtBEoV3Sj_SNeGLtMdQdoD7OUHbb-Kg4vQZ-yEleTl0rw8ntHvrAURvA11wdNwDEk9426w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-md left-md bg-white px-md py-xs rounded-full standard-shadow flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="text-label-sm font-label-sm text-on-surface">São Paulo - SP</span>
+</div>
+</div>
+<div class="p-md">
+<h4 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Storage Distribution</h4>
+<div class="mt-sm flex gap-xs h-2 rounded-full overflow-hidden bg-surface-container">
+<div class="w-[65%] bg-primary"></div>
+<div class="w-[20%] bg-secondary-container"></div>
+<div class="w-[15%] bg-outline-variant"></div>
+</div>
+<div class="mt-md flex justify-between text-label-sm">
+<span class="text-on-surface">65% Utilized</span>
+<span class="text-outline">15k m³ Total</span>
+</div>
+</div>
+</div>
+<!-- CRITICAL IMPACT SECTION -->
+<div class="bg-error-container/20 border-2 border-error/20 rounded-xl p-xl standard-shadow">
+<div class="flex items-center gap-sm mb-md text-error">
+<span class="material-symbols-outlined">warning</span>
+<h3 class="text-headline-sm font-headline-sm">Deactivation Impact</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-lg leading-relaxed">
+                            Deactivating <span class="font-bold">'CD São Paulo - Principal'</span> will halt all picking, receiving, and shipping operations for this location immediately.
+                        </p>
+<div class="space-y-md mb-xl">
+<div class="flex items-center justify-between p-md bg-white/50 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<span class="text-label-md font-label-md">Stored SKUs</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface">8,420</span>
+</div>
+<div class="flex items-center justify-between p-md bg-white/50 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">event_available</span>
+<span class="text-label-md font-label-md">Active Reservations</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface">142</span>
+</div>
+</div>
+<!-- Explicit Confirmation Logic -->
+<div class="space-y-md">
+<label class="flex items-start gap-sm cursor-pointer group">
+<div class="relative flex items-center mt-1">
+<input class="peer h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary transition-all cursor-pointer" id="confirm-deactivation" type="checkbox"/>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">
+                                    I confirm that I understand the operational impact of deactivating this warehouse.
+                                </span>
+</label>
+<button class="w-full bg-error text-white py-md rounded-lg font-label-md text-label-md opacity-50 cursor-not-allowed hover:bg-red-700 transition-all shadow-md flex items-center justify-center gap-sm" disabled="" id="deactivate-btn">
+<span class="material-symbols-outlined text-[20px]">block</span>
+                                Deactivate Warehouse
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Anchor -->
+<footer class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter mt-auto border-t border-outline-variant bg-surface-container-low">
+<div class="col-span-1 md:col-span-1">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-on-background mb-md">pantazon</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-sm font-bold text-primary uppercase">Quick Links</span>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">About Us</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-sm font-bold text-primary uppercase">Operations</span>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">Warehouse Management</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">Shipping Info</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-sm font-bold text-primary uppercase">Support</span>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">Contact Center</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+</div>
+</footer>
+</main>
+<!-- Mobile Navigation Anchor -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white border-t border-outline-variant flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px]">Assets</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-[10px]">Create</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">Config</span>
+</button>
+</nav>
+<script>
+        // Simple Interaction for Deactivation Confirmation
+        const checkbox = document.getElementById('confirm-deactivation');
+        const btn = document.getElementById('deactivate-btn');
+
+        checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.classList.add('opacity-100', 'cursor-pointer');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                btn.classList.remove('opacity-100', 'cursor-pointer');
+            }
+        });
+
+        // Hover animation for cards
+        const cards = document.querySelectorAll('.standard-shadow');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

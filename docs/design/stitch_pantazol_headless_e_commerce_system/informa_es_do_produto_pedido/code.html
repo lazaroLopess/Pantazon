@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pantazon | Acompanhamento de Pedido</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary": "#565e74",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#374559",
+                    "surface-tint": "#2151da",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container-high": "#e6e8ea",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#dae2fd",
+                    "outline-variant": "#c4c5d7",
+                    "tertiary-container": "#4f5d71",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#dce1ff",
+                    "primary": "#0037b0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "on-primary-fixed": "#001551",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#cad3ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#434655",
+                    "outline": "#747686",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#131b2e",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "2xl": "48px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "3xl": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .order-step-active {
+            border-color: #1d4ed8;
+            color: #1d4ed8;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid #e2e8f0;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-16">
+<div class="text-headline-md font-headline-md font-bold text-primary">
+                pantazon
+            </div>
+<div class="flex items-center gap-md">
+<button class="p-base text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-base text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-md mx-auto px-md py-lg">
+<!-- Order Header Card -->
+<section class="glass-card rounded-xl p-lg custom-shadow mb-lg">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface">Pedido #PZ-88231</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Realizado em 14 de Outubro, 2024</p>
+</div>
+<div class="bg-primary-container/10 text-primary-container px-sm py-xs rounded-full text-label-sm font-label-sm">
+                    Em Rota
+                </div>
+</div>
+<!-- Bento Status Visualization -->
+<div class="grid grid-cols-2 gap-sm mt-lg">
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant">
+<span class="material-symbols-outlined text-primary mb-xs">local_shipping</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Previsão</p>
+<p class="text-body-md font-body-md font-bold">Amanhã, até 18h</p>
+</div>
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant">
+<span class="material-symbols-outlined text-primary mb-xs">location_on</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Localização</p>
+<p class="text-body-md font-body-md font-bold">São Paulo, SP</p>
+</div>
+</div>
+</section>
+<!-- Progress Timeline -->
+<section class="glass-card rounded-xl p-lg custom-shadow mb-lg">
+<h2 class="text-label-md font-label-md text-on-surface-variant mb-lg uppercase tracking-wider">Status do Envio</h2>
+<div class="space-y-lg relative">
+<!-- Vertical Line -->
+<div class="absolute left-3.5 top-2 bottom-2 w-0.5 bg-outline-variant"></div>
+<!-- Step 1 (Completed) -->
+<div class="flex gap-lg relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" style="font-size: 16px;">check</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Pedido Confirmado</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">14 Out, 09:30</p>
+</div>
+</div>
+<!-- Step 2 (Completed) -->
+<div class="flex gap-lg relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" style="font-size: 16px;">check</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Em Processamento</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">14 Out, 14:15</p>
+</div>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex gap-lg relative z-10">
+<div class="w-7 h-7 rounded-full bg-white border-4 border-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-primary">Em Rota de Entrega</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">15 Out, 08:45 • Saiu do centro de distribuição</p>
+</div>
+</div>
+<!-- Step 4 (Pending) -->
+<div class="flex gap-lg relative z-10 opacity-40">
+<div class="w-7 h-7 rounded-full bg-surface-container border-2 border-outline-variant flex items-center justify-center">
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Entregue</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Aguardando chegada</p>
+</div>
+</div>
+</div>
+<a class="mt-xl w-full py-md px-lg border border-outline rounded-lg flex items-center justify-center gap-sm text-on-surface font-label-md hover:bg-surface-container-low transition-colors" href="#">
+                Ver Rastreamento Completo
+                <span class="material-symbols-outlined text-md">open_in_new</span>
+</a>
+</section>
+<!-- Contextual Help / Action Area -->
+<section class="grid grid-cols-1 gap-md">
+<div class="bg-primary text-white rounded-xl p-lg custom-shadow flex flex-col items-center text-center">
+<h3 class="text-headline-sm font-headline-sm mb-xs">Precisa de ajuda?</h3>
+<p class="text-body-sm font-body-sm mb-lg text-primary-fixed-dim">Nossa equipe está pronta para resolver qualquer dúvida sobre seu pedido.</p>
+<button class="w-full bg-white text-primary py-md rounded-lg font-label-md hover:bg-primary-fixed transition-colors active:scale-[0.98] duration-200">
+                    Solicitar Suporte Agora
+                </button>
+</div>
+<div class="bg-surface-container rounded-xl p-lg border border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional, clean close-up photograph of a minimalist high-tech ergonomic keyboard on a white desk with soft overhead lighting. The aesthetic is modern and corporate, featuring sleek dark gray and blue tones that match the pantazon brand identity. The lighting is crisp and the background is a soft, out-of-focus office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC94IfhE3vT1kJbqJDvhMrRBSmQOkZH28of1pfMSC1y_1ojVIVTzqwdWU1s2YTKlMmhr7l4bjCxiyYcNSHIB2ed2jwwa9ug2SWnRXgKzd2Qzvh85Tdgw_Q-jDmHGb4izrc-pkazu_DfT3qBnuTjh2TU0LA4gAT4j0md0exdyEnwF3TA6eeQMx8wxrzmaI-2QunWJwbIIeD-Iv_ztd2Kt-l-VazhGZurlr4q_uJ9j1oajUgFQR63RPe3EDZJbBZR55b40ibhEJpIiLc"/>
+</div>
+<div>
+<h4 class="text-body-md font-body-md font-bold">Teclado pantazon K100</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Eletro-mecânico • Cinza Espacial</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shell Implementation) -->
+<footer class="bg-surface-container-highest border-t border-outline-variant mt-3xl">
+<div class="w-full py-xl px-lg max-w-container-max mx-auto text-center">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface mb-md">pantazon</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-lg">
+                © 2024 pantazon E-Commerce. Todos os direitos reservados.
+            </p>
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline" href="#">Sobre Nós</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline" href="#">Política de Privacidade</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline" href="#">Termos de Serviço</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:underline" href="#">Suporte</a>
+</nav>
+</div>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple haptic-like feedback for buttons on mobile
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.opacity = '0.7';
+            });
+            button.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+
+        // Dynamic greeting based on time of day
+        const updateStatus = () => {
+            console.log('Status monitor active');
+        }
+        updateStatus();
+    </script>
+</body></html>

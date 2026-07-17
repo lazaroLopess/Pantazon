@@ -1,0 +1,3 @@
+export function LoadingGrid({label='Carregando produtos'}:{label?:string}){return <div className="skeleton-grid" role="status" aria-label={label}>{Array.from({length:4},(_,i)=><div className="skeleton-card" key={i}><span/><span/><span/></div>)}</div>}
+export function ErrorState({message,onRetry}:{message:string;onRetry?:()=>void}){return <div className="state-card" role="alert"><strong>Não foi possível carregar.</strong><p>{message}</p>{onRetry&&<button className="button secondary" onClick={onRetry}>Tentar novamente</button>}</div>}
+export function EmptyState({title,description}:{title:string;description:string}){return <div className="state-card"><span className="state-icon" aria-hidden="true">⌕</span><h2>{title}</h2><p>{description}</p></div>}

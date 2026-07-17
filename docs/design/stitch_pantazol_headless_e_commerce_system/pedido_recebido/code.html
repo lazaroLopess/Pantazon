@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pedido Confirmado | pantazon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary": "#565e74",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#374559",
+                    "surface-tint": "#2151da",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container-high": "#e6e8ea",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#dae2fd",
+                    "outline-variant": "#c4c5d7",
+                    "tertiary-container": "#4f5d71",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#dce1ff",
+                    "primary": "#0037b0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "on-primary-fixed": "#001551",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#cad3ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#434655",
+                    "outline": "#747686",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#131b2e",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "2xl": "48px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "3xl": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .success-icon-animation {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .confetti-canvas {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Bar -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant z-40">
+<div class="flex justify-between items-center w-full px-lg md:px-xl max-w-container-max mx-auto h-16">
+<div class="text-headline-md font-headline-md font-bold text-primary">pantazon</div>
+<div class="hidden md:flex gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Categories</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Deals</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">New Arrivals</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Support</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-lg py-3xl relative overflow-hidden">
+<!-- Success Content Container -->
+<div class="max-w-2xl w-full text-center space-y-xl z-10">
+<!-- Icon and Main Greeting -->
+<div class="flex flex-col items-center space-y-md">
+<div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center success-icon-animation shadow-sm">
+<span class="material-symbols-outlined text-6xl text-green-600" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="text-display-md font-display-lg text-on-surface">Obrigado pela sua compra!</h1>
+<p class="text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                    Seu pedido foi recebido e está sendo processado. Enviamos um e-mail com todos os detalhes para você.
+                </p>
+</div>
+<!-- Order Badge -->
+<div class="bg-primary-container text-on-primary-container py-sm px-lg rounded-full inline-block font-label-md">
+                Número do Pedido: <span class="font-bold">#PTZ-98421</span>
+</div>
+<!-- Bento Summary Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter text-left">
+<!-- Shipping Summary -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-[0_4px_6px_-1px_rgba(15,23,42,0.1)]">
+<div class="flex items-center gap-sm mb-md text-primary">
+<span class="material-symbols-outlined">local_shipping</span>
+<h3 class="font-headline-sm text-on-surface">Resumo da Entrega</h3>
+</div>
+<div class="space-y-xs">
+<p class="text-label-md text-outline font-bold uppercase tracking-wider">Endereço</p>
+<p class="text-body-md text-on-surface-variant">Avenida Paulista, 1000 - Apto 42<br/>Bela Vista, São Paulo - SP<br/>CEP: 01310-100</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant space-y-xs">
+<p class="text-label-md text-outline font-bold uppercase tracking-wider">Previsão</p>
+<p class="text-body-md text-on-surface-variant">Entrega estimada em <span class="font-bold text-on-surface">3-5 dias úteis</span></p>
+</div>
+</div>
+<!-- Map/Location Visualization -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgba(15,23,42,0.1)] flex flex-col h-full">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A clean, minimalist isometric map representation of a stylized urban grid in São Paulo. The aesthetic is modern and corporate with a color palette of soft blues, greys, and a single vibrant blue pin indicating a delivery location. The lighting is bright and professional, evoking a sense of efficiency and reliability." data-location="São Paulo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGKuP91crdaDjxvrTSU0ddR3Kf77bsj29QqgmCJ39OByDZ-3R570WT5Jblj665z5LsD29hb73hghtTe3Zl1yrjvVlwUpaKhUFjjNdIus4oxXt75xMpSKD0CIphn-GKlJeAEHbVUF1UJTZ-kwviOwTsuYEymT38kFuKnevomO0jFo6AwcdtUFIpDy9B5Yh4U3hO-nzpWsfAp-cDyCgCWuicExr61XVsRrSmdxtY_is-HgbMWGb_zFcdq9e0dRvK6cjORNz5YA29iq4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-lg pt-0 flex-grow flex flex-col justify-end">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined">map</span>
+<span class="text-body-sm font-medium">Saindo do Centro de Distribuição SP-01</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="flex flex-col sm:flex-row gap-md justify-center pt-md">
+<button class="bg-primary text-white font-semibold py-md px-3xl rounded-lg hover:shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-sm">
+                    Acompanhar Pedido
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="bg-secondary-container text-on-secondary-container font-semibold py-md px-3xl rounded-lg hover:bg-opacity-80 transition-all">
+                    Continuar Comprando
+                </button>
+</div>
+<!-- Support Note -->
+<p class="text-body-sm text-outline pt-lg">
+                Dúvidas sobre seu pedido? <a class="text-primary hover:underline" href="#">Fale com nosso suporte</a>
+</p>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-md">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</div>
+<p class="text-body-sm text-on-surface-variant">Transformando a experiência de compra corporativa com tecnologia e eficiência.</p>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md font-bold text-on-surface uppercase">Empresa</h4>
+<nav class="flex flex-col space-y-xs">
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">About Us</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Privacy Policy</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Terms of Service</a>
+</nav>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md font-bold text-on-surface uppercase">Suporte</h4>
+<nav class="flex flex-col space-y-xs">
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Shipping Info</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">Contact</a>
+<a class="text-body-sm text-on-surface-variant hover:underline" href="#">FAQ</a>
+</nav>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md font-bold text-on-surface uppercase">Newsletter</h4>
+<div class="flex gap-xs">
+<input class="bg-surface rounded-lg border-outline-variant text-body-sm w-full" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full py-md px-lg md:px-xl max-w-container-max mx-auto border-t border-outline-variant text-center">
+<p class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+</div>
+</footer>
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<script>
+        // Simple micro-interaction: Confetti effect on load
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#0037b0', '#1d4ed8', '#b7c4ff', '#ffffff', '#22c55e'];
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: -20,
+                size: Math.random() * 8 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speed: Math.random() * 3 + 2,
+                angle: Math.random() * 360,
+                spin: Math.random() * 0.2 - 0.1
+            };
+        }
+
+        for (let i = 0; i < 100; i++) {
+            particles.push(createParticle());
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.y += p.speed;
+                p.angle += p.spin;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+
+                if (p.y > canvas.height) {
+                    particles[i] = createParticle();
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+
+        // Stop confetti after 4 seconds to keep the UI clean
+        setTimeout(() => {
+            particles = [];
+            canvas.style.display = 'none';
+        }, 4000);
+    </script>
+</body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro de Novo Produto - pantazon Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3a485b",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d5e3fc",
+                    "secondary": "#565e74",
+                    "on-tertiary-container": "#c7d6ee",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#374559",
+                    "surface-tint": "#2151da",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed-dim": "#b9c7df",
+                    "surface-container-high": "#e6e8ea",
+                    "background": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#dae2fd",
+                    "outline-variant": "#c4c5d7",
+                    "tertiary-container": "#4f5d71",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed": "#dce1ff",
+                    "primary": "#0037b0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0d1c2e",
+                    "on-primary-fixed": "#001551",
+                    "secondary-container": "#dae2fd",
+                    "primary-container": "#1d4ed8",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#b7c4ff",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#cad3ff",
+                    "on-secondary-container": "#5c647a",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#434655",
+                    "outline": "#747686",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed": "#131b2e",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "2xl": "48px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "3xl": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #1D4ED8 !important;
+            box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2);
+        }
+        .standard-shadow {
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Anchor -->
+<aside class="hidden lg:flex flex-col h-full py-md w-60 bg-on-secondary-fixed text-on-secondary flex-shrink-0 shadow-md">
+<div class="px-lg py-md mb-lg">
+<span class="text-headline-sm font-headline-sm font-extrabold text-white">pantazon Admin</span>
+<p class="text-label-sm font-label-sm text-outline-variant opacity-70">Enterprise Manager</p>
+</div>
+<nav class="flex-1 sidebar-scroll overflow-y-auto">
+<div class="flex flex-col">
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Active State: Products -->
+<a class="bg-primary text-white mx-2 my-1 p-3 rounded-lg flex items-center gap-sm translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Customers</span>
+</a>
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto pt-md border-t border-white/10">
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="text-outline-variant hover:text-white hover:bg-primary-container/20 mx-2 my-1 p-3 rounded-lg flex items-center gap-sm transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Header Sticky -->
+<header class="sticky top-0 z-20 bg-surface/80 backdrop-blur-md px-xl py-lg flex justify-between items-center border-b border-outline-variant">
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface">Novo Produto</h1>
+<nav class="flex gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span>Produtos</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Adicionar Novo</span>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-lg py-sm rounded-lg border border-outline text-on-surface-variant font-label-md hover:bg-surface-variant transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+                        Visualizar
+                    </button>
+<button class="px-xl py-sm rounded-lg bg-primary text-white font-label-md hover:opacity-90 transition-opacity standard-shadow flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                        Salvar Produto
+                    </button>
+</div>
+</header>
+<!-- Form Content -->
+<div class="max-w-[1200px] mx-auto p-xl space-y-xl">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Left Column: Main Form -->
+<div class="lg:col-span-2 space-y-xl">
+<!-- Basic Information Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<h2 class="text-headline-sm font-headline-sm mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">info</span>
+                                Informações Básicas
+                            </h2>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Nome do Produto</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg p-md text-body-md" placeholder="Ex: Smartphone pantazon X1" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">SKU (Código Interno)</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg p-md text-body-md" placeholder="PZ-00123" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Categoria</label>
+<select class="w-full bg-white border border-outline-variant rounded-lg p-md text-body-md appearance-none">
+<option>Selecione uma categoria</option>
+<option>Eletrônicos</option>
+<option>Moda</option>
+<option>Casa e Decoração</option>
+<option>Esportes</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<h2 class="text-headline-sm font-headline-sm mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">payments</span>
+                                Preços
+                            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Preço de Venda (R$)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">R$</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg p-md pl-12 text-body-md" placeholder="0,00" step="0.01" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-label-md text-on-surface-variant">Preço Promocional (R$)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">R$</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg p-md pl-12 text-body-md" placeholder="0,00" step="0.01" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Rich Description Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<h2 class="text-headline-sm font-headline-sm mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">description</span>
+                                Descrição Rica
+                            </h2>
+<div class="border border-outline-variant rounded-lg overflow-hidden">
+<div class="bg-surface-container-low border-b border-outline-variant p-sm flex gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded" title="Negrito"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-xs hover:bg-surface-container-high rounded" title="Itálico"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-xs hover:bg-surface-container-high rounded" title="Lista"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<button class="p-xs hover:bg-surface-container-high rounded" title="Link"><span class="material-symbols-outlined text-[20px]">link</span></button>
+</div>
+<textarea class="w-full bg-white border-none p-md text-body-md focus:ring-0" placeholder="Descreva os detalhes técnicos e benefícios do produto..." rows="8"></textarea>
+</div>
+</section>
+<!-- Inventory & Variations Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-sm font-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">inventory</span>
+                                    Variações e Estoque
+                                </h2>
+<button class="text-primary font-label-md flex items-center gap-xs hover:underline">
+<span class="material-symbols-outlined">add_circle</span>
+                                    Adicionar Variação
+                                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left border-b border-outline-variant">
+<th class="py-md px-sm text-label-md text-on-surface-variant font-semibold">Variação</th>
+<th class="py-md px-sm text-label-md text-on-surface-variant font-semibold">SKU Específico</th>
+<th class="py-md px-sm text-label-md text-on-surface-variant font-semibold">Preço</th>
+<th class="py-md px-sm text-label-md text-on-surface-variant font-semibold">Quantidade</th>
+<th class="py-md px-sm"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="py-md px-sm"><span class="px-sm py-xs bg-secondary-container text-on-secondary-container rounded text-label-sm">Cor: Preto</span></td>
+<td class="py-md px-sm text-body-sm">PZ-00123-BK</td>
+<td class="py-md px-sm text-body-sm">R$ 1.200,00</td>
+<td class="py-md px-sm"><input class="w-20 border border-outline-variant rounded p-sm text-body-sm text-center" type="number" value="45"/></td>
+<td class="py-md px-sm text-right"><button class="text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button></td>
+</tr>
+<tr>
+<td class="py-md px-sm"><span class="px-sm py-xs bg-secondary-container text-on-secondary-container rounded text-label-sm">Cor: Prata</span></td>
+<td class="py-md px-sm text-body-sm">PZ-00123-SL</td>
+<td class="py-md px-sm text-body-sm">R$ 1.200,00</td>
+<td class="py-md px-sm"><input class="w-20 border border-outline-variant rounded p-sm text-body-sm text-center" type="number" value="12"/></td>
+<td class="py-md px-sm text-right"><button class="text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Column: Status and Assets -->
+<div class="space-y-xl">
+<!-- Status Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-lg">Status do Produto</h2>
+<div class="space-y-md">
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-primary-container/5 has-[:checked]:border-primary">
+<input checked="" class="text-primary focus:ring-primary h-5 w-5 border-outline" name="status" type="radio"/>
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Ativo</span>
+<span class="text-body-sm text-on-surface-variant">Visível na loja e pronto para venda.</span>
+</div>
+</label>
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-error-container/10 has-[:checked]:border-error">
+<input class="text-primary focus:ring-primary h-5 w-5 border-outline" name="status" type="radio"/>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Rascunho / Inativo</span>
+<span class="text-body-sm text-on-surface-variant">Oculto da loja até ser ativado.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Gallery Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl standard-shadow">
+<h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-lg">Galeria de Imagens</h2>
+<div class="grid grid-cols-2 gap-sm mb-md">
+<div class="relative aspect-square border border-outline-variant rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution product photography shot of a sleek modern smartphone on a clean white reflective surface. Soft cinematic studio lighting highlighting the glass and metal curves. Corporate minimalist aesthetic in line with a premium tech brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZpCSRjVw8DMGXKj8B-shyqB-ZK3wq_ZDmBLC2DWVl72YC-yTOZqlxKazoaTiMBAgl9b7Lt5veKWaGBmzIGyp1MBEJnCxtRbhOtbuYT8AOF6W9Ti9Bi0QlS1lui-gs7HA-Q6bM4IoKLYgdnH_V1aZ_7t8MuOJey-b9uuGUNRjeiTvv3OhXH1N7qfyTetGoYS1AkMSMOJux3VgOzIO2LLGQiY4UJ4x18YcxCZnSW0M_JVjXRbzRJXevM1G0-Kk2q4VWua19b1qCfaM"/>
+<button class="absolute top-xs right-xs bg-white/80 p-xs rounded shadow hover:bg-white"><span class="material-symbols-outlined text-error text-[18px]">close</span></button>
+</div>
+<div class="aspect-square border-2 border-dashed border-outline-variant rounded-lg flex flex-col items-center justify-center gap-xs hover:border-primary hover:bg-primary-container/5 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">add_photo_alternate</span>
+<span class="text-label-sm text-on-surface-variant">Upload</span>
+</div>
+</div>
+<p class="text-label-sm text-on-surface-variant">Formatos suportados: JPG, PNG, WEBP. Tamanho máx: 5MB.</p>
+</section>
+<!-- Category Meta (Bento style small info) -->
+<div class="bg-primary p-xl rounded-xl text-white standard-shadow">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-[32px]">lightbulb</span>
+<h3 class="text-headline-sm font-semibold">Dica pantazon</h3>
+</div>
+<p class="text-body-sm opacity-90 leading-relaxed">
+                                Produtos com descrições detalhadas e pelo menos 3 imagens de alta qualidade convertem até 45% mais que a média.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Anchor -->
+<footer class="w-full py-xl px-lg md:px-xl max-w-container-max mx-auto border-t border-outline-variant mt-2xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
+<div class="space-y-sm">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface">pantazon</span>
+<p class="text-body-sm text-on-surface-variant">Sistema de Gerenciamento Enterprise.</p>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-md uppercase">Links</h4>
+<ul class="space-y-xs">
+<li><a class="text-body-sm text-on-surface-variant hover:underline" href="#">About Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-md uppercase">Suporte</h4>
+<ul class="space-y-xs">
+<li><a class="text-body-sm text-on-surface-variant hover:underline" href="#">Contact</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:underline" href="#">Shipping Info</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-label-sm text-on-surface-variant">© 2024 pantazon E-Commerce. All rights reserved.</p>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">help</span>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Simple Notification Interaction Script -->
+<script>
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Salvando...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Produto Salvo!';
+                btn.classList.replace('bg-primary', 'bg-green-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-green-600', 'bg-primary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>
