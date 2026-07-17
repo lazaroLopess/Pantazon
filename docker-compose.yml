@@ -1,0 +1,23 @@
+services:
+  api:
+    image: zeza123/pantazon:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+    container_name: pantazon-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: PantazonDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SuaSenhaForte123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
