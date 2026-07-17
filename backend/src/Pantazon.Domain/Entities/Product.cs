@@ -1,4 +1,6 @@
-﻿namespace Pantazon.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Pantazon.Domain.Entities
 {
     public class Product
     {
@@ -22,6 +24,8 @@
             StockQuantity = stockQuantity;
             CategoryId = categoryId;
             CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.MinValue;
+            CategoryName = "";
         }
 
         public Guid Id { get; private set; }
@@ -40,9 +44,12 @@
 
         public bool IsActive { get; private set; } = true;
 
+        [JsonIgnore]
         public Category Category { get; private set; } = null!;
 
         public Guid CategoryId { get; private set; }
+
+        public string CategoryName { get; set; } = null!;
 
         public DateTime CreatedAt { get; private set; }
 
