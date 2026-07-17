@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pantazon.Domain\Pantazon.Domain.csproj" />
+    <ProjectReference Include="..\Pantazon.Infrastructure\Pantazon.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
