@@ -1,23 +1,36 @@
 services:
-  api:
-    image: zeza123/pantazon:1.0
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
 
   postgres:
-    image: postgres:17
+    image: postgres:16
     container_name: pantazon-postgres
-    restart: always
     environment:
       POSTGRES_DB: PantazonDb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: SuaSenhaForte123
+      POSTGRES_PASSWORD: SenhaPika1234!
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+
+  pantazon.api:
+    build:
+      context: .
+      dockerfile: backend/src/Pantazon.Api/Dockerfile
+
+    container_name: pantazon-api
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - postgres
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=PantazonDb;Username=postgres;Password=SenhaPika1234!"
+
 
 volumes:
   postgres_data:
