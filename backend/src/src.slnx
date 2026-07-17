@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="Pantazon.Api/Pantazon.Api.csproj" />
+  <Project Path="Pantazon.Application/Pantazon.Application.csproj" />
   <Project Path="Pantazon.Domain/Pantazon.Domain.csproj" />
   <Project Path="Pantazon.Infrastructure/Pantazon.Infrastructure.csproj" />
+  <Project Path="Pantazon.Shared/Pantazon.Shared.csproj" />
 </Solution>
