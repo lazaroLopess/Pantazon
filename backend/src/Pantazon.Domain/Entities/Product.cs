@@ -1,58 +1,49 @@
-﻿using System.Text.Json.Serialization;
+﻿using Pantazon.Domain.Common;
 
-namespace Pantazon.Domain.Entities
+namespace Pantazon.Domain.Entities;
+
+public class Product : Entity
 {
-    public class Product
+    private Product()
     {
-        private Product() { }
+    }
 
-        public Product(
-            string name,
-            string slug,
-            string description,
-            decimal price,
-            string sku,
-            Guid categoryId,
-            int stockQuantity = 0)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-            Slug = slug;
-            Description = description;
-            Price = price;
-            SKU = sku;
-            StockQuantity = stockQuantity;
-            CategoryId = categoryId;
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.MinValue;
-            CategoryName = "";
-        }
+    public Product(
+        string name,
+        string slug,
+        string? description,
+        Guid categoryId)
+    {
+        Update(name, slug, description, categoryId);
+    }
 
-        public Guid Id { get; private set; }
+    public string Name { get; private set; } = null!;
 
-        public string Name { get; private set; } = null!;
+    public string Slug { get; private set; } = null!;
 
-        public string Slug { get; private set; } = null!;
+    public string? Description { get; private set; }
 
-        public string? Description { get; private set; }
+    public bool IsActive { get; private set; } = true;
 
-        public decimal Price { get; private set; }
+    public Category Category { get; private set; } = null!;
 
-        public int StockQuantity { get; private set; }
+    public Guid CategoryId { get; private set; }
 
-        public string SKU { get; private set; } = null!;
+    public ICollection<ProductVariant> Variants { get; private set; }
 
-        public bool IsActive { get; private set; } = true;
+    public ICollection<ProductImage> Images { get; private set; } = [];
 
-        [JsonIgnore]
-        public Category Category { get; private set; } = null!;
+    public void Update(
+        string name,
+        string slug,
+        string? description,
+        Guid categoryId)
+    {
+        Name = name.Trim();
+        Slug = slug.Trim().ToLowerInvariant();
+        Description = description?.Trim();
+        CategoryId = categoryId;
 
-        public Guid CategoryId { get; private set; }
-
-        public string CategoryName { get; set; } = null!;
-
-        public DateTime CreatedAt { get; private set; }
-
-        public DateTime UpdatedAt { get; private set; }
+        Updated();
     }
 }
